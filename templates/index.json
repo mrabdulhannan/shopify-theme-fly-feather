@@ -469,6 +469,9 @@
     },
     "1646193340c2058eeb": {
       "type": "new-features-products",
+      "custom_css": [
+        ".wbproduct-container .product-form{top:60%;}"
+      ],
       "settings": {
         "ms_title": "Special Product",
         "rows": 1,
