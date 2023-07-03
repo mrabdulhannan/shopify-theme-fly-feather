@@ -410,7 +410,7 @@
 /* Product Buttons */
 .wbproduct-container .product-form{
   position: absolute;
-  top: 30%;
+  top: 60%;
   right: 0%;
   left: 0%;
   transition: 0.3s ease;
