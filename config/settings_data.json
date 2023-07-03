@@ -421,7 +421,7 @@
   },
   "platform_customizations": {
     "custom_css": [
-
+      "span.product_badge.new {background: #ccc; padding: 7px 15px;}"
     ]
   }
 }

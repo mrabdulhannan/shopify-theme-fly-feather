@@ -470,7 +470,7 @@
     "1646193340c2058eeb": {
       "type": "new-features-products",
       "custom_css": [
-        "span.product_badge.new {background: #CCC; padding: 7px 15px;}"
+
       ],
       "settings": {
         "ms_title": "Special Product",
