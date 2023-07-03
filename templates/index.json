@@ -1,1 +1,566 @@
-{"sections":{"1644650669e1107d39":{"type":"slideshow","blocks":{"1644650669edab8c4b-1":{"type":"slide","settings":{"slidesub":"#f54676","slideheadclr":"#4ab9f0","slidesubtxt":"#707070","collbg1":"#f54676","collbgborder":"#f54676","collbgtxt":"#ffffff","collbg1hv":"#4ab9f0","collbgborderhv":"#4ab9f0","collbgtxthv":"#ffffff","image":"shopify:\/\/shop_images\/toysbanner1.webp","subheading":"Beautiful Toy Collactions","heading":"For Your Lovely Baby","desc":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s.","heading_size":"large","button_label":"Shop Now","link":"shopify:\/\/collections","box_align":"middle-left","show_text_box":true,"text_alignment":"left","image_overlay_opacity":0,"text_alignment_mobile":"left"}},"1644650669edab8c4b-0":{"type":"slide","settings":{"slidesub":"#f54676","slideheadclr":"#4ab9f0","slidesubtxt":"#707070","collbg1":"#f54676","collbgborder":"#f54676","collbgtxt":"#ffffff","collbg1hv":"#4ab9f0","collbgborderhv":"#4ab9f0","collbgtxthv":"#ffffff","image":"shopify:\/\/shop_images\/toysbanner2.webp","subheading":"Beautiful Toy Collactions","heading":"For Your Lovely Baby","desc":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s.","heading_size":"large","button_label":"Shop Now","link":"shopify:\/\/collections\/latest","box_align":"middle-left","show_text_box":true,"text_alignment":"left","image_overlay_opacity":0,"text_alignment_mobile":"left"}}},"block_order":["1644650669edab8c4b-1","1644650669edab8c4b-0"],"settings":{"layout":"full_bleed","slide_height":"adapt_image","slider_visual":"dots","pagicolor":"#f54676","auto_rotate":false,"change_slides_speed":5,"show_text_below":false,"accessibility_info":"Slideshow about our brand","padding_top":0,"padding_bottom":0}},"ff9e96f6-7a78-4dfb-bd2e-d6a8442c6cef":{"type":"wbcollection-list","blocks":{"template--16056664424638__ff9e96f6-7a78-4dfb-bd2e-d6a8442c6cef-16738486368b7c5b5b-0":{"type":"webi_collection","settings":{"title":"Electric Toys","collection":"electric-toys"}},"edc71982-3538-4e58-bfbb-c518a0566d80":{"type":"webi_collection","settings":{"title":"RC Toys","collection":"rc-toys"}},"d189b0c6-35bb-4cd2-891c-4ee4ffffdb9b":{"type":"webi_collection","settings":{"title":"2 in 1","collection":"toys-2-in-1"}},"38269536-aad3-4bab-8196-8a5bedc1e069":{"type":"webi_collection","settings":{"title":"Toys 3 in 1","collection":"toys-3-in-1"}},"70e99010-19f6-4901-9ab7-58b6b09065f7":{"type":"webi_collection","settings":{"title":"Electric Toys","collection":"electric-toys"}},"f6124e69-bd9c-4fcb-a24e-270bdfbcb09f":{"type":"webi_collection","settings":{"title":"Toys 2 in 1","collection":"toys-2-in-1"}},"c60074b9-9534-4a8b-8d76-288700fef8e4":{"type":"webi_collection","settings":{"title":"Toys 3 in 1","collection":"toys-3-in-1"}}},"block_order":["template--16056664424638__ff9e96f6-7a78-4dfb-bd2e-d6a8442c6cef-16738486368b7c5b5b-0","edc71982-3538-4e58-bfbb-c518a0566d80","d189b0c6-35bb-4cd2-891c-4ee4ffffdb9b","38269536-aad3-4bab-8196-8a5bedc1e069","70e99010-19f6-4901-9ab7-58b6b09065f7","f6124e69-bd9c-4fcb-a24e-270bdfbcb09f","c60074b9-9534-4a8b-8d76-288700fef8e4"],"settings":{"padding_top":20,"padding_bottom":0}},"1646221143250dbb4c":{"type":"collection-banner","settings":{"collbg1":"#f54676","collbgborder":"#f54676","collbgtxt":"#ffffff","collbg1hv":"#4ab9f0","collbgborderhv":"#4ab9f0","collbgtxthv":"#ffffff","showimage1":true,"image1":"shopify:\/\/shop_images\/small1.webp","storytitle1":"big sale 40%","storydesc1":"top rating","showtext1":"View All","link1":"shopify:\/\/collections","showimage2":true,"image2":"shopify:\/\/shop_images\/small2.webp","storytitle2":"big sale 60%","storydesc2":"high quality","showtext2":"View All","link2":"shopify:\/\/collections\/latest","showimage3":true,"image3":"shopify:\/\/shop_images\/small3.webp","storytitle3":"new kids collection","storydesc3":"spring - summer 2023","showtext3":"View All","link3":"shopify:\/\/collections\/hot-toys","padding_top":60,"padding_bottom":0}},"16462887971831b12f":{"type":"service","settings":{"color_service_bg":"#ffffff","s_title":true,"icon1":"coloruser","checkiconimage1":false,"header_gift":"24 X 7 Free Support","header_gift1":"Online Support 24\/7","sa_title":true,"icon2":"colorpayment","checkiconimage2":false,"header_pay":"Money Back Guarantee","header_pay1":"100% Secure Payment","sb_title":true,"icon3":"colorgift","checkiconimage3":false,"header_support":"Special Gift Cards","header_support1":"Give The Perfect Gift","sc_title":true,"icon4":"colorship","checkiconimage4":false,"header_shipping":"Worldwide Shipping","header_shipping1":"On Order Over $99","padding_top":0,"padding_bottom":0}},"1644823679af27053f":{"type":"top-product","blocks":{"2b6b48b0-a84c-4ad6-adcc-efb3435e12c7":{"type":"collection","settings":{"cat_name":"Featured","collection":"electric-toys"}},"8347a67a-c8de-4358-ade8-960bff549753":{"type":"collection","settings":{"cat_name":"Latest","collection":"rc-toys"}},"8a68a72a-b6f9-41dd-9914-ff47f59e27e1":{"type":"collection","settings":{"cat_name":"Bestseller","collection":"toys-3-in-1"}}},"block_order":["2b6b48b0-a84c-4ad6-adcc-efb3435e12c7","8347a67a-c8de-4358-ade8-960bff549753","8a68a72a-b6f9-41dd-9914-ff47f59e27e1"],"settings":{"m_title":"Top Products","rows":1,"image_ratio":"adapt","display_product_type":false,"show_rating":true,"show_secondary_image":true,"show_vendor":false,"show_variants":false,"padding_top":60,"padding_bottom":0}},"9e5273b0-b015-4c3b-99a5-8285d018e260":{"type":"image-gallery","settings":{"collbg1":"#f54676","collbgborder":"#f54676","collbgtxt":"#ffffff","collbg1hv":"#4ab9f0","collbgborderhv":"#4ab9f0","collbgtxthv":"#ffffff","showimage1":true,"image1":"shopify:\/\/shop_images\/banner1.webp","storytitle1":"new collection","storydesc1":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec mauris felis. Donec dignissim sed lacus id feugiat","showtext1":"view all","link1":"","showimage2":true,"image2":"shopify:\/\/shop_images\/banner2.webp","storytitle2":"baby clothing","storydesc2":"Lorem ipsum dolor sit amet","showtext2":"view all","link2":"","showimage3":true,"image3":"shopify:\/\/shop_images\/banner3.webp","link3":"shopify:\/\/collections","showimage4":true,"image4":"shopify:\/\/shop_images\/banner4.webp","link4":"","showimage5":true,"image5":"shopify:\/\/shop_images\/banner5.webp","storytitle5":"Winter Collection 2022","storydesc5":"Lorem ipsum dolor","showtext5":"view all","link5":"","showimage6":true,"image6":"shopify:\/\/shop_images\/banner6.webp","storytitle6":"Winter Collection 2022","storydesc6":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec mauris felis. Donec dignissim sed lacus id feugiat","showtext6":"view all","link6":"","padding_top":60,"padding_bottom":0}},"16449031867ba3e5f6":{"type":"logo-bar","blocks":{"1644903186f14e11a0-0":{"type":"logo_image","settings":{"image":"shopify:\/\/shop_images\/bakery.webp","link":"shopify:\/\/collections"}},"a079b1ed-f075-493e-a054-81d8aad19bba":{"type":"logo_image","settings":{"image":"shopify:\/\/shop_images\/organic.webp","link":"shopify:\/\/collections\/bestseller"}},"3596631b-246a-40f7-8f90-88cc863b4f2b":{"type":"logo_image","settings":{"image":"shopify:\/\/shop_images\/theblackyard.webp","link":"shopify:\/\/collections\/special-summer"}},"dcbd3456-fafb-4ed3-8221-83b0c7b9e8d2":{"type":"logo_image","settings":{"image":"shopify:\/\/shop_images\/theblackyard.webp","link":"shopify:\/\/collections\/special-summer"}},"015ab171-4310-4189-9509-e0aea269c4dc":{"type":"logo_image","settings":{"image":"shopify:\/\/shop_images\/refresh.webp","link":"shopify:\/\/collections\/latest"}},"8a72c085-afe9-4f3f-a637-06107a7543ba":{"type":"logo_image","settings":{"image":"shopify:\/\/shop_images\/organic.webp","link":"shopify:\/\/collections\/bestseller"}},"6a343d75-83cf-40aa-8ff7-b9959525e2f0":{"type":"logo_image","settings":{"image":"shopify:\/\/shop_images\/bakery.webp","link":"shopify:\/\/collections"}},"abaf0245-5570-45f3-858f-00d2ac3feb16":{"type":"logo_image","settings":{"image":"shopify:\/\/shop_images\/bakery.webp","link":"shopify:\/\/collections"}},"c1cccabb-937a-4414-9612-e94e26496f7e":{"type":"logo_image","settings":{"image":"shopify:\/\/shop_images\/bakery.webp","link":"shopify:\/\/collections"}},"8e957c33-f3b3-452c-ac48-2bfbbbfec9ec":{"type":"logo_image","disabled":true,"settings":{"link":"shopify:\/\/collections\/bestseller"}},"65d6ee97-8622-403a-a5fe-042c434c4642":{"type":"logo_image","disabled":true,"settings":{"link":"shopify:\/\/collections\/special-summer"}},"e4b4ff92-3fbc-4b7e-aab5-71c36c26926b":{"type":"logo_image","disabled":true,"settings":{"link":"shopify:\/\/collections"}},"7d93b767-9399-4075-b7a0-37cd64d11318":{"type":"logo_image","disabled":true,"settings":{"link":"shopify:\/\/collections"}}},"block_order":["1644903186f14e11a0-0","a079b1ed-f075-493e-a054-81d8aad19bba","3596631b-246a-40f7-8f90-88cc863b4f2b","dcbd3456-fafb-4ed3-8221-83b0c7b9e8d2","015ab171-4310-4189-9509-e0aea269c4dc","8a72c085-afe9-4f3f-a637-06107a7543ba","6a343d75-83cf-40aa-8ff7-b9959525e2f0","abaf0245-5570-45f3-858f-00d2ac3feb16","c1cccabb-937a-4414-9612-e94e26496f7e","8e957c33-f3b3-452c-ac48-2bfbbbfec9ec","65d6ee97-8622-403a-a5fe-042c434c4642","e4b4ff92-3fbc-4b7e-aab5-71c36c26926b","7d93b767-9399-4075-b7a0-37cd64d11318"],"settings":{"title":"","padding_top":64,"padding_bottom":52}},"1646296770a3ffba7c":{"type":"testimonial","blocks":{"164629677079b087c0-0":{"type":"quote","settings":{"quote":"<p>Lorem ipsum dolor sit consectetur adipiselit. Mauris non tor eros digniim dapibus..<\/p>","author":"Raina Roy","desc":"Web Designer"}},"164629677079b087c0-1":{"type":"quote","settings":{"quote":"<p>Lorem ipsum dolor sit consectetur adipiselit. Mauris non tor eros digniim dapibus..<\/p>","author":"Aiswarya Ray","desc":"Web Designer"}},"164629677079b087c0-2":{"type":"quote","settings":{"quote":"<p>Lorem ipsum dolor sit consectetur adipiselit. Mauris non tor eros digniim dapibus..<\/p>","author":"Sethi Parmeet","desc":"Web Designer"}},"fa402457-0c58-417d-bbf0-c6f51d67fec0":{"type":"quote","settings":{"quote":"<p>Lorem ipsum dolor sit consectetur adipiselit. Mauris non tor eros digniim dapibus..<\/p>","author":"Alisa Roy","desc":"Web Designer"}},"d3034f0f-ba82-4ac2-b877-04208ee1fa32":{"type":"quote","settings":{"quote":"<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>","author":"Mr.John Deo","desc":"Designer"}},"e55bb750-4a26-447f-8122-aea0dc466d66":{"type":"quote","settings":{"quote":"<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>","author":"Mr.Darrel Austin","desc":"developer"}}},"block_order":["164629677079b087c0-0","164629677079b087c0-1","164629677079b087c0-2","fa402457-0c58-417d-bbf0-c6f51d67fec0","d3034f0f-ba82-4ac2-b877-04208ee1fa32","e55bb750-4a26-447f-8122-aea0dc466d66"],"settings":{"m_title":"Testimonials","padding_top":60,"padding_bottom":0}},"1646193340c2058eeb":{"type":"new-features-products","settings":{"ms_title":"Special Product","rows":1,"image_ratio":"adapt","display_product_type":false,"show_rating":true,"show_secondary_image":true,"show_vendor":false,"show_variants":false,"collection2":"electric-toys","padding_top":60,"padding_bottom":0}},"1647334619937842b3":{"type":"imagebanner","blocks":{"faf3bc0e-58fc-419b-84ff-3549f8fe3e79":{"type":"Image","settings":{"image":"shopify:\/\/shop_images\/bannersection3.webp","storysubtitle":"Teddy And Soft Toys","storytitle":"All Types Of Toys","btntxt":"Shop Now","link":"shopify:\/\/collections\/featured"}}},"block_order":["faf3bc0e-58fc-419b-84ff-3549f8fe3e79"],"settings":{"padding_top":60,"padding_bottom":0}},"cd6f7cc4-20ee-41da-aaf7-1d8ef138f28f":{"type":"best-product","settings":{"ms_title":"Best product","rows":2,"image_ratio":"adapt","display_product_type":false,"show_rating":true,"show_secondary_image":true,"show_vendor":false,"show_variants":false,"collection2":"all-products","padding_top":60,"padding_bottom":0}},"1644902876a8ba65d3":{"type":"featured-blog","settings":{"title":"latest blog","blog":"news","show_image":true,"image_height":"adapt","show_date":true,"show_author":false,"show_desc":true,"show_cmment":true,"show_view_all":true,"padding_top":60,"padding_bottom":0}},"164663599100085809":{"type":"popup-products","settings":{"popup_product":true,"collection":"featured","show_rating":true,"product_limit":2}}},"order":["1644650669e1107d39","ff9e96f6-7a78-4dfb-bd2e-d6a8442c6cef","1646221143250dbb4c","16462887971831b12f","1644823679af27053f","9e5273b0-b015-4c3b-99a5-8285d018e260","16449031867ba3e5f6","1646296770a3ffba7c","1646193340c2058eeb","1647334619937842b3","cd6f7cc4-20ee-41da-aaf7-1d8ef138f28f","1644902876a8ba65d3","164663599100085809"]}
+{
+  "sections": {
+    "1644650669e1107d39": {
+      "type": "slideshow",
+      "blocks": {
+        "1644650669edab8c4b-1": {
+          "type": "slide",
+          "settings": {
+            "slidesub": "#f54676",
+            "slideheadclr": "#4ab9f0",
+            "slidesubtxt": "#707070",
+            "collbg1": "#f54676",
+            "collbgborder": "#f54676",
+            "collbgtxt": "#ffffff",
+            "collbg1hv": "#4ab9f0",
+            "collbgborderhv": "#4ab9f0",
+            "collbgtxthv": "#ffffff",
+            "image": "shopify:\/\/shop_images\/toysbanner1.webp",
+            "subheading": "Beautiful Toy Collactions",
+            "heading": "For Your Lovely Baby",
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s.",
+            "heading_size": "large",
+            "button_label": "Shop Now",
+            "link": "shopify:\/\/collections",
+            "box_align": "middle-left",
+            "show_text_box": true,
+            "text_alignment": "left",
+            "image_overlay_opacity": 0,
+            "text_alignment_mobile": "left"
+          }
+        },
+        "1644650669edab8c4b-0": {
+          "type": "slide",
+          "settings": {
+            "slidesub": "#f54676",
+            "slideheadclr": "#4ab9f0",
+            "slidesubtxt": "#707070",
+            "collbg1": "#f54676",
+            "collbgborder": "#f54676",
+            "collbgtxt": "#ffffff",
+            "collbg1hv": "#4ab9f0",
+            "collbgborderhv": "#4ab9f0",
+            "collbgtxthv": "#ffffff",
+            "image": "shopify:\/\/shop_images\/toysbanner2.webp",
+            "subheading": "Beautiful Toy Collactions",
+            "heading": "For Your Lovely Baby",
+            "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the indust standard dummy text ever since the 1500s.",
+            "heading_size": "large",
+            "button_label": "Shop Now",
+            "link": "shopify:\/\/collections\/latest",
+            "box_align": "middle-left",
+            "show_text_box": true,
+            "text_alignment": "left",
+            "image_overlay_opacity": 0,
+            "text_alignment_mobile": "left"
+          }
+        }
+      },
+      "block_order": [
+        "1644650669edab8c4b-1",
+        "1644650669edab8c4b-0"
+      ],
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "adapt_image",
+        "slider_visual": "dots",
+        "pagicolor": "#f54676",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "show_text_below": false,
+        "accessibility_info": "Slideshow about our brand",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "ff9e96f6-7a78-4dfb-bd2e-d6a8442c6cef": {
+      "type": "wbcollection-list",
+      "blocks": {
+        "template--16056664424638__ff9e96f6-7a78-4dfb-bd2e-d6a8442c6cef-16738486368b7c5b5b-0": {
+          "type": "webi_collection",
+          "settings": {
+            "title": "Electric Toys",
+            "collection": "electric-toys"
+          }
+        },
+        "edc71982-3538-4e58-bfbb-c518a0566d80": {
+          "type": "webi_collection",
+          "settings": {
+            "title": "RC Toys",
+            "collection": "rc-toys"
+          }
+        },
+        "d189b0c6-35bb-4cd2-891c-4ee4ffffdb9b": {
+          "type": "webi_collection",
+          "settings": {
+            "title": "2 in 1",
+            "collection": "toys-2-in-1"
+          }
+        },
+        "38269536-aad3-4bab-8196-8a5bedc1e069": {
+          "type": "webi_collection",
+          "settings": {
+            "title": "Toys 3 in 1",
+            "collection": "toys-3-in-1"
+          }
+        },
+        "70e99010-19f6-4901-9ab7-58b6b09065f7": {
+          "type": "webi_collection",
+          "settings": {
+            "title": "Electric Toys",
+            "collection": "electric-toys"
+          }
+        },
+        "f6124e69-bd9c-4fcb-a24e-270bdfbcb09f": {
+          "type": "webi_collection",
+          "settings": {
+            "title": "Toys 2 in 1",
+            "collection": "toys-2-in-1"
+          }
+        },
+        "c60074b9-9534-4a8b-8d76-288700fef8e4": {
+          "type": "webi_collection",
+          "settings": {
+            "title": "Toys 3 in 1",
+            "collection": "toys-3-in-1"
+          }
+        }
+      },
+      "block_order": [
+        "template--16056664424638__ff9e96f6-7a78-4dfb-bd2e-d6a8442c6cef-16738486368b7c5b5b-0",
+        "edc71982-3538-4e58-bfbb-c518a0566d80",
+        "d189b0c6-35bb-4cd2-891c-4ee4ffffdb9b",
+        "38269536-aad3-4bab-8196-8a5bedc1e069",
+        "70e99010-19f6-4901-9ab7-58b6b09065f7",
+        "f6124e69-bd9c-4fcb-a24e-270bdfbcb09f",
+        "c60074b9-9534-4a8b-8d76-288700fef8e4"
+      ],
+      "settings": {
+        "padding_top": 20,
+        "padding_bottom": 0
+      }
+    },
+    "1646221143250dbb4c": {
+      "type": "collection-banner",
+      "settings": {
+        "collbg1": "#f54676",
+        "collbgborder": "#f54676",
+        "collbgtxt": "#ffffff",
+        "collbg1hv": "#4ab9f0",
+        "collbgborderhv": "#4ab9f0",
+        "collbgtxthv": "#ffffff",
+        "showimage1": true,
+        "image1": "shopify:\/\/shop_images\/small1.webp",
+        "storytitle1": "big sale 40%",
+        "storydesc1": "top rating",
+        "showtext1": "View All",
+        "link1": "shopify:\/\/collections",
+        "showimage2": true,
+        "image2": "shopify:\/\/shop_images\/small2.webp",
+        "storytitle2": "big sale 60%",
+        "storydesc2": "high quality",
+        "showtext2": "View All",
+        "link2": "shopify:\/\/collections\/latest",
+        "showimage3": true,
+        "image3": "shopify:\/\/shop_images\/small3.webp",
+        "storytitle3": "new kids collection",
+        "storydesc3": "spring - summer 2023",
+        "showtext3": "View All",
+        "link3": "shopify:\/\/collections\/hot-toys",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "16462887971831b12f": {
+      "type": "service",
+      "settings": {
+        "color_service_bg": "#ffffff",
+        "s_title": true,
+        "icon1": "coloruser",
+        "checkiconimage1": false,
+        "header_gift": "24 X 7 Free Support",
+        "header_gift1": "Online Support 24\/7",
+        "sa_title": true,
+        "icon2": "colorpayment",
+        "checkiconimage2": false,
+        "header_pay": "Money Back Guarantee",
+        "header_pay1": "100% Secure Payment",
+        "sb_title": true,
+        "icon3": "colorgift",
+        "checkiconimage3": false,
+        "header_support": "Special Gift Cards",
+        "header_support1": "Give The Perfect Gift",
+        "sc_title": true,
+        "icon4": "colorship",
+        "checkiconimage4": false,
+        "header_shipping": "Worldwide Shipping",
+        "header_shipping1": "On Order Over $99",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "1644823679af27053f": {
+      "type": "top-product",
+      "blocks": {
+        "2b6b48b0-a84c-4ad6-adcc-efb3435e12c7": {
+          "type": "collection",
+          "settings": {
+            "cat_name": "Featured",
+            "collection": "electric-toys"
+          }
+        },
+        "8347a67a-c8de-4358-ade8-960bff549753": {
+          "type": "collection",
+          "settings": {
+            "cat_name": "Latest",
+            "collection": "rc-toys"
+          }
+        },
+        "8a68a72a-b6f9-41dd-9914-ff47f59e27e1": {
+          "type": "collection",
+          "settings": {
+            "cat_name": "Bestseller",
+            "collection": "toys-3-in-1"
+          }
+        }
+      },
+      "block_order": [
+        "2b6b48b0-a84c-4ad6-adcc-efb3435e12c7",
+        "8347a67a-c8de-4358-ade8-960bff549753",
+        "8a68a72a-b6f9-41dd-9914-ff47f59e27e1"
+      ],
+      "settings": {
+        "m_title": "Top Products",
+        "rows": 1,
+        "image_ratio": "adapt",
+        "display_product_type": false,
+        "show_rating": true,
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_variants": false,
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "9e5273b0-b015-4c3b-99a5-8285d018e260": {
+      "type": "image-gallery",
+      "settings": {
+        "collbg1": "#f54676",
+        "collbgborder": "#f54676",
+        "collbgtxt": "#ffffff",
+        "collbg1hv": "#4ab9f0",
+        "collbgborderhv": "#4ab9f0",
+        "collbgtxthv": "#ffffff",
+        "showimage1": true,
+        "image1": "shopify:\/\/shop_images\/banner1.webp",
+        "storytitle1": "new collection",
+        "storydesc1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec mauris felis. Donec dignissim sed lacus id feugiat",
+        "showtext1": "view all",
+        "link1": "",
+        "showimage2": true,
+        "image2": "shopify:\/\/shop_images\/banner2.webp",
+        "storytitle2": "baby clothing",
+        "storydesc2": "Lorem ipsum dolor sit amet",
+        "showtext2": "view all",
+        "link2": "",
+        "showimage3": true,
+        "image3": "shopify:\/\/shop_images\/banner3.webp",
+        "link3": "shopify:\/\/collections",
+        "showimage4": true,
+        "image4": "shopify:\/\/shop_images\/banner4.webp",
+        "link4": "",
+        "showimage5": true,
+        "image5": "shopify:\/\/shop_images\/banner5.webp",
+        "storytitle5": "Winter Collection 2022",
+        "storydesc5": "Lorem ipsum dolor",
+        "showtext5": "view all",
+        "link5": "",
+        "showimage6": true,
+        "image6": "shopify:\/\/shop_images\/banner6.webp",
+        "storytitle6": "Winter Collection 2022",
+        "storydesc6": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nec mauris felis. Donec dignissim sed lacus id feugiat",
+        "showtext6": "view all",
+        "link6": "",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "16449031867ba3e5f6": {
+      "type": "logo-bar",
+      "blocks": {
+        "1644903186f14e11a0-0": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/bakery.webp",
+            "link": "shopify:\/\/collections"
+          }
+        },
+        "a079b1ed-f075-493e-a054-81d8aad19bba": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/organic.webp",
+            "link": "shopify:\/\/collections\/bestseller"
+          }
+        },
+        "3596631b-246a-40f7-8f90-88cc863b4f2b": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/theblackyard.webp",
+            "link": "shopify:\/\/collections\/special-summer"
+          }
+        },
+        "dcbd3456-fafb-4ed3-8221-83b0c7b9e8d2": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/theblackyard.webp",
+            "link": "shopify:\/\/collections\/special-summer"
+          }
+        },
+        "015ab171-4310-4189-9509-e0aea269c4dc": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/refresh.webp",
+            "link": "shopify:\/\/collections\/latest"
+          }
+        },
+        "8a72c085-afe9-4f3f-a637-06107a7543ba": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/organic.webp",
+            "link": "shopify:\/\/collections\/bestseller"
+          }
+        },
+        "6a343d75-83cf-40aa-8ff7-b9959525e2f0": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/bakery.webp",
+            "link": "shopify:\/\/collections"
+          }
+        },
+        "abaf0245-5570-45f3-858f-00d2ac3feb16": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/bakery.webp",
+            "link": "shopify:\/\/collections"
+          }
+        },
+        "c1cccabb-937a-4414-9612-e94e26496f7e": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/bakery.webp",
+            "link": "shopify:\/\/collections"
+          }
+        },
+        "8e957c33-f3b3-452c-ac48-2bfbbbfec9ec": {
+          "type": "logo_image",
+          "disabled": true,
+          "settings": {
+            "link": "shopify:\/\/collections\/bestseller"
+          }
+        },
+        "65d6ee97-8622-403a-a5fe-042c434c4642": {
+          "type": "logo_image",
+          "disabled": true,
+          "settings": {
+            "link": "shopify:\/\/collections\/special-summer"
+          }
+        },
+        "e4b4ff92-3fbc-4b7e-aab5-71c36c26926b": {
+          "type": "logo_image",
+          "disabled": true,
+          "settings": {
+            "link": "shopify:\/\/collections"
+          }
+        },
+        "7d93b767-9399-4075-b7a0-37cd64d11318": {
+          "type": "logo_image",
+          "disabled": true,
+          "settings": {
+            "link": "shopify:\/\/collections"
+          }
+        }
+      },
+      "block_order": [
+        "1644903186f14e11a0-0",
+        "a079b1ed-f075-493e-a054-81d8aad19bba",
+        "3596631b-246a-40f7-8f90-88cc863b4f2b",
+        "dcbd3456-fafb-4ed3-8221-83b0c7b9e8d2",
+        "015ab171-4310-4189-9509-e0aea269c4dc",
+        "8a72c085-afe9-4f3f-a637-06107a7543ba",
+        "6a343d75-83cf-40aa-8ff7-b9959525e2f0",
+        "abaf0245-5570-45f3-858f-00d2ac3feb16",
+        "c1cccabb-937a-4414-9612-e94e26496f7e",
+        "8e957c33-f3b3-452c-ac48-2bfbbbfec9ec",
+        "65d6ee97-8622-403a-a5fe-042c434c4642",
+        "e4b4ff92-3fbc-4b7e-aab5-71c36c26926b",
+        "7d93b767-9399-4075-b7a0-37cd64d11318"
+      ],
+      "settings": {
+        "title": "",
+        "padding_top": 64,
+        "padding_bottom": 52
+      }
+    },
+    "1646296770a3ffba7c": {
+      "type": "testimonial",
+      "blocks": {
+        "164629677079b087c0-0": {
+          "type": "quote",
+          "settings": {
+            "quote": "<p>Lorem ipsum dolor sit consectetur adipiselit. Mauris non tor eros digniim dapibus..<\/p>",
+            "author": "Raina Roy",
+            "desc": "Web Designer"
+          }
+        },
+        "164629677079b087c0-1": {
+          "type": "quote",
+          "settings": {
+            "quote": "<p>Lorem ipsum dolor sit consectetur adipiselit. Mauris non tor eros digniim dapibus..<\/p>",
+            "author": "Aiswarya Ray",
+            "desc": "Web Designer"
+          }
+        },
+        "164629677079b087c0-2": {
+          "type": "quote",
+          "settings": {
+            "quote": "<p>Lorem ipsum dolor sit consectetur adipiselit. Mauris non tor eros digniim dapibus..<\/p>",
+            "author": "Sethi Parmeet",
+            "desc": "Web Designer"
+          }
+        },
+        "fa402457-0c58-417d-bbf0-c6f51d67fec0": {
+          "type": "quote",
+          "settings": {
+            "quote": "<p>Lorem ipsum dolor sit consectetur adipiselit. Mauris non tor eros digniim dapibus..<\/p>",
+            "author": "Alisa Roy",
+            "desc": "Web Designer"
+          }
+        },
+        "d3034f0f-ba82-4ac2-b877-04208ee1fa32": {
+          "type": "quote",
+          "settings": {
+            "quote": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+            "author": "Mr.John Deo",
+            "desc": "Designer"
+          }
+        },
+        "e55bb750-4a26-447f-8122-aea0dc466d66": {
+          "type": "quote",
+          "settings": {
+            "quote": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+            "author": "Mr.Darrel Austin",
+            "desc": "developer"
+          }
+        }
+      },
+      "block_order": [
+        "164629677079b087c0-0",
+        "164629677079b087c0-1",
+        "164629677079b087c0-2",
+        "fa402457-0c58-417d-bbf0-c6f51d67fec0",
+        "d3034f0f-ba82-4ac2-b877-04208ee1fa32",
+        "e55bb750-4a26-447f-8122-aea0dc466d66"
+      ],
+      "settings": {
+        "m_title": "Testimonials",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "1646193340c2058eeb": {
+      "type": "new-features-products",
+      "settings": {
+        "ms_title": "Special Product",
+        "rows": 1,
+        "image_ratio": "adapt",
+        "display_product_type": false,
+        "show_rating": true,
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_variants": false,
+        "collection2": "electric-toys",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "1647334619937842b3": {
+      "type": "imagebanner",
+      "blocks": {
+        "faf3bc0e-58fc-419b-84ff-3549f8fe3e79": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/bannersection3.webp",
+            "storysubtitle": "Teddy And Soft Toys",
+            "storytitle": "All Types Of Toys",
+            "btntxt": "Shop Now",
+            "link": "shopify:\/\/collections\/featured"
+          }
+        }
+      },
+      "block_order": [
+        "faf3bc0e-58fc-419b-84ff-3549f8fe3e79"
+      ],
+      "settings": {
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "cd6f7cc4-20ee-41da-aaf7-1d8ef138f28f": {
+      "type": "best-product",
+      "settings": {
+        "ms_title": "Best product",
+        "rows": 2,
+        "image_ratio": "adapt",
+        "display_product_type": false,
+        "show_rating": true,
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_variants": false,
+        "collection2": "electric-toys",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "1644902876a8ba65d3": {
+      "type": "featured-blog",
+      "settings": {
+        "title": "latest blog",
+        "blog": "news",
+        "show_image": true,
+        "image_height": "adapt",
+        "show_date": true,
+        "show_author": false,
+        "show_desc": true,
+        "show_cmment": true,
+        "show_view_all": true,
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "164663599100085809": {
+      "type": "popup-products",
+      "disabled": true,
+      "settings": {
+        "popup_product": true,
+        "collection": "featured",
+        "show_rating": true,
+        "product_limit": 2
+      }
+    }
+  },
+  "order": [
+    "1644650669e1107d39",
+    "ff9e96f6-7a78-4dfb-bd2e-d6a8442c6cef",
+    "1646221143250dbb4c",
+    "16462887971831b12f",
+    "1644823679af27053f",
+    "9e5273b0-b015-4c3b-99a5-8285d018e260",
+    "16449031867ba3e5f6",
+    "1646296770a3ffba7c",
+    "1646193340c2058eeb",
+    "1647334619937842b3",
+    "cd6f7cc4-20ee-41da-aaf7-1d8ef138f28f",
+    "1644902876a8ba65d3",
+    "164663599100085809"
+  ]
+}
