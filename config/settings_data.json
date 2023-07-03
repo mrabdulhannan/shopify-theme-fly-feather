@@ -134,7 +134,6 @@
           },
           "607c206d-fdf4-42cf-85d0-1bd8079d2e8c": {
             "type": "link-linklist",
-            "disabled": true,
             "settings": {
               "title": "Shoes",
               "link": "shopify:\/\/collections\/shoes",
@@ -145,10 +144,9 @@
           },
           "673b4e82-3007-4d43-96d2-ceb83a65ea7a": {
             "type": "link-linklist",
-            "disabled": true,
             "settings": {
-              "title": "Contact Us",
-              "link": "shopify:\/\/pages\/contact",
+              "title": "Accessories",
+              "link": "shopify:\/\/collections\/accessories",
               "badge_text": "",
               "bg_color": "#ff0000",
               "links": ""
