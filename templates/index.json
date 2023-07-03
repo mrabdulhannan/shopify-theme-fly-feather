@@ -516,7 +516,7 @@
         "show_secondary_image": true,
         "show_vendor": false,
         "show_variants": false,
-        "collection2": "all-products",
+        "collection2": "accessories",
         "padding_top": 60,
         "padding_bottom": 0
       }
