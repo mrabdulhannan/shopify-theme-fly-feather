@@ -539,6 +539,7 @@
     },
     "164663599100085809": {
       "type": "popup-products",
+      "disabled": true,
       "settings": {
         "popup_product": true,
         "collection": "featured",
