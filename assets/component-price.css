@@ -1,0 +1,100 @@
+.price.price--unavailable {
+  visibility: hidden;
+}
+
+.price--end {
+  justify-content: flex-end;
+}
+
+.price .price-item {
+    margin: 0;
+    font-size: calc(var(--font-size-base) * 1.28px);
+    font-weight: 600;
+    letter-spacing: 0;
+    display: inline-block;
+}
+
+.price:not(.price--show-badge) .price-item--last:last-of-type {
+  margin: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .price {
+    margin-bottom: 0;
+  }
+}
+
+.price--large {
+  font-size: 1.6rem;
+  letter-spacing: 0.13rem;
+}
+
+@media screen and (min-width: 768px) {
+  .price--large {
+    font-size: 1.8rem;
+  }
+}
+
+.price--sold-out .price__availability,
+.price__regular {
+  display: block;
+}
+
+.price__sale,
+.price__availability,
+.price .price__badge-sale,
+.price .price__badge-sold-out,
+.price--on-sale .price__regular,
+.price--on-sale .price__availability {
+  display: none;
+}
+
+.price--sold-out .price__badge-sold-out,
+.price--on-sale .price__badge-sale {
+  display: inline-flex;
+}
+
+.price--on-sale .price__sale {
+  display: block;
+  letter-spacing: 0;
+}
+
+.price--center {
+  display: flex;
+  justify-content: center;
+}
+
+.price--on-sale .price-item--regular {
+    text-decoration: line-through;
+    font-weight: 400;
+    color: rgb(var(--color-foreground),0.5);
+    font-size: 18px;
+    display: inline-block;
+    margin-right: 2px;
+    font-size: calc(var(--font-size-base) * 1px);
+}
+
+.unit-price {
+  display: block;
+  font-size: calc(var(--font-size-base) * 1px); 
+  letter-spacing: 0;
+  margin-top: 0.2rem;
+  text-transform: uppercase;
+}
+.product__info-container .price .unit-price .price-item {
+  font-size: calc(var(--font-size-base) * 1.29px);
+}
+.price .unit-price .price-item{
+  font-size: calc(var(--font-size-base) * 1.15px);
+}
+.cart-item__old-price{
+  font-size: calc(var(--font-size-base) * 0.93px);
+}
+@media (max-width: 991px){
+  .price .price-item{
+    font-size: calc(var(--font-size-base) * 1px);
+  }
+  .price--on-sale .price-item--regular{
+    font-size: calc(var(--font-size-base) * 0.79px);
+  }
+}  

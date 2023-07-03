@@ -1,0 +1,281 @@
+#product-grid .grid__item {
+    margin-bottom: 30px;
+}
+.product-list .grid__item {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.product-list .wbproduct-container .card{
+    width: 100%;
+    flex-direction: unset;
+}
+.product-list .wbimgblock{
+    float: left;
+    width: 30%;
+}
+.product-list .wbproductdes {
+    float: left;
+    width: 70%;
+    text-align: left;
+    padding: 15px 15px;
+}
+.product-list .product-title {
+    max-width: unset;
+    margin-bottom: 10px;
+    padding-bottom: 0;
+    font-size: calc(var(--font-size-base) * 1.2px);
+    font-weight: bold;
+}
+.product-list .wblistpdesc {
+    margin: 0 0 10px;
+}
+.product-list .wbhprice {
+    margin-bottom: 10px;
+}
+.product-list .wbhrating {
+    margin-bottom: 9px;
+}
+#product-grid.product-grid .wblistpdesc{
+    display: none;
+}
+.wblistpdesc{
+    margin: 0 0 10px 0;
+    font-size: 13px;
+}
+.collection-hero{
+    margin-bottom: 30px;
+}
+
+.product-list .wbproduct-container .product-form{
+    position: unset;
+    opacity: 1;
+    margin-top: 20px;
+    text-align: left;
+}
+.product-list .grid__item {
+    margin-bottom: 15px;   
+}
+.product-list .wbqvtop {
+    display: inline-block;
+    margin: 0;
+    text-align: center;
+    position: unset;
+    opacity: 1;
+}
+.product-list .product-form__input.product-form__quantity{
+    display: inline-block;
+}
+.product-list .product-form .cartb,
+.product-list .card-wrapper .wbquickv,
+.product-list .card-wrapper .wishlist{
+    min-width: 30px;
+    min-height: 30px;
+    margin: 0 4px; 
+    padding: 4px 0;
+    border-radius: 6px;
+}
+.product-list .card-wrapper .wishlist{
+    margin: 0;
+}
+.product-list .card-wrapper .wbwish {
+    display: inline-block;
+}
+.product-list .wbproduct-container .quantity__input,.product-list .wbproduct-container .quantity__input{
+    height: 30px;
+}
+.product-list .wbproduct-container .quantity{
+    float: none;
+    margin: 0;
+    margin-right: 4px;
+    height: 30px;
+}
+.product-list .product-form .cartb svg {
+    display: inline-block;
+}
+.product-list .product-form .cartb span{
+    display: none;
+}
+.product-list .wbproduct-container .product-form form, .product-list .wbproduct-container .product-form .wbqvtop{
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 0;
+}
+.product-list .wbproduct-container:hover .product_badge.new {
+    opacity: 1;
+}
+.product-list .wbimgblock img {
+    border-radius: 1.0rem;
+}
+
+#product-grid .wbproduct-container .wbimgblock {
+    transition: unset;
+}
+/* Search Template */
+.template-search .wbsearchpages .card__text {
+    font-size: calc(var(--font-size-base) * 1.15px);
+    margin: 0;
+}
+.template-search .wbsearchpages .card-article-info{
+    font-size: calc(var(--font-size-base) * 1px);
+}
+.template-search .wbsearchpages .card__content{
+    padding: 10px;
+}
+.template-search .wbsearchpages .card__badge{
+    margin: 10px;
+}
+.template-search .wbsearchpages .card__inner .card__badge span{
+    position: unset;
+}
+.wbbtmpages{
+    margin-top: 30px;
+}
+.template-search .wbsearchpages.card-wrapper .card{
+    height: 100%;
+    background: rgba(var(--color-foreground),0.03);
+    display: block;
+}
+.wbsearchblog .card .media{
+    position: unset;
+    border-radius: 10px;
+}
+.wbsearchblog .card .media img{
+    border-radius: 10px;
+}
+.template-search  .media.media--cropped .card__badge{
+    margin: 10px;
+}
+.wbsearchblog .card__text{
+    font-size: calc(var(--font-size-base) * 1.15px);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+/* Gallery View */
+.product-galleryv{
+    margin-left: -2px;
+    margin-right: -2px;
+}
+#product-grid.product-galleryv .grid__item{
+    padding-left: 2px;
+    padding-right: 2px;
+    margin-bottom: 4px;
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+.product-galleryv .wbproductdes {
+    display: none;
+}
+.product-galleryv .product_badge.new,.product-galleryv .card__badge{
+    display: none;
+}
+@media (min-width: 1200px) and (max-width: 1399px){
+    .wblistpdesc{
+        letter-spacing: 0;
+    }
+}
+@media (min-width: 768px) and (max-width: 991px){
+    .product-list .wbimgblock,.product-list .wbproductdes{
+        width: 50%;
+    }
+    .wblistpdesc{
+        letter-spacing: 0;
+        overflow: hidden;
+        height: 40px;
+    }
+}
+@media (max-width: 1199px){
+    .product-list .wbproduct-container{
+        margin-bottom: 15px;
+    }
+}
+@media (max-width: 991px){
+    #product-grid .grid__item{
+        margin-bottom: 15px;
+    }
+    .product-list .wbhprice {
+        margin-bottom: 10px;
+    }
+    .wblistpdesc{
+        margin-bottom: 5px;
+    }
+    .product-list .wbproductdes {
+        padding: 15px 15px;
+    }
+    .product-list .product-title {
+        margin-bottom: 8px;
+    }
+    .product-list .wblistpdesc {
+        margin: 0 0 8px;
+    }
+}
+@media (min-width: 576px) and (max-width: 767px){
+    .product-list .wbimgblock{
+        width: 40%;
+    }
+    .product-list .wbproductdes{
+        width: 60%;
+    }
+    .wblistpdesc{
+        letter-spacing: 0;
+        overflow: hidden;
+        height: 40px;
+    }
+}
+@media (max-width: 575px){
+    /*.product-list .wbimgblock,.product-list .wbproductdes{
+        width: 100%;
+    }*/
+    .product-list .wbproductdes {
+        padding: 0px 15px;
+    }
+    .wblistpdesc{
+        overflow: hidden;
+        height: 36px;
+        font-size: 12px;
+    }
+    /*.product-list .wbproductdes{
+        padding: 0;
+        padding-top: 10px;
+    }*/
+    .product-list .wbimgblock{
+        width: 100%;
+    }
+    .product-list .wbproductdes{
+        width: 100%;
+    }
+    #product-grid.product-galleryv .grid__item{
+        flex: 0 0 33.33%;
+        max-width: 33.33%;
+    }
+    .product-list .wbproduct-container .card{
+        display: block;
+        float: left;
+        margin-bottom: 15px;
+    }
+    .product-list .grid__item {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    
+}
+@media (max-width: 449px){
+    .product-list .grid__item {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+@media (max-width: 767px){
+    .wbsearchblog .card__text {
+        font-size: calc(var(--font-size-base) * 1px);
+    }
+    .product-list .wbproduct-container .product-form{
+        margin-top: 7px;
+    }
+    .collection-hero__image-container{
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .collection-hero {
+        margin-bottom: 15px;
+    }
+}

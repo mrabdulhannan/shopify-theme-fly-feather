@@ -1,0 +1,35 @@
+.totals {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-top: 20px;
+}
+
+.totals > * {
+  margin: 0;
+}
+.totals * {
+  line-height: 1;
+}
+
+.totals > * + * {
+  margin-left: 15px;
+}
+
+.totals__subtotal-value {
+  font-size: calc(var(--font-size-base) * 1.57px);
+  color: rgb(var(--color-foreground));
+}
+.totals__subtotal{
+  font-size: calc(var(--font-size-base) * 1.15px);
+}
+.cart__ctas + .totals {
+  margin-top: 2rem;
+}
+
+#main-cart-footer cart-note.cart__note.field::before,#main-cart-footer cart-note.cart__note.field::after{
+    display: none;
+}
+#main-cart-footer #Cart-note{
+    border: 1px solid var(--color-wbbordercolor);
+}

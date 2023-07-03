@@ -1,0 +1,344 @@
+<div class="homecolbnr section-{{ section.id }}-padding">
+    <div class="">
+        <div class="page-width">
+            <div class="row rless">
+                <div class="col-md-3 col-12 cless service-append"></div>
+                <div class="col-md-9 col-12 cless col-ban">
+                    <div class="row rless wbprinal">
+                            {% if section.settings.showimage1 %}
+                            <div class="cless {% unless section.settings.showimage1 %}{% else %} col-md-6 col-sm-6 col-12 homecolbnrin1{% endunless %}">
+                                <div class="beffect">
+                                    {% if section.settings.link1 != blank %}<a href="{{ section.settings.link1 }}"
+                                        title="{{ 'wbcustomlabel.wballtext.banner' | t }}">{% endif%}
+                                        {% if section.settings.image1 != blank %}
+                                        <img src="{{ section.settings.image1 | img_url: 'master' }}"
+                                            alt="{{ section.settings.image1.alt }}" class="img-fluid mx-auto"
+                                            width="{{ section.settings.image1.width }}"
+                                            height="{{ section.settings.image1.height }}" />
+                                        {% else %}
+                                        <img src="https://dummyimage.com/545x265/aaa" class="img-fluid mx-auto"
+                                            alt="{{ 'wbcustomlabel.wballtext.banner' | t }}" width="545" height="265" />
+                                        {% endif %}
+                                        <div class="wbsetbntxt">
+                                            <div class="wbdip">
+                                                {% if section.settings.storydesc1 != blank %}
+                                                    <p>{{ section.settings.storydesc1 }}</p>
+                                                {% endif %}
+
+                                                {% if section.settings.storytitle1 != blank %}
+                                                    <h4>{{ section.settings.storytitle1 }}</h4>
+                                                {% endif %}
+                                                
+                                                {% if section.settings.showtext1 != blank %}<h3><span
+                                                        class="btn btn-primary">{{ section.settings.showtext1 }}</span></h3>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        {% if section.settings.link1 != blank %}</a>{% endif %}
+                                </div>
+                            </div>
+                            {% endif %}
+
+                            {% if section.settings.showimage2 %}
+                            <div class="cless {% unless section.settings.showimage2 %} {% else %} col-md-6 col-sm-6 col-12 homecolbnrin2{% endunless %}">
+                                <div class="beffect">
+                                    {% if section.settings.link2 != blank %}<a href="{{ section.settings.link2 }}"
+                                        title="{{ 'wbcustomlabel.wballtext.banner' | t }}">{% endif%}
+                                        {% if section.settings.image2 != blank %}
+                                        <img src="{{ section.settings.image2 | img_url: 'master' }}"
+                                            alt="{{ section.settings.image2.alt }}" class="img-fluid mx-auto"
+                                            width="{{ section.settings.image2.width }}"
+                                            height="{{ section.settings.image2.height }}" />
+                                        {% else %}
+                                        <img src="https://dummyimage.com/545x265/aaa" class="img-fluid mx-auto"
+                                            alt="{{ 'wbcustomlabel.wballtext.banner' | t }}" width="545" height="265" />
+                                        {% endif %}
+                                        <div class="wbsetbntxt">
+                                            <div class="wbdip">
+                                                {% if section.settings.storydesc2 != blank %}
+                                                    <p>{{ section.settings.storydesc2 }}</p>
+                                                {% endif %}
+
+                                                {% if section.settings.storytitle2 != blank %}
+                                                    <h4>{{ section.settings.storytitle2 }}</h4>
+                                                {% endif %}
+                                                
+                                                {% if section.settings.showtext2 != blank %}<h3><span
+                                                        class="btn btn-primary">{{ section.settings.showtext2 }}</span></h3>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        {% if section.settings.link2 != blank %}</a>{% endif %}
+                                </div>
+                            </div>
+                            {% endif %}
+                       
+                            {% if section.settings.showimage3 %}
+                            <div class="cless {% unless section.settings.showimage3 %} {% else %} col-md-12  col-12 homecolbnrin3{% endunless %}">
+                                <div class="beffect">
+                                    {% if section.settings.link3 != blank %}<a href="{{ section.settings.link3 }}"
+                                        title="{{ 'wbcustomlabel.wballtext.banner' | t }}">{% endif%}
+                                        {% if section.settings.image3 != blank %}
+                                        <img src="{{ section.settings.image3 | img_url: 'master' }}"
+                                            alt="{{ section.settings.image3.alt }}" class="img-fluid mx-auto"
+                                            width="{{ section.settings.image3.width }}"
+                                            height="{{ section.settings.image3.height }}" />
+                                        {% else %}
+                                        <img src="https://dummyimage.com/1005x265/aaa" class="img-fluid mx-auto"
+                                            alt="{{ 'wbcustomlabel.wballtext.banner' | t }}" width="1005" height="265" />
+                                        {% endif %}
+                                        <div class="wbsetbntxt">
+                                            <div class="wbdip">
+                                                {% if section.settings.storydesc3 != blank %}
+                                                    <p>{{ section.settings.storydesc3 }}</p>
+                                                {% endif %}
+
+                                                {% if section.settings.storytitle3 != blank %}
+                                                    <h4>{{ section.settings.storytitle3 }}</h4>
+                                                {% endif %}
+                                                
+                                                {% if section.settings.showtext3 != blank %}<h3><span
+                                                        class="btn btn-primary">{{ section.settings.showtext3 }}</span></h3>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        {% if section.settings.link3 != blank %}</a>{% endif %}
+                                </div>
+                            </div>
+                            {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{%- style -%}
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+}
+@media screen and (max-width: 991px) {
+    .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
+        padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
+    }
+} 
+.homecolbnr .beffect h3 span.btn-primary{
+    background: {{ section.settings.collbg1 }};
+    color: {{ section.settings.collbgtxt }};
+    border-color: {{ section.settings.collbgborder }};
+}
+.homecolbnr .beffect h3 span.btn-primary:hover{
+    background: {{ section.settings.collbg1hv }};
+    border-color: {{ section.settings.collbgborderhv }};
+    color: {{ section.settings.collbgtxthv }};
+}
+{%- endstyle -%}
+{% schema %}
+{
+"name": "Collection Banner",
+"class": "spaced-section",
+"settings": [  
+    {
+        "type": "header",
+        "content": "Collection Button Color"
+    },
+    {
+        "type": "color",
+        "id": "collbg1",
+        "label": "Button color",
+        "default": "transparent"
+    },
+    {
+        "type": "color",
+        "id": "collbgborder",
+        "label": "Border color",
+        "default": "#fff"
+    },
+    {
+        "type": "color",
+        "id": "collbgtxt",
+        "label": "Text color",
+        "default": "#fff"
+    },
+
+    {
+        "type": "color",
+        "id": "collbg1hv",
+        "label": "Button hover color",
+        "default": "#fff"
+    },
+    {
+        "type": "color",
+        "id": "collbgborderhv",
+        "label": "Border hover color",
+        "default": "#fff"
+    },
+    {
+        "type": "color",
+        "id": "collbgtxthv",
+        "label": "Text hover color",
+        "default": "#000"
+    },
+
+
+    {
+        "type": "header",
+        "content": "Banner 1"
+    },
+    {
+        "type": "checkbox",
+        "id": "showimage1",
+        "label": "Show Banner 1",
+        "default": true
+    },
+    {
+        "type": "image_picker",
+        "id": "image1",
+        "label": "Image",
+        "info": "Size: 545x265"
+    },
+    {
+        "type": "text",
+        "id": "storytitle1",
+        "label": "Heading1",
+        "default": "Winter Collection 2022"
+    },
+    {
+        "type": "text",
+        "id": "storydesc1",
+        "label": "Sub Heading1",
+        "default": "add txt"
+    },
+    {
+        "type": "text",
+        "id": "showtext1",
+        "label": "Banner Heading",
+        "default": "For Her"
+    },
+    {
+        "type": "url",
+        "id": "link1",
+        "label": "Link URL"
+    },
+
+
+
+    {
+        "type": "header",
+        "content": "Banner 2"
+    },
+    {
+        "type": "checkbox",
+        "id": "showimage2",
+        "label": "Show Banner 2",
+        "default": true
+    },
+    {
+        "type": "image_picker",
+        "id": "image2",
+        "label": "Image",
+        "info": "Size: 545x265"
+    },
+    {
+        "type": "text",
+        "id": "storytitle2",
+        "label": "Heading1",
+        "default": "Winter Collection 2022"
+    },
+    {
+        "type": "text",
+        "id": "storydesc2",
+        "label": "Sub Heading2",
+        "default": "add txt"
+    },
+    {
+        "type": "text",
+        "id": "showtext2",
+        "label": "Banner Heading",
+        "default": "For Her"
+    },
+     {
+        "type": "url",
+        "id": "link2",
+        "label": "Link URL"
+    },
+
+
+
+   
+    {
+        "type": "header",
+        "content": "Banner 3"
+    },
+    {
+        "type": "checkbox",
+        "id": "showimage3",
+        "label": "Show Banner 3",
+        "default": true
+    },
+    {
+        "type": "image_picker",
+        "id": "image3",
+        "label": "Image",
+        "info": "Size: 1005x265"
+    },
+    {
+        "type": "text",
+        "id": "storytitle3",
+        "label": "Heading3",
+        "default": "Winter Collection 2022"
+    },
+    {
+        "type": "text",
+        "id": "storydesc3",
+        "label": "Sub Heading3",
+        "default": "add txt"
+    },
+    {
+        "type": "text",
+        "id": "showtext3",
+        "label": "Banner Heading",
+        "default": "For Her"
+     },
+     {
+        "type": "url",
+        "id": "link3",
+        "label": "Link URL"
+    },
+
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 0
+    }
+],
+  "presets": [
+    {
+      "name": "Collection Banner",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}

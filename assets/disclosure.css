@@ -1,0 +1,31 @@
+
+.disclosure {
+    position: relative;
+}
+.disclosure__list {
+    min-width: 100%;
+    width: max-content;
+    overflow-y: auto;
+    padding-bottom: .5rem;
+    padding-top: .5rem;
+    position: absolute;
+    transform: translateY(-1rem);
+    z-index: 2;
+    background: rgb(var(--color-background));
+    margin-top: 15px;
+    border-radius: 0px;
+    text-align: left;
+    right: 0;
+    min-width: 10rem;
+    width: max-content;
+    border-radius: 10px;
+    border: 1px solid var(--color-wbbordercolor);
+}
+.disclosure__item {
+    position: relative;
+}
+.disclosure__link {
+    display: block;
+    padding: 4px 15px;
+    text-decoration: none;
+}

@@ -1,0 +1,18 @@
+{% comment %}
+    Renders a product card placeholder
+
+    Usage:
+    {% render 'product-card-placeholder' %}
+{% endcomment %}
+
+<div class="card-wrapper wbproduct-container">
+    <div class="wbimgblock">
+        {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+        {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+    </div>
+    <div class="wbproductdes text-center">
+        <p class="wbprotype">{{ 'products.product.vendor' | t }}</p>
+        <h3 class="product-title">{{ 'onboarding.product_title' | t }}</h3>
+        {% render 'price' %}
+    </div>
+</div>

@@ -1,0 +1,52 @@
+.rating {
+  display: inline-block;
+  margin: 0;
+}
+
+.product .rating-star {
+  --letter-spacing: 0.01;
+  --font-size: 1.1;
+}
+
+.card-wrapper .rating-star,.wbquickmodel .rating-star {
+  --letter-spacing: 0.01;
+  --font-size: 1.1;
+}
+
+.rating-star {
+  --percent: calc(
+    (
+        var(--rating) / var(--rating-max) + var(--rating-decimal) *
+          var(--font-size) /
+          (var(--rating-max) * (var(--letter-spacing) + var(--font-size)))
+      ) * 100%
+  );
+  letter-spacing: calc(var(--letter-spacing) * 1rem);
+  font-size: calc(var(--font-size) * 1rem);
+}
+
+.rating-star::before {
+  content: '★★★★★';
+  background: linear-gradient(90deg,#ffbb40 var(--percent),rgba(var(--color-base-text),0.15) var(--percent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.rating-text {
+  display: none;
+}
+
+.rating-count {
+  display: inline-block;
+  margin: 0;
+}
+
+@media (forced-colors: active) {
+  .rating {
+    display: none;
+  }
+
+  .rating-text {
+    display: block;
+  }
+}

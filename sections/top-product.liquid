@@ -1,0 +1,197 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-rating.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="{{ 'template-collection.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'template-collection.css' | asset_url | stylesheet_tag }}</noscript>
+
+{%- style -%}
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+}
+@media screen and (max-width: 991px) {
+    .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
+        padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
+    }
+}
+{%- endstyle -%}
+<div class="wbtyops">
+  <div class="product-tab-item section-{{ section.id }}-padding">
+      <div class="page-width">
+          <div class="pro-tab tabs">
+              <h2 class="wbmatry heading text-center"><span>{{ section.settings.m_title }}</span></h2>
+              <ul class="list-inline nav nav-tabs ">
+                  {%- for block in section.blocks -%}
+                      <li class="nav-item">
+                          <a class="nav-link {% if forloop.first %}active{% endif %}" data-toggle="tab" href="#wbprodtab1-{{block.id}}" role="tab">
+                              <span>{{ block.settings.cat_name }}</span>
+                          </a>
+                      </li>
+                  {%- endfor -%}
+              </ul>
+          </div>
+          <div class="tab-content tab-pro rless">
+              {%- for block in section.blocks -%}
+              {%- assign collection = collections[block.settings.collection]  -%}
+                  <div class="tab-pane fade {% if forloop.first %}show active{% endif %}" id="wbprodtab1-{{block.id}}" role="tabpanel">
+                      <div class="wbfea">
+                      {% assign num_row = section.settings.rows | times: 1 %}
+                      {% assign temp = 0 %}
+                          {% for product in collection.products %}
+                              {% if temp == 0 %}<ul class="twopro">{% endif %}
+                                  <li class="grid__item col-12 cless">
+                                      {% render 'card-product-banner',
+                                      card_product: product,
+                                      block_id: block.id,
+                                      media_aspect_ratio: section.settings.image_ratio,
+                                      show_secondary_image: section.settings.show_secondary_image,
+                                      show_vendor: section.settings.show_vendor,
+                                      show_rating: section.settings.show_rating,
+                                      show_variants: section.settings.show_variants,
+                                      display_product_type: section.settings.display_product_type  %}
+                                      {% render 'webi-quickview-tab-model', card_product: product, block_id: block.id %}
+                                  </li>
+                              {% assign temp = temp | plus: 1 %}
+                              {% if temp == num_row %}</ul>{% assign temp = 0 %}{% endif %} 
+                          {% else %}
+                              {%- for i in (1..6) -%}
+                                  <div class="grid__item col-12 cless">
+                                      {% render 'product-card-placeholder' %}
+                                  </div>
+                              {%- endfor -%}
+                          {% endfor %} 
+                      </div>
+                  </div>
+              {%- endfor -%}
+          </div>
+      </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Top Product",
+  "tag": "section",
+  "class": "spaced-section",
+  "settings": [
+    {
+        "type": "text",
+        "id": "m_title",
+        "label": "Heading",
+        "default": "Our product"
+    },
+    {
+      "type": "range",
+      "id": "rows",
+      "label": "Rows",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "t:sections.featured-collection.settings.header.content"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.featured-collection.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.featured-collection.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.featured-collection.settings.image_ratio.options__3.label"
+        }
+      ],
+      "default": "adapt",
+      "label": "t:sections.featured-collection.settings.image_ratio.label"
+    },
+    {
+        "type": "checkbox",
+        "id": "display_product_type",
+        "label": "Show Product Type?",
+        "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "default": false,
+      "label": "t:sections.featured-collection.settings.show_rating.label",
+      "info": "t:sections.featured-collection.settings.show_rating.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": false,
+      "label": "t:sections.featured-collection.settings.show_secondary_image.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "default": false,
+      "label": "t:sections.featured-collection.settings.show_vendor.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_variants",
+      "default": true,
+      "label": "Show Color/Size Variants"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 0
+    }
+  ],
+  "blocks": [
+        {
+        "type": "collection",
+        "name": "Collection",
+        "settings": [
+            {
+                "id": "cat_name",
+                "type": "text",
+                "label": "Tab name"
+            },
+            {
+                "type": "collection",
+                "id": "collection",
+                "label": "t:sections.featured-collection.settings.collection.label"
+            }
+        ]
+        }
+    ],
+  "presets": [
+    {
+        "name": "Top Product",
+        "category": "Collection"
+    }
+  ]
+}
+{% endschema %}

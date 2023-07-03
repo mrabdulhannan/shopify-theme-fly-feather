@@ -1,0 +1,139 @@
+<link rel="stylesheet" href="{{ 'section-main-page.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'section-main-page.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+<div class="">
+    <!-- <h1 class="heading text-center"><span>{{ page_title }}</span></h1> -->
+    <div class="page_content">  
+        {% for block in section.blocks %}
+            {% case block.type %}
+                {% when 'banner' %}
+                    <div class="wbaboutimgblock">
+                        <div>
+                            {% if block.settings.banner != blank %}
+                                <img loading="lazy" src="{{ block.settings.banner | img_url: 'master' }}" alt="{{ block.settings.banner.alt }}" class="img-fluid mx-auto" width="{{ block.settings.banner.width }}" height="{{ block.settings.banner.height }}"/>
+                            {% else %}
+                                <img loading="lazy" src="https://dummyimage.com/1920x500/aaa" class="img-fluid mx-auto" alt="banner" width="1920" height="700"/>
+                            {% endif %}
+                        </div>
+                        <h2 style="color: {{ block.settings.color_head }};"><span>{{ page_title }}</span></h2>
+                    </div>
+
+                {% when 'text-block' %}
+                    <div class="wbabttxt container">
+                        {% if block.settings.textsub != blank %}
+                            <div>{{ block.settings.textsub }}</div>
+                        {% endif %}
+                        {% if block.settings.title != blank %}
+                            <h2><span>{{ block.settings.title }}</span></h2>
+                        {% endif %}
+
+                        {% if block.settings.text != blank %}
+                            <div>{{ block.settings.text }}</div>
+                        {% endif %}
+                    </div>
+
+                {% when 'image-with-text' %}
+                    <div class="container wbabtimgtxt">
+                        <div class="row align-items-center">
+                            <div class="col-sm-6">
+                                {% if block.settings.title2 != blank %}
+                                    <h2>{{ block.settings.title2 }}</h2>
+                                {% endif %}
+                                {% if block.settings.text2 != blank %}
+                                    <p>{{ block.settings.text2 }}</p>
+                                {% endif %}
+                            </div>
+                            <div class="col-sm-6">
+                                {% if block.settings.image != blank %}
+                                    <img loading="lazy" src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.image.alt }}" class="img-fluid mx-auto" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}"/>
+                                {% else %}
+                                    <img loading="lazy" src="https://dummyimage.com/655x485/aaa" class="img-fluid mx-auto" alt="banner" width="655" height="485"/>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+            {% endcase %}
+        {% endfor %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "About us",
+    "class": "section",
+    "max_blocks": 8,
+    "settings": [
+
+    ],
+    "blocks": [
+        {
+            "type": "banner",
+            "name": "Banner",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "banner",
+                    "label": "Image",
+                    "info": "Size: 1920x500"
+                },
+                {
+                  "type": "color",
+                  "id": "color_head",
+                  "label": "Heading Color",
+                  "default": "#fff"
+                }
+            ]
+        },
+        {
+            "type": "text-block",
+            "name": "Text block",
+            "settings": [
+                {
+                    "type": "richtext",
+                    "id": "textsub",
+                    "label": "Sub Text",
+                    "default": "<p>Curabitur commodo, erat ut vehicula ullamcorper, quam nisl sodales justo</p>"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Heading",
+                    "default": "Demo Heading 1"
+                },
+                {
+                    "type": "richtext",
+                    "id": "text",
+                    "label": "Sub Heading",
+                    "default": "<p>Curabitur commodo, erat ut vehicula ullamcorper, quam nisl sodales justo</p>"
+                }
+            ]
+        },
+        {
+            "type": "image-with-text",
+            "name": "Image With Text",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title2",
+                    "label": "Heading",
+                    "default": "Demo Heading 2"
+                },
+                {
+                    "type": "richtext",
+                    "id": "text2",
+                    "label": "Text",
+                    "default": "<p>Curabitur commodo, erat ut vehicula ullamcorper, quam nisl sodales justo</p>"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image",
+                    "info": "Size: 655x485"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

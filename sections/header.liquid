@@ -1,0 +1,2027 @@
+<link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-search.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-menu-drawer.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-cart-notification.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
+{%- if settings.predictive_search_enabled -%}
+  <link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="{{ 'component-loading-overlay.css' | asset_url }}" media="print" onload="this.media='all'">
+{%- endif -%}
+
+<noscript>{{ 'component-list-menu.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-search.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-menu-drawer.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-cart-notification.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-cart-items.css' | asset_url | stylesheet_tag }}</noscript>
+
+<style>
+  header-drawer {
+    justify-self: start;
+    margin-left: -1.2rem;
+  }
+
+    header.header,.menuhdoverlay::before{
+      background: {{ section.settings.topbg }};
+  }
+  #megamenu li.wbmenul_1 a.wbmenul1_link{
+      color: {{ section.settings.menubgtxt }};
+  }
+  #megamenu li.wbmenul_1 a.wbmenul1_link:hover{
+      color: var(--color-wbmaincolors-text);
+  }
+
+  @media screen and (min-width: 992px) {
+    header-drawer {
+      display: none;
+    }
+  }
+
+
+  .menu-drawer-container {
+    display: flex;
+  }
+
+  .list-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .list-menu--inline {
+    display: inline-flex;
+    flex-wrap: wrap;
+  }
+
+  summary.list-menu__item {
+    padding-right: 2.7rem;
+  }
+
+  .list-menu__item {
+    display: flex;
+    align-items: center;
+  }
+
+  .list-menu__item--link {
+    text-decoration: none;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+  }
+
+  @media screen and (min-width: 768px) {
+    .list-menu__item--link {
+      padding-bottom: 0.5rem;
+      padding-top: 0.5rem;
+    }
+  }
+</style>
+
+{%- style -%}
+  .section-header {
+    margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .section-header {
+      margin-bottom: {{ section.settings.margin_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'details-modal.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
+
+<svg xmlns="http://www.w3.org/2000/svg" class="hidden">
+  <symbol id="icon-search" viewBox="0 0 20.776 20.308">
+    <path id="search" d="M24.129,22.6l-5.806-5.7a8.136,8.136,0,0,0-.817-11.388A8.6,8.6,0,0,0,5.83,5.775a8.134,8.134,0,0,0-.272,11.413,8.6,8.6,0,0,0,11.651.8l5.836,5.675ZM4.906,11.635a6.844,6.844,0,0,1,6.92-6.764,6.844,6.844,0,0,1,6.92,6.764,6.844,6.844,0,0,1-6.92,6.764A6.844,6.844,0,0,1,4.906,11.635Z" transform="translate(-3.353 -3.353)"/>
+  </symbol>
+
+
+
+  <symbol id="icon-close" class="icon icon-close" fill="none" viewBox="0 0 18 17">
+    <path d="M.865 15.978a.5.5 0 00.707.707l7.433-7.431 7.579 7.282a.501.501 0 00.846-.37.5.5 0 00-.153-.351L9.712 8.546l7.417-7.416a.5.5 0 10-.707-.708L8.991 7.853 1.413.573a.5.5 0 10-.693.72l7.563 7.268-7.418 7.417z" fill="currentColor">
+  </symbol>
+</svg>
+<{% if section.settings.enable_sticky_header %}sticky-header{% else %}div{% endif %} class="header-wrapper gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}">
+<header class="color-{{ section.settings.color_scheme }} header {% if section.settings.menu != blank %} header--has-menu{% endif %}">
+  <div class="wbsetert">
+    <div class="header-top">
+        <div class="row menuposrow">
+            {%- if section.settings.menu != blank -%}
+              <header-drawer data-breakpoint="tablet">
+                <details id="Details-menu-drawer-container" class="menu-drawer-container">
+                  <summary class="header__icon header__icon--menu header__icon--summary link focus-inset" aria-label="{{ 'sections.header.menu' | t }}">
+                    <span>
+                      {% render 'icon-hamburger' %}
+                      {% render 'icon-close' %}
+                    </span>
+                  </summary>
+                  <div id="menu-drawer" class="menu-drawer motion-reduce" tabindex="-1">
+                    <div class="menu-drawer__inner-container">
+                      <div class="menu-drawer__navigation-container">
+                        <nav class="menu-drawer__navigation">
+                          <ul class="menu-drawer__menu list-menu" role="list">
+                            {%- for link in section.settings.menu.links -%}
+                              <li>
+                                {%- if link.links != blank -%}
+                                  <details id="Details-menu-drawer-menu-item-{{ forloop.index }}">
+                                    <summary class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.child_active %} menu-drawer__menu-item--active{% endif %}">
+                                      {{ link.title | escape }}
+                                      {% render 'icon-arrow' %}
+                                      {% render 'icon-caret' %}
+                                    </summary>
+                                    <div id="link-{{ link.title | escape }}" class="menu-drawer__submenu motion-reduce" tabindex="-1">
+                                      <div class="menu-drawer__inner-submenu">
+                                        <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
+                                          {% render 'icon-arrow' %}
+                                          {{ link.title | escape }}
+                                        </button>
+                                        <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
+                                          {%- for childlink in link.links -%}
+                                            <li>
+                                              {%- if childlink.links == blank -%}
+                                                <a href="{{ childlink.url }}" class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if childlink.current %} menu-drawer__menu-item--active{% endif %}"{% if childlink.current %} aria-current="page"{% endif %}>
+                                                  {{ childlink.title | escape }}
+                                                </a>
+                                              {%- else -%}
+                                                <details id="Details-menu-drawer-submenu-{{ forloop.index }}">
+                                                  <summary class="menu-drawer__menu-item link link--text list-menu__item focus-inset">
+                                                    {{ childlink.title | escape }}
+                                                    {% render 'icon-arrow' %}
+                                                    {% render 'icon-caret' %}
+                                                  </summary>
+                                                  <div id="childlink-{{ childlink.title | escape }}" class="menu-drawer__submenu motion-reduce">
+                                                    <button class="menu-drawer__close-button link link--text focus-inset" aria-expanded="true">
+                                                      {% render 'icon-arrow' %}
+                                                      {{ childlink.title | escape }}
+                                                    </button>
+                                                    <ul class="menu-drawer__menu list-menu" role="list" tabindex="-1">
+                                                      {%- for grandchildlink in childlink.links -%}
+                                                        <li>
+                                                          <a href="{{ grandchildlink.url }}" class="menu-drawer__menu-item link link--text list-menu__item focus-inset{% if grandchildlink.current %} menu-drawer__menu-item--active{% endif %}"{% if grandchildlink.current %} aria-current="page"{% endif %}>
+                                                            {{ grandchildlink.title | escape }}
+                                                          </a>
+                                                        </li>
+                                                      {%- endfor -%}
+                                                    </ul>
+                                                  </div>
+                                                </details>
+                                              {%- endif -%}
+                                            </li>
+                                          {%- endfor -%}
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </details>
+                                {%- else -%}
+                                  <a href="{{ link.url }}" class="menu-drawer__menu-item list-menu__item link link--text focus-inset{% if link.current %} menu-drawer__menu-item--active{% endif %}"{% if link.current %} aria-current="page"{% endif %}>
+                                    {{ link.title | escape }}
+                                  </a>
+                                {%- endif -%}
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        </nav>
+                        <div class="menu-drawer__utility-links">
+                          {%- if shop.customer_accounts_enabled -%}
+                            <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="menu-drawer__account link focus-inset h5">
+                              {% render 'icon-account' %}
+                              {%- liquid
+                                if customer
+                                  echo 'customer.account_fallback' | t
+                                else
+                                  echo 'customer.log_in' | t
+                                endif
+                              -%}
+                            </a>
+                          {%- endif -%}
+                          <ul class="list list-social list-unstyled" role="list">
+                            {%- if settings.social_twitter_link != blank -%}
+                              <li class="list-social__item">
+                                <a href="{{ settings.social_twitter_link }}" class="list-social__link link">
+                                  {%- render 'icon-twitter' -%}
+                                  <span class="visually-hidden">{{ 'general.social.links.twitter' | t }}</span>
+                                </a>
+                              </li>
+                            {%- endif -%}
+                            {%- if settings.social_facebook_link != blank -%}
+                              <li class="list-social__item">
+                                <a href="{{ settings.social_facebook_link }}" class="list-social__link link">
+                                  {%- render 'icon-facebook' -%}
+                                  <span class="visually-hidden">{{ 'general.social.links.facebook' | t }}</span>
+                                </a>
+                              </li>
+                            {%- endif -%}
+                            {%- if settings.social_pinterest_link != blank -%}
+                              <li class="list-social__item">
+                                <a href="{{ settings.social_pinterest_link }}" class="list-social__link link">
+                                  {%- render 'icon-pinterest' -%}
+                                  <span class="visually-hidden">{{ 'general.social.links.pinterest' | t }}</span>
+                                </a>
+                              </li>
+                            {%- endif -%}
+                            {%- if settings.social_instagram_link != blank -%}
+                              <li class="list-social__item">
+                                <a href="{{ settings.social_instagram_link }}" class="list-social__link link">
+                                  {%- render 'icon-instagram' -%}
+                                  <span class="visually-hidden">{{ 'general.social.links.instagram' | t }}</span>
+                                </a>
+                              </li>
+                            {%- endif -%}
+                            {%- if settings.social_tiktok_link != blank -%}
+                              <li class="list-social__item">
+                                <a href="{{ settings.social_tiktok_link }}" class="list-social__link link">
+                                  {%- render 'icon-tiktok' -%}
+                                  <span class="visually-hidden">{{ 'general.social.links.tiktok' | t }}</span>
+                                </a>
+                              </li>
+                            {%- endif -%}
+                            {%- if settings.social_tumblr_link != blank -%}
+                              <li class="list-social__item">
+                                <a href="{{ settings.social_tumblr_link }}" class="list-social__link link">
+                                  {%- render 'icon-tumblr' -%}
+                                  <span class="visually-hidden">{{ 'general.social.links.tumblr' | t }}</span>
+                                </a>
+                              </li>
+                            {%- endif -%}
+                            {%- if settings.social_snapchat_link != blank -%}
+                              <li class="list-social__item">
+                                <a href="{{ settings.social_snapchat_link }}" class="list-social__link link">
+                                  {%- render 'icon-snapchat' -%}
+                                  <span class="visually-hidden">{{ 'general.social.links.snapchat' | t }}</span>
+                                </a>
+                              </li>
+                            {%- endif -%}
+                            {%- if settings.social_youtube_link != blank -%}
+                              <li class="list-social__item">
+                                <a href="{{ settings.social_youtube_link }}" class="list-social__link link">
+                                  {%- render 'icon-youtube' -%}
+                                  <span class="visually-hidden">{{ 'general.social.links.youtube' | t }}</span>
+                                </a>
+                              </li>
+                            {%- endif -%}
+                            {%- if settings.social_vimeo_link != blank -%}
+                              <li class="list-social__item">
+                                <a href="{{ settings.social_vimeo_link }}" class="list-social__link link">
+                                  {%- render 'icon-vimeo' -%}
+                                  <span class="visually-hidden">{{ 'general.social.links.vimeo' | t }}</span>
+                                </a>
+                              </li>
+                            {%- endif -%}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </details>
+              </header-drawer>
+            {%- endif -%}
+
+            <div class="col-xl-3 col-lg-2 col-md-4 col-12 headlogo">
+                {%- if request.page_type == 'index' -%}
+                  <h1 class="header__heading">
+                {%- endif -%}
+                    <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+                      {%- if section.settings.logo != blank -%}
+                        {%- assign image_size = section.settings.logo_width | append: 'x' -%}
+                        <img srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+                          src="{{ section.settings.logo | img_url: image_size }}"
+                          loading="lazy"
+                          class="header__heading-logo"
+                          width="{{ section.settings.logo.width }}"
+                          height="{{ section.settings.logo.height }}"
+                          alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
+                        >
+                      {%- else -%}
+                        <span class="h2">{{ shop.name }}</span>
+                      {%- endif -%}
+                    </a>
+                {%- if request.page_type == 'index' -%}
+                  </h1>
+                {%- endif -%}
+            </div>
+
+            <div class="col-xl-9 col-lg-10 col-md-8 col-12 text-right tright wbsermycon">
+                <div class="row menuposrow">
+                    <div class="wbmenuup col-md-9 col-12">
+                        {% comment %}Simple Menu{% endcomment %}
+                        {%- if section.settings.menu != blank -%}
+                          <nav class="header__inline-menu text-center">
+                            <ul class="list-menu list-menu--inline" role="list">
+                              {%- for link in section.settings.menu.links -%}
+                                <li>
+                                  {%- if link.links != blank -%}
+                                    <details-disclosure>
+                                      <details id="Details-HeaderMenu-{{ forloop.index }}">
+                                        <summary class="header__menu-item list-menu__item link focus-inset">
+                                          <span {%- if link.child_active %} class="header__active-menu-item"{% endif %}>{{ link.title | escape }}</span>
+                                          {% render 'icon-caret' %}
+                                        </summary>
+                                        <ul id="HeaderMenu-MenuList-{{ forloop.index }}" class="header__submenu list-menu list-menu--disclosure caption-large motion-reduce" role="list" tabindex="-1">
+                                          {%- for childlink in link.links -%}
+                                            <li>
+                                              {%- if childlink.links == blank -%}
+                                                <a href="{{ childlink.url }}" class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if childlink.current %} list-menu__item--active{% endif %}"{% if childlink.current %} aria-current="page"{% endif %}>
+                                                  {{ childlink.title | escape }}
+                                                </a>
+                                              {%- else -%}
+                                                <details id="Details-HeaderSubMenu-{{ forloop.index }}">
+                                                  <summary class="header__menu-item link link--text list-menu__item focus-inset caption-large">
+                                                    {{ childlink.title | escape }}
+                                                    {% render 'icon-caret' %}
+                                                  </summary>
+                                                  <ul id="HeaderMenu-SubMenuList-{{ forloop.index }}" class="header__submenu list-menu motion-reduce">
+                                                    {%- for grandchildlink in childlink.links -%}
+                                                      <li>
+                                                        <a href="{{ grandchildlink.url }}" class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if grandchildlink.current %} list-menu__item--active{% endif %}"{% if grandchildlink.current %} aria-current="page"{% endif %}>
+                                                          {{ grandchildlink.title | escape }}
+                                                        </a>
+                                                      </li>
+                                                    {%- endfor -%}
+                                                  </ul>
+                                                </details>
+                                              {%- endif -%}
+                                            </li>
+                                          {%- endfor -%}
+                                        </ul>
+                                      </details>
+                                    </details-disclosure>
+                                  {%- else -%}
+                                    <a href="{{ link.url }}" class="header__menu-item header__menu-item list-menu__item link link--text focus-inset"{% if link.current %} aria-current="page"{% endif %}>
+                                      <span {%- if link.current %} class="header__active-menu-item"{% endif %}>{{ link.title | escape }}</span>
+                                    </a>
+                                  {%- endif -%}
+                                </li>
+                              {%- endfor -%}
+                            </ul>
+                          </nav>
+                        {%- endif -%}
+
+                        {% comment %}Mega Menu {% endcomment %}
+                        {% if section.settings.megamenu_toggle %}
+                        <nav id="megamenu" class="megamenu text-left">
+  
+                            <div class="wr-menu" onclick="w3_open()">
+                                <span>{% render 'icon-menubar' %}</span>
+                            </div>
+                            <ul id="wbmegalevel-1" class="level_1 menu-vertical">
+                                <li><h2 class="wbmenuclose">{{ 'wbcustomlabel.wballtext.menu' | t }}<button type="button" class="closebtn float-right" aria-label="{{ 'wbcustomlabel.wballtext.menu' | t }}" onclick="w3_close()">{% include 'icon-close' %}</button></h2></li>
+                                {% for block in section.blocks %}
+                                    {% assign canonical_url_trim = canonical_url | replace: shop.url %}
+                                    {% assign block_url_trim = block.settings.link | replace: shop.url %}
+                                    {% if canonical_url_trim == "/" %}{% assign canonical_url_trim = "" %}{% endif %}
+  
+                                    <li class="wbmenulink wbmenul_1 {% case block.type %}{% when 'link-linklist' %}wbmegaonlylink{% when 'link-4linklists' %}wbmegalink-img{% when 'link-linklistbnr' %}wbmegalinkbnr{% when 'link-8banners' %}wbmegabanner{% when 'link-products' %}wbmegaproduct{% when 'link-blog' %}wbmegablog{% endcase %}  {% if block.settings.links.size > 0 or block.settings.links_1.size > 0 or block.settings.links_2.size > 0 or block.settings.links_3.size > 0 or block.settings.links_4.size > 0 or block.settings.products.size > 0 or block.settings.blog.size > 0 or block.settings.banner_1_link.size > 0 or block.settings.menucusttxt1 != blank or block.settings.menucusttxt2 != blank or block.settings.menucusttxt3 != blank or block.settings.menucusttxt4 != blank %} wbmenusub {% endif %} ">
+                                        <a class="wbmenul1_link {% if block_url_trim == canonical_url_trim %}active{% endif %}" href="{{ block.settings.link }}">{{ block.settings.title }}
+                                            {% if block.settings.links.size > 0 or block.settings.links_1.size > 0 or block.settings.links_2.size > 0 or block.settings.links_3.size > 0 or block.settings.links_4.size > 0 or block.settings.products.size > 0 or block.settings.blog.size > 0 or block.settings.banner_1_link.size > 0 or block.settings.menucusttxt1 != blank or block.settings.menucusttxt2 != blank or block.settings.menucusttxt3 != blank or block.settings.menucusttxt4 != blank %}<i class="fa fa-angle-down wbmegamainhd" data-submenu="menu_{{ block.id }}"></i><svg class=""  data-submenu="menu_{{ block.id }}"><use xlink:href="#arrow-down"></use></svg>{% endif  %}
+                                            {% if block.settings.badge_text.size > 0 %}<span class="menu_badge" style="background-color: {{ block.settings.bg_color }}">{{ block.settings.badge_text }}</span>{% endif %}
+  
+                                        </a> 
+  
+                                        {% case block.type %}
+                                            {% when 'link-linklist' %}
+                                                {% if block.settings.links.size > 0 %}
+                                                    <ul class="level_2 simple-linkmn wbmenudropdown" id="menu_{{ block.id }}">
+                                                        <li>
+                                                            <div>
+                                                                {%- assign links_small = block.settings.links -%}
+                                                                <ul class="level_3">
+                                                                    {% for link in linklists[links_small].links %}
+                                                                        {%- assign child_list_handle = link.title | handleize -%}
+  
+                                                                        {%- assign link_count = 0 -%}
+                                                                        {% for childlink in linklists[child_list_handle].links %}
+                                                                            {%- assign link_count = link_count | plus: 1 -%}
+                                                                        {% endfor %}
+  
+                                                                        <li class="level_3__item {% if link_count > 0 %}with_ul{% endif %}">
+                                                                            <a class="level_3__link" href="{{ link.url }}">{{ link.title }}{% if link_count > 0 %}<i class="level_3__trigger wbmegamainhd" data-submenu="submenu_{{ block.id }}-{{ link_count }}"></i><svg class="level_3__trigger "  data-submenu="submenu_{{ block.id }}-{{ link_count }}"><use xlink:href="#arrow-down"></use></svg>{% endif %}</a>
+  
+                                                                            {% if link_count > 0 %}
+                                                                                <ul class="level_3_2 droped_linklist" id="submenu_{{ block.id }}-{{ link_count }}">
+                                                                                    {% for childlink in linklists[child_list_handle].links %}
+                                                                                        {%- assign child_list_2_handle = childlink.title | handleize -%}
+  
+                                                                                        {%- assign link_count = 0 -%}
+                                                                                        {% for childlink in linklists[child_list_2_handle].links %}
+                                                                                            {%- assign link_count = link_count | plus: 1 -%}
+                                                                                        {% endfor %}
+                                                                                            
+                                                                                        <li class="level_3_2_item {% if link_count > 2 %}with_ul{% endif %}">
+                                                                                            <a class="level_3_2_link" href="{{ childlink.url }}">{{ childlink.title }}{% if link_count > 2 %}<i class="level_3__trigger wbmegamainhd" data-submenu="subsubmenu_{{ block.id }}-{{ link_count }}"></i>
+                                                                                            <svg class="level_3__trigger"  data-submenu="subsubmenu_{{ block.id }}-{{ link_count }}"><use xlink:href="#arrow-down"></use></svg>{% endif %}</a>
+  
+                                                                                            {% if link_count > 2 %}
+                                                                                                <ul class="level_3_3 droped_linklist" id="subsubmenu_{{ block.id }}-{{ link_count }}">
+                                                                                                    {% for childlink in linklists[child_list_2_handle].links %}
+                                                                                                        <li class="level_3_3_item">
+                                                                                                            <a class="level_3_3_link" href="{{ childlink.url }}">{{ childlink.title }}</a>
+                                                                                                        </li>
+                                                                                                    {% endfor %}
+                                                                                                </ul>
+                                                                                            {% endif %}
+                                                                                        </li>
+                                                                                    {% endfor %}
+                                                                                </ul>
+                                                                            {% endif %}
+                                                                        </li>
+                                                                    {% endfor %}
+                                                                </ul>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                {% endif %}
+  
+                                            {% when 'link-4linklists' %}
+                                                {% if block.settings.links_1.size > 0 or block.settings.links_2.size > 0 or block.settings.links_3.size > 0 or block.settings.links_4.size > 0 %}
+                                                    <ul class="level_2 wbmenudropdown" id="menu_{{ block.id }}">
+                                                        <li class="page-width">
+                                                            <div class="row rless">
+                                                            {% for i in (1..4) %}  
+                                                                {% capture list %}links_{{ i }}{% endcapture %}
+                                                                {% capture item_image %}image_{{ i }}{% endcapture %}
+                                                                {% capture item_blink %}imageblink_{{ i }}{% endcapture %}
+                                                                {%- assign list = block.settings[list] -%}
+                                                                {%- assign item_image = block.settings[item_image] -%}
+                                                                {%- assign item_blink = block.settings[item_blink] -%}
+  
+                                                                <div class="wbmegacolpart col-lg-3 col-12 cless {% if block.settings.align_text %}align_center{% endif %}">
+                                                                    
+                                                                    <h3 {% if block.settings.show_title %} class="visible"{% endif %}>{{ linklists[list].title }} <i class="level_2__trigger wbmegamainhd" data-submenu="menu_{{ block.id }}-{{ i }}"></i>
+                                                                      <svg class="level_2__trigger "  data-submenu="subsubmenu_{{ block.id }}-{{ i }}"><use xlink:href="#arrow-down"></use></svg></h3>
+  
+                                                                    <ul class="level_3" id="menu_{{ block.id }}-{{ i }}">
+                                                                        {% for link in linklists[list].links %}
+                                                                            <li class="level_3__item">
+                                                                                {% if link.title contains '[new]' %}
+                                                                                    {%- assign link_text = link.title | replace: '[new]', '' -%}
+                                                                                    {%- assign link_badge = 'new' -%}
+                                                                                {% elsif link.title contains '[hot]' %} 
+                                                                                    {%- assign link_text = link.title | replace: '[hot]', '' -%}
+                                                                                    {%- assign link_badge = 'hot' -%}   
+                                                                                {% else %}
+                                                                                    {%- assign link_text = link.title -%}
+                                                                                    {%- assign link_badge = false -%}   
+                                                                                {% endif %}
+  
+                                                                                <a class="level_3__link" href="{{ link.url }}">{{ link_text }}{% if link_badge %}<span class="badge badge_{{ link_badge }}">{{ link_badge }}</span>{% endif %}</a>
+                                                                            </li>
+                                                                        {% endfor %}
+                                                                    </ul>
+  
+                                                                    {% if item_image %}
+                                                                    <a href="{{ item_blink }}"> 
+                                                                        <img loading="lazy" src="{{ item_image | img_url: '430x200', crop:'center' }}" alt="{{ linklists[list].title }}" class="img-fluid mx-auto wb4proimg">
+                                                                    </a>
+                                                                    {% endif %}
+  
+                                                                </div>
+                                                            {% endfor %}
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                {% endif %}
+  
+                                            {% when 'link-linklistbnr' %}
+                                                 {% if block.settings.menucusttxt1 != blank or block.settings.menucusttxt2 != blank or block.settings.menucusttxt3 != blank or block.settings.menucusttxt4 != blank %}
+                                                    <ul class="level_2 wbmenudropdown" id="menu_{{ block.id }}">
+                                                        <li class="page-width">   
+                                                            <div class="row rless">
+                                                              <div class="col-lg-8">
+                                                                  <div class="row rless wpriop">
+                                                                      <div class="col-lg-3 col-12">
+                                                                          {% if block.settings.menucusttxt1 != blank %}{{ block.settings.menucusttxt1 }}{% endif %}
+                                                                      </div>
+                                                                      <div class="col-lg-3 col-12">
+                                                                          {% if block.settings.menucusttxt2 != blank %}{{ block.settings.menucusttxt2 }}{% endif %}
+                                                                      </div>
+                                                                      <div class="col-lg-3 col-12">
+                                                                          {% if block.settings.menucusttxt3 != blank %}{{ block.settings.menucusttxt3 }}{% endif %}
+                                                                      </div>
+                                                                      <div class="col-lg-3 col-12">
+                                                                          {% if block.settings.menucusttxt4 != blank %}{{ block.settings.menucusttxt4 }}{% endif %}
+                                                                      </div>
+                                                                  </div>
+                                                              </div>
+                                                              <div class="col-lg-4 col-md-12 col-12 cless">
+                                                              <div class="wbsrtyons">
+                                                                  {% if block.settings.caption_link != blank %}<a href="{{ block.settings.caption_link }}">{% endif %}
+                                                                      <img loading="lazy" class="img-fluid mx-auto" src="{{ block.settings.prodimage | img_url: 'master' }}" alt="{{ block.settings.title }}" />
+                                                                  {% if block.settings.caption_link != blank %}</a>{% endif %}
+                                                              </div>
+  
+                                                              </div>
+  
+                                                            
+  
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                {% endif %}
+  
+                                            {% when 'link-8banners' %}
+                                                {% if block.settings.banner_1_link.size > 0 or block.settings.links_2.size > 0 or block.settings.links_3.size > 0 or block.settings.links_4.size > 0 or block.settings.links_5.size > 0 or block.settings.links_5.size > 0 or block.settings.links_7.size > 0 or block.settings.links_8.size > 0 or block.settings.links_9.size > 0 or block.settings.links_10.size > 0 or block.settings.links_11.size > 0 or block.settings.links_12.size > 0 %}
+                                                    <ul class="level_2 wbmenudropdown" id="menu_{{ block.id }}">
+                                                        <li class="page-width">
+                                                            <div class="row rless">
+                                                            {% for i in (1..12) %}
+                                                                {% capture item_link %}banner_{{ i }}_link{% endcapture %}
+                                                                {% capture item_image %}banner_{{ i }}_image{% endcapture %}
+                                                                {% capture item_text %}banner_{{ i }}_text{% endcapture %}
+  
+                                                                {% if item_image and block.settings[item_link].size > 0 %}
+                                                                    <div class="col-6 col-sm-6 col-md-4 col-lg-2 cless wbmegacolpart {% if block.settings.align_text %}align_center{% endif %}">
+                                                                    
+                                                                        <a href="{{ block.settings[item_link] }}"><img loading="lazy" src="{{ block.settings[item_image] | img_url: '255x180', crop:'center' }}" alt="{{ block.settings[item_text] }}" class="img-fluid mx-auto">
+                                                                            
+                                                                        {% if item_text.size > 0 %}
+                                                                            <h4>{{ block.settings[item_text] }}</h4>
+                                                                        {% endif %}
+                                                                        </a>
+                                                                    </div>
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        </div>
+                                                        </li>
+                                                    </ul>
+                                                {% endif %}
+  
+                                            {% when 'link-products' %}
+                                                {%- assign products = block.settings.products -%}
+  
+  
+                                                {% if products.size > 0 %}
+                                                    <ul class="level_2 wbmenudropdown" id="menu_{{ block.id }}">
+                                                        <li class="page-width">
+                                                            <div class="row rless">
+                                                            <div class="col-lg-7 col-12 cless productwithlink">
+                                                            <div class="row rless">
+                                                                {% if block.settings.links_1.size > 0 or block.settings.links_2.size > 0 or block.settings.links_3.size > 0 or block.settings.links_4.size > 0 %}
+                                                                {% for i in (1..4) %}
+                                                                {% capture list %}links_{{ i }}{% endcapture %}
+                                                                {%- assign list = block.settings[list] -%}
+                                                                <div class="col-lg-3 col-12 cless wbmegacolpart {% if block.settings.align_text %}align_center{% endif %}">
+                                                                    <h3 {% if block.settings.show_title %} class="visible"{% endif %}>{{ linklists[list].title }} <i class="level_2__trigger wbmegamainhd" data-submenu="menu_{{ block.id }}-{{ i }}"></i>
+                                                                    <svg class="level_2__trigger "  data-submenu="subsubmenu_{{ block.id }}-{{ i }}"><use xlink:href="#arrow-down"></use></svg></h3>
+  
+                                                                    <ul class="level_3" id="menu_{{ block.id }}-{{ i }}">
+                                                                        {% for link in linklists[list].links %}
+                                                                            <li class="level_3__item">
+                                                                                {% if link.title contains '[new]' %}
+                                                                                    {%- assign link_text = link.title | replace: '[new]', '' -%}
+                                                                                    {%- assign link_badge = 'new' -%}
+                                                                                {% elsif link.title contains '[hot]' %} 
+                                                                                    {%- assign link_text = link.title | replace: '[hot]', '' -%}
+                                                                                    {%- assign link_badge = 'hot' -%}   
+                                                                                {% else %}
+                                                                                    {%- assign link_text = link.title -%}
+                                                                                    {%- assign link_badge = false -%}   
+                                                                                {% endif %}
+  
+                                                                                <a class="level_3__link" href="{{ link.url }}">{{ link_text }}{% if link_badge %}<span class="badge badge_{{ link_badge }}">{{ link_badge }}</span>{% endif %}</a>
+                                                                            </li>
+                                                                        {% endfor %}
+                                                                    </ul>
+                                                                </div>
+                                                                {% endfor %}
+                                                                {% endif %}
+                                                            </div>
+                                                            </div>   
+  
+                                                            <div class="col-lg-5 col-12 cless">
+                                                              <slider-component class="slider-wrapper">
+                                                                <div class="wbslidcust slider" role="list" id="Slider-{{product.id}}">
+                                                                  {% for product in collections[products].products limit:4 %}
+                                                                    <div class="wbmegacolpart slider__slide wbinproduct" id="Slide-{{product.id}}-{{forloop.index}}">
+                                                                      <div class="product-container">
+                                                                        <div class="imgblock">
+                                                                          <a href="{{ product.url | within: collection }}">
+                                                                            <img loading="lazy" src="{{ product.featured_image.src | img_url: '340x' }}" class="img-fluid mx-auto" alt="{{ product.title }}" />
+                                                                          </a>
+                                                                        </div>
+                                                                        <div class="wbproductdes">
+                                                                          <p class="product_name">
+                                                                            <a href="{{ product.url | within: collection }}">{{ product.title | truncate:50 }}</a>
+                                                                          </p>
+                                                                          <div class="product_price">
+                                                                            <span class="money">{{ product.price | money }}</span>
+                                                                            {% if product.compare_at_price and product.compare_at_price > product.price %}
+                                                                              <span class="money money_sale">{{ product.compare_at_price | money }}</span>
+                                                                            {% endif %}
+                                                                          </div>
+                                                                        </div>
+                                                                      </div>
+                                                                    </div>
+                                                                  {% endfor %}
+                                                                </div>
+                                                                <div class="progallerybtn text-center {% if product.media.size < 5 %}hidden{% endif %}">
+                                                                  <button type="button" class="slider-button slider-button--prev bigger-slider" name="previous" aria-label="{{ 'accessibility.previous_slide' | t }}">{% render 'icon-caret' %}</button>
+                                                                  <button type="button" class="slider-button slider-button--next bigger-slider" name="next" aria-label="{{ 'accessibility.next_slide' | t }}">{% render 'icon-caret' %}</button>
+                                                                </div>
+                                                              </slider-component>
+                                                            </div>
+  
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                {% endif %}
+  
+                                            {% when 'link-blog' %}
+                                                {%- assign item_blog = block.settings.blog -%}
+  
+                                                {% if item_blog.size > 0 %}
+                                                {{ 'component-slider.css' | asset_url | stylesheet_tag }}
+                                                    <ul class="level_2 wbmenudropdown" id="menu_{{ block.id }}">
+                                                        <li class="page-width">
+                                                            <slider-component class="slider-wrapper">
+                                                                <ul class="wbslidcust slider" role="list" id="Slider-blog-{{ block.id }}">
+                                                                {% for article in blogs[item_blog].articles limit:6 %} 
+                                                                <li class="wbslidcustinner slider__slide wbmegacolpart" id="Slide-blog-{{ block.id }}-{{ forloop.index }}">   
+                                                                    {% if article.image %}
+                                                                        <div class="blog_img">
+                                                                          <img loading="lazy" src="{{ article.image.src | img_url: '1000x600', crop: 'center' }}" alt="{{ article.image.alt }}" class="img-fluid mx-auto">
+                                                                        </div>
+                                                                    {% endif %}
+                                                                    
+                                                                    <div class="blog_info">
+                                                                        <h3 class="blog_title"><a href="{{ article.url }}">{{ article.title | truncate:60 }}</a></h3>
+                                                                        <p class="blog_date">
+                                                                            <span class="article_day"> <i class="fa fa-calendar"></i> {{ article.published_at | date: '%d %b %y' }}</span>
+                                                                        </p> 
+                                                                    </div>
+                                                                </li>
+                                                                {% endfor %}
+                                                                </ul>
+                                                                <div class="progallerybtn text-center {% if product.media.size < 6 %}hidden{% endif %}">
+                                                                    <button type="button" class="slider-button slider-button--prev bigger-slider" name="previous" aria-label="{{ 'accessibility.previous_slide' | t }}">{% render 'icon-caret' %}</button>
+                                                                    <button type="button" class="slider-button slider-button--next bigger-slider" name="next" aria-label="{{ 'accessibility.next_slide' | t }}">{% render 'icon-caret' %}</button>
+                                                                </div>
+                                                            </slider-component>
+                                                        </li>
+                                                    </ul>
+                                                {% endif %}
+  
+                                        {% endcase %}
+  
+                                    </li>
+  
+                                {% endfor %}
+                            </ul>
+                            <div class="w3-overlay w3-animate-opacity" onclick="w3_close()" style="cursor: pointer;" id="myOverlay"></div>
+                        </nav>
+                        {% endif %}
+                    </div>
+                    <div class="header__icons col-md-3 col-12 wbsetmyuirt">
+                        <details-modal class="header__search">
+                        <details>
+                          <summary class="header__icon header__icon--search header__icon--summary link focus-inset modal__toggle" aria-haspopup="dialog" aria-label="{{ 'general.search.search' | t }}">
+                            <span>
+                              <svg class="modal__toggle-open icon icon-search" aria-hidden="true" focusable="false" role="presentation">
+                                <use href="#icon-search">
+                              </svg>
+                              <svg class="modal__toggle-close icon icon-close" aria-hidden="true" focusable="false" role="presentation">
+                                <use href="#icon-close">
+                              </svg>
+                            </span>
+                          </summary>
+                          <div class="search-modal modal__content" role="dialog" aria-modal="true" aria-label="{{ 'general.search.search' | t }}">
+                            <div class="modal-overlay"></div>
+                            <div class="search-modal__content{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} search-modal__content-top{% else %} search-modal__content-bottom{% endif %}" tabindex="-1">
+                              {%- if settings.predictive_search_enabled -%}
+                                <predictive-search class="search-modal__form" data-loading-text="{{ 'accessibility.loading' | t }}">
+                              {%- endif -%}
+                                <form action="{{ routes.search_url }}" method="get" role="search" class="search search-modal__form">
+                                  <div class="field">
+                                    <input class="search__input field__input"
+                                      id="Search-In-Modal-1"
+                                      type="search"
+                                      name="q"
+                                      value=""
+                                      placeholder="{{ 'general.search.search' | t }}"
+                                      {%- if settings.predictive_search_enabled -%}
+                                        role="combobox"
+                                        aria-expanded="false"
+                                        aria-owns="predictive-search-results-list"
+                                        aria-controls="predictive-search-results-list"
+                                        aria-haspopup="listbox"
+                                        aria-autocomplete="list"
+                                        autocorrect="off"
+                                        autocomplete="off"
+                                        autocapitalize="off"
+                                        spellcheck="false"
+                                      {%- endif -%}
+                                    >
+                                    <label class="field__label" for="Search-In-Modal-1">{{ 'general.search.search' | t }}</label>
+                                    <input type="hidden" name="options[prefix]" value="last">
+                                    <button class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
+                                      <svg class="icon icon-search" aria-hidden="true" focusable="false" role="presentation">
+                                        <use href="#icon-search">
+                                      </svg>
+                                    </button>
+                                  </div>
+
+                                  {%- if settings.predictive_search_enabled -%}
+                                    <div class="predictive-search predictive-search--header" tabindex="-1" data-predictive-search>
+                                      <div class="predictive-search__loading-state">
+                                        <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                                          <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                                        </svg>
+                                      </div>
+                                    </div>
+
+                                    <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+                                  {%- endif -%}
+                                </form>
+                              {%- if settings.predictive_search_enabled -%}
+                                </predictive-search>
+                              {%- endif -%}
+                              <button type="button" class="modal__close-button link link--text focus-inset" aria-label="{{ 'accessibility.close' | t }}">
+                                <svg class="icon icon-close" aria-hidden="true" focusable="false" role="presentation">
+                                  <use href="#icon-close">
+                                </svg>
+                              </button>
+                            </div>
+                          </div>
+                        </details>
+                      </details-modal>
+
+
+                      {%- if shop.customer_accounts_enabled -%}
+                        <div class="slidedown_section dropdown">
+                            <div class="hmuser" data-toggle="dropdown">
+                                <div class="userdrop"><span class="svgbg">{% render 'icon-account' %}</span></div>
+                            </div>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <div class="header-panel-top">
+                                    <div class="customer_account text-left">
+                                        <ul class="list-unstyled">
+                                            {% if customer %}
+                                            <li>
+                                                <a href="/account">
+                                                <i class="fa fa-user"></i>
+                                                {{ 'wbcustomlabel.wballtext.account' | t }}
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/account/logout">
+                                                <i class="fa fa-sign-out"></i>
+                                                {{ 'wbcustomlabel.wballtext.log_out' | t }}
+                                                </a>
+                                            </li>
+                                            {% else %}
+                                            <li>
+                                                <a href="/account/login">
+                                                <i class="fa fa-lock"></i>
+                                                {{ 'wbcustomlabel.wballtext.log_in' | t }}
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="/account/register" title="{{ 'wbcustomlabel.wballtext.create_accounthome' | t }}">
+                                                <i class="fa fa-user"></i>
+                                                {{ 'wbcustomlabel.wballtext.create_accounthome' | t }}
+                                                </a>
+                                            </li>
+                                            {% endif %}
+                                        </ul>
+
+                                        
+
+                                        {%comment%} {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
+                                            <noscript>
+                                            {%- form 'localization', id: 'FooterCountryFormNoScript', class: 'localization-form' -%}
+                                              <div class="localization-form__select">
+                                                <h2 class="visually-hidden" id="FooterCountryLabelNoScript">{{ 'localization.country_label' | t }}</h2>
+                                                <select class="localization-selector link" name="country_code" aria-labelledby="FooterCountryLabelNoScript">
+                                                  {%- for country in localization.available_countries -%}
+                                                    <option value="{{ country.iso_code }}" {%- if country.iso_code == localization.country.iso_code %} selected{% endif %}>
+                                                      {{ country.name }} ({{ country.currency.iso_code }} {{ country.currency.symbol }})
+                                                    </option>
+                                                  {%- endfor -%}
+                                                </select>
+                                                {% render 'icon-caret' %}
+                                              </div>
+                                              <button class="button button--tertiary">{{ 'localization.update_country' | t }}</button>
+                                            {%- endform -%}
+                                            </noscript>
+                                            <localization-form>
+                                            {%- form 'localization', id: 'FooterCountryForm', class: 'localization-form' -%}
+                                              <div class="no-js-hidden">
+                                                <div class="disclosure">
+                                                  <button type="button" class="disclosure__button localization-form__select localization-selector link link--text caption-large" aria-expanded="false" aria-controls="FooterCountryList" aria-describedby="FooterCountryLabel">
+                                                    {{ localization.country.name }} ({{ localization.country.currency.iso_code }} {{ localization.country.currency.symbol }})
+                                                    {% render 'icon-caret' %}
+                                                  </button>
+                                                  <ul id="FooterCountryList" role="list" class="disclosure__list list-unstyled" hidden>
+                                                    {%- for country in localization.available_countries -%}
+                                                      <li class="disclosure__item" tabindex="-1">
+                                                        <a class="link link--text disclosure__link caption-large{% if country.iso_code == localization.country.iso_code %} disclosure__link--active{% endif %} focus-inset" href="#"{% if country.iso_code == localization.country.iso_code %} aria-current="true"{% endif %} data-value="{{ country.iso_code }}">
+                                                          {{ country.name }} <span class="localization-form__currency">({{ country.currency.iso_code }} {{ country.currency.symbol }})</span>
+                                                        </a>
+                                                      </li>
+                                                    {%- endfor -%}
+                                                  </ul>
+                                                </div>
+                                                <input type="hidden" name="country_code" value="{{ localization.country.iso_code }}">
+                                              </div>
+                                            {%- endform -%}
+                                            </localization-form>
+                                        {%- endif -%}
+
+                                        {%- if section.settings.enable_language_selector and localization.available_languages.size > 1 -%}
+                                            <noscript>
+                                            {%- form 'localization', id: 'FooterLanguageFormNoScript', class: 'localization-form' -%}
+                                              <div class="localization-form__select">
+                                                <h2 class="visually-hidden" id="FooterLanguageLabelNoScript">{{ 'localization.language_label' | t }}</h2>
+                                                <select class="localization-selector link" name="locale_code" aria-labelledby="FooterLanguageLabelNoScript">
+                                                  {%- for language in localization.available_languages -%}
+                                                    <option value="{{ language.iso_code }}" lang="{{ language.iso_code }}" {%- if language.iso_code == localization.language.iso_code %} selected{% endif %}>
+                                                      {{ language.endonym_name | capitalize }}
+                                                    </option>
+                                                  {%- endfor -%}
+                                                </select>
+                                                {% render 'icon-caret' %}
+                                              </div>
+                                              <button class="button button--tertiary">{{ 'localization.update_language' | t }}</button>
+                                            {%- endform -%}
+                                            </noscript>
+
+                                            <localization-form>
+                                            {%- form 'localization', id: 'FooterLanguageForm', class: 'localization-form' -%}
+                                              <div class="no-js-hidden">
+                                                <div class="disclosure">
+                                                  <button type="button" class="disclosure__button localization-form__select localization-selector link link--text caption-large" aria-expanded="false" aria-controls="FooterLanguageList" aria-describedby="FooterLanguageLabel">
+                                                    {{ localization.language.endonym_name | capitalize }}
+                                                    {% render 'icon-caret' %}
+                                                  </button>
+                                                  <ul id="FooterLanguageList" role="list" class="disclosure__list list-unstyled" hidden>
+                                                    {%- for language in localization.available_languages -%}
+                                                      <li class="disclosure__item" tabindex="-1">
+                                                        <a class="link link--text disclosure__link caption-large{% if language.iso_code == localization.language.iso_code %} disclosure__link--active{% endif %} focus-inset" href="#" hreflang="{{ language.iso_code }}" lang="{{ language.iso_code }}"{% if language.iso_code == localization.language.iso_code %} aria-current="true"{% endif %} data-value="{{ language.iso_code }}">
+                                                          {{ language.endonym_name | capitalize }}
+                                                        </a>
+                                                      </li>
+                                                    {%- endfor -%}
+                                                  </ul>
+                                                </div>
+                                                <input type="hidden" name="locale_code" value="{{ localization.language.iso_code }}">
+                                              </div>
+                                            {%- endform -%}
+                                            </localization-form>
+                                        {%- endif -%}  {%endcomment%}
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      {%- endif -%}
+
+                       {%comment%} Webibazaar Wishlist {%endcomment%}
+                       <div class="wbheadwish">
+                        <div class="wishlist">
+                            {% if customer %}
+                                <a href="/pages/wishlist">
+                                    {% render 'icon-wishlist' %}{{ 'wbcustomlabel.wballtext.wishlist' | t }}
+                                    <span class="wbwishcount">0</span></a>
+                            {% else %}
+                                <a href="/account/login">{% render 'icon-wishlist' %} {{ 'wbcustomlabel.wballtext.wishlist' | t }}
+                                    <span class="wbwishcount">0</span></a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {%comment%} Webibazaar Wishlist Over {%endcomment%}
+
+
+                      {%comment%} Webibazaar Cart Dropdown {%endcomment%}
+                        <div class="dropdown" id="cart-icon-bubble">
+                            <div data-toggle="dropdown"> 
+                                <div class="wbhcart">
+                                    <span class="svgbg">{% render 'icon-hcart' %}</span><span class="wbhcartitem">{{ cart.item_count }}</span>
+                                </div>
+                            </div>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <webi-cart-items class="{% if cart == empty %} is-empty{% endif %}">
+                                    <div class="cart__warnings">
+                                        <h5 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h5>
+                                    </div>
+                                    <form action="{{ routes.cart_url }}" class="cart__contents critical-hidden" method="post" id="cart">
+                                        <div id="webi-main-cart-items" data-id="{{ section.id }}">
+                                            <div class="js-contents">
+                                                {%- if cart != empty -%}
+                                                    {%- for item in cart.items -%}
+                                                        <div class="wbheadcartdrop" id="WbCartItem-{{ item.index | plus: 1 }}">
+                                                            <div class="wbcartdimg">
+                                                                {% if item.image %}
+                                                                {% comment %} Leave empty space due to a:empty CSS display: none rule {% endcomment %}
+                                                                    <a href="{{ item.url }}">
+                                                                        <img class="img-fluid mx-auto"
+                                                                        src="{{ item.image | img_url: '100x' }}"
+                                                                        alt="{{ item.image.alt | escape }}"
+                                                                        loading="lazy"
+                                                                        width="100"
+                                                                        height="{{ 100 | divided_by: item.image.aspect_ratio | ceil }}">
+                                                                    </a>
+                                                                {% endif %}
+                                                            </div>
+                                                            <div class="wbcartddesc">
+                                                                {%- if section.settings.show_vendor -%}
+                                                                    <p class="caption-with-letter-spacing light">{{ item.product.vendor }}</p>
+                                                                {%- endif -%}
+                                                                <a href="{{ item.url }}" class="wbcrtname">{{ item.product.title | escape }}</a>
+                                                                {%- if item.product.has_only_default_variant == false or item.properties.size != 0 or item.selling_plan_allocation != nil -%}
+                                                                    <dl>
+                                                                    {%- if item.product.has_only_default_variant == false -%}
+                                                                        {%- for option in item.options_with_values -%}
+                                                                            <div class="product-option">
+                                                                                <dt>{{ option.name }}: </dt>
+                                                                                <dd>{{ option.value }}</dd>
+                                                                            </div>
+                                                                        {%- endfor -%}
+                                                                    {%- endif -%}
+                                                                    {%- for property in item.properties -%}
+                                                                        {%- assign property_first_char = property.first | slice: 0 -%}
+                                                                        {%- if property.last != blank and property_first_char != '_' -%}
+                                                                            <div class="product-option">
+                                                                                <dt>{{ property.first }}: </dt>
+                                                                                    <dd>
+                                                                                    {%- if property.last contains '/uploads/' -%}
+                                                                                        <a href="{{ property.last }}" class="link" target="_blank">{{ property.last | split: '/' | last }}</a>
+                                                                                    {%- else -%}
+                                                                                        {{ property.last }}
+                                                                                    {%- endif -%}
+                                                                                </dd>
+                                                                            </div>
+                                                                        {%- endif -%}
+                                                                    {%- endfor -%}
+                                                                    </dl>
+                                                                    <p class="product-option">{{ item.selling_plan_allocation.selling_plan.name }}</p>
+                                                                {%- endif -%}
+                                                                <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                                                                    {%- for discount in item.discounts -%}
+                                                                        <li class="discounts__discount">
+                                                                            {%- render 'icon-discount' -%}
+                                                                            {{ discount.title }}
+                                                                        </li>
+                                                                    {%- endfor -%}
+                                                                </ul>
+
+                                                                <div class="wbcartqtybr">
+                                                                    <label class="visually-hidden" for="WbQuantity-{{ item.index | plus: 1 }}">{{ 'products.product.quantity.label' | t }}</label>
+                                                                    <webi-quantity-input class="quantity">
+                                                                        <button class="quantity__button no-js-hidden" name="minus" type="button">
+                                                                            <span class="visually-hidden">{{ 'products.product.quantity.decrease' | t: product: item.product.title | escape }}</span>
+                                                                            {% render 'icon-minus' %}
+                                                                        </button>
+                                                                        <input class="quantity__input"
+                                                                        type="number"
+                                                                        name="updates[]"
+                                                                        value="{{ item.quantity }}"
+                                                                        min="0"
+                                                                        aria-label="{{ 'products.product.quantity.input_label' | t: product: item.product.title | escape }}"
+                                                                        id="WbQuantity-{{ item.index | plus: 1 }}"
+                                                                        data-index="{{ item.index | plus: 1 }}" >
+                                                                        <button class="quantity__button no-js-hidden" name="plus" type="button">
+                                                                            <span class="visually-hidden">{{ 'products.product.quantity.increase' | t: product: item.product.title | escape }}</span>
+                                                                            {% render 'icon-plus' %}
+                                                                        </button>
+                                                                    </webi-quantity-input>
+                                                                    <div class="cart-item__totals">
+                                                                        <div class="loading-overlay hidden">
+                                                                            <div class="loading-overlay__spinner">
+                                                                                <svg aria-hidden="true" focusable="false" role="presentation" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                                                                                <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                                                                                </svg>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="cart-item__price-wrapper">
+                                                                            {%- if item.original_line_price != item.final_line_price -%}
+                                                                                <dl class="cart-item__discounted-prices">
+                                                                                    <dt class="visually-hidden">{{ 'products.product.price.sale_price' | t }}</dt>
+                                                                                    <dd class="price price--end">{{ item.final_line_price | money }}</dd>
+                                                                                    <dt class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</dt>
+                                                                                    <dd><s class="cart-item__old-price price price--end">{{ item.original_line_price | money }}</s></dd>
+                                                                                </dl>
+                                                                            {%- else -%}
+                                                                                <span class="price price--end">{{ item.original_line_price | money }}</span>
+                                                                            {%- endif -%}
+
+                                                                            {%- if item.variant.available and item.unit_price_measurement -%}
+                                                                                <div class="unit-price caption">
+                                                                                    <span class="visually-hidden">{{ 'products.product.price.unit_price' | t }}</span>
+                                                                                    {{ item.variant.unit_price | money }}
+                                                                                    <span aria-hidden="true">/</span>
+                                                                                    <span class="visually-hidden">&nbsp;{{ 'accessibility.unit_price_separator' | t }}&nbsp;</span>
+                                                                                    {%- if item.variant.unit_price_measurement.reference_value != 1 -%}
+                                                                                        {{- item.variant.unit_price_measurement.reference_value -}}
+                                                                                    {%- endif -%}
+                                                                                        {{ item.variant.unit_price_measurement.reference_unit }}
+                                                                                </div>
+                                                                            {%- endif -%}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <webi-cart-remove-button id="Remove-{{ item.index | plus: 1 }}" data-index="{{ item.index | plus: 1 }}">
+                                                                    <a href="{{ item.url_to_remove }}" aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}">
+                                                                        {% render 'icon-remove' %}
+                                                                    </a>
+                                                                </webi-cart-remove-button>
+                                                            </div>
+                                                        </div>
+                                                    {%- endfor -%}
+                                                {%- endif -%}
+                                            </div>
+                                        </div>
+                                        <p class="visually-hidden" id="webi-cart-live-region-text" aria-live="polite" role="status"></p>
+                                        <p class="visually-hidden" id="shopping-cart-line-item-status" aria-live="polite" aria-hidden="true" role="status">{{ 'accessibility.loading' | t }}</p>
+                                    </form>
+                                </webi-cart-items>
+                                <div class="{% if cart == empty %} is-empty{% endif %}" id="webi-main-cart-footer" data-id="{{ section.id }}">
+                                    <div class="cart__blocks">
+                                        <div class="js-contents" {{ block.shopify_attributes }}>
+                                            <div class="totals">
+                                                <p>{{ 'sections.cart.subtotal' | t }}</p>
+                                                <h3>{{ cart.total_price | money_with_currency }}</h3>
+                                            </div>
+                                            <div>
+                                                {%- if cart.cart_level_discount_applications.size > 0 -%}
+                                                    <ul class="discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                                                        {%- for discount in cart.cart_level_discount_applications -%}
+                                                            <li class="discounts__discount discounts__discount--end text-right">
+                                                                {%- render 'icon-discount' -%}
+                                                                {{ discount.title }}
+                                                                (-{{ discount.total_allocated_amount | money }})
+                                                            </li>
+                                                        {%- endfor -%}
+                                                    </ul>
+                                                {%- endif -%}
+                                            </div>
+                                        </div>  
+                                        <div class="cart__ctas" {{ block.shopify_attributes }}>
+                                            <noscript>
+                                                <button type="submit" class="cart__update-button button button--secondary" form="cart">{{ 'sections.cart.update' | t }}</button>
+                                            </noscript>
+                                            <a href="{{ routes.cart_url }}" class="btn-primary">{{ 'wbcustomlabel.wballtext.viewcart' | t }}</a>
+                                            <button type="submit" id="checkout" class="cart__checkout-button btn-primary" name="checkout"{% if cart == empty %} disabled{% endif %} form="cart">
+                                                {{ 'sections.cart.checkout' | t }}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                        {%comment%} Webibazaar Cart Dropdown Over {%endcomment%}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</header>
+{%- render 'cart-notification', color_scheme: section.settings.color_scheme -%}
+
+
+
+</{% if section.settings.enable_sticky_header %}sticky-header{% else %}div{% endif %}>
+
+{% javascript %}
+
+    class LocalizationForm extends HTMLElement {
+    constructor() {
+      super();
+      this.elements = {
+        input: this.querySelector('input[name="locale_code"], input[name="country_code"]'),
+        button: this.querySelector('button'),
+        panel: this.querySelector('ul'),
+      };
+      this.elements.button.addEventListener('click', this.openSelector.bind(this));
+      this.elements.button.addEventListener('focusout', this.closeSelector.bind(this));
+      this.addEventListener('keyup', this.onContainerKeyUp.bind(this));
+
+      this.querySelectorAll('a').forEach(item => item.addEventListener('click', this.onItemClick.bind(this)));
+    }
+
+    hidePanel() {
+      this.elements.button.setAttribute('aria-expanded', 'false');
+      this.elements.panel.setAttribute('hidden', true);
+    }
+
+    onContainerKeyUp(event) {
+      if (event.code.toUpperCase() !== 'ESCAPE') return;
+
+      this.hidePanel();
+      this.elements.button.focus();
+    }
+
+    onItemClick(event) {
+      event.preventDefault();
+      const form = this.querySelector('form');
+      this.elements.input.value = event.currentTarget.dataset.value;
+      if (form) form.submit();
+    }
+
+    openSelector() {
+      this.elements.button.focus();
+      this.elements.panel.toggleAttribute('hidden');
+      this.elements.button.setAttribute('aria-expanded', (this.elements.button.getAttribute('aria-expanded') === 'false').toString());
+    }
+
+    closeSelector(event) {
+      const shouldClose = event.relatedTarget && event.relatedTarget.nodeName === 'BUTTON';
+      if (event.relatedTarget === null || shouldClose) {
+        this.hidePanel();
+      }
+    }
+  }
+
+  customElements.define('localization-form', LocalizationForm);
+
+  
+  class StickyHeader extends HTMLElement {
+    constructor() {
+      super();
+    }
+
+    connectedCallback() {
+      this.header = document.getElementById('shopify-section-header');
+      this.headerBounds = {};
+      this.currentScrollTop = 0;
+      this.preventReveal = false;
+      this.predictiveSearch = this.querySelector('predictive-search');
+
+      this.onScrollHandler = this.onScroll.bind(this);
+      this.hideHeaderOnScrollUp = () => this.preventReveal = true;
+
+      this.addEventListener('preventHeaderReveal', this.hideHeaderOnScrollUp);
+      window.addEventListener('scroll', this.onScrollHandler, false);
+
+      this.createObserver();
+    }
+
+    disconnectedCallback() {
+      this.removeEventListener('preventHeaderReveal', this.hideHeaderOnScrollUp);
+      window.removeEventListener('scroll', this.onScrollHandler);
+    }
+
+    createObserver() {
+      let observer = new IntersectionObserver((entries, observer) => {
+        this.headerBounds = entries[0].intersectionRect;
+        observer.disconnect();
+      });
+
+      observer.observe(this.header);
+    }
+
+    onScroll() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+      if (this.predictiveSearch && this.predictiveSearch.isOpen) return;
+
+      if (scrollTop > this.currentScrollTop && scrollTop > this.headerBounds.bottom) {
+        requestAnimationFrame(this.hide.bind(this));
+      } else if (scrollTop < this.currentScrollTop && scrollTop > this.headerBounds.bottom) {
+        if (!this.preventReveal) {
+          requestAnimationFrame(this.reveal.bind(this));
+        } else {
+          window.clearTimeout(this.isScrolling);
+
+          this.isScrolling = setTimeout(() => {
+            this.preventReveal = false;
+          }, 66);
+
+          requestAnimationFrame(this.hide.bind(this));
+        }
+      } else if (scrollTop <= this.headerBounds.top) {
+        requestAnimationFrame(this.reset.bind(this));
+      }
+
+
+      this.currentScrollTop = scrollTop;
+    }
+
+    hide() {
+      this.header.classList.add('shopify-section-header-hidden', 'shopify-section-header-sticky');
+      this.closeMenuDisclosure();
+      this.closeSearchModal();
+    }
+
+    reveal() {
+      this.header.classList.add('shopify-section-header-sticky', 'animate');
+      this.header.classList.remove('shopify-section-header-hidden');
+    }
+
+    reset() {
+      this.header.classList.remove('shopify-section-header-hidden', 'shopify-section-header-sticky', 'animate');
+    }
+
+    closeMenuDisclosure() {
+      this.disclosures = this.disclosures || this.header.querySelectorAll('details-disclosure');
+      this.disclosures.forEach(disclosure => disclosure.close());
+    }
+
+    closeSearchModal() {
+      this.searchModal = this.searchModal || this.header.querySelector('details-modal');
+      this.searchModal.close(false);
+    }
+
+  }
+
+  customElements.define('sticky-header', StickyHeader);
+{% endjavascript %}
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "name": {{ shop.name | json }},
+    {% if section.settings.logo %}
+      {% assign image_size = section.settings.logo.width | append: 'x' %}
+      "logo": {{ section.settings.logo | img_url: image_size | prepend: "https:" | json }},
+    {% endif %}
+    "sameAs": [
+      {{ settings.social_twitter_link | json }},
+      {{ settings.social_facebook_link | json }},
+      {{ settings.social_pinterest_link | json }},
+      {{ settings.social_instagram_link | json }},
+      {{ settings.social_tiktok_link | json }},
+      {{ settings.social_tumblr_link | json }},
+      {{ settings.social_snapchat_link | json }},
+      {{ settings.social_youtube_link | json }},
+      {{ settings.social_vimeo_link | json }}
+    ],
+    "url": {{ shop.url | append: page.url | json }}
+  }
+</script>
+
+{%- if request.page_type == 'index' -%}
+  {% assign potential_action_target = shop.url | append: routes.search_url | append: "?q={search_term_string}" %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": {{ shop.name | json }},
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {{ potential_action_target | json }},
+        "query-input": "required name=search_term_string"
+      },
+      "url": {{ shop.url | append: page.url | json }}
+    }
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "t:sections.header.name",
+  "class": "section-header",
+  "settings": [
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.header.settings.color_scheme.options__1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.header.settings.color_scheme.options__2.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.header.settings.color_scheme.options__3.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.header.settings.color_scheme.options__4.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.header.settings.color_scheme.options__5.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "t:sections.header.settings.color_scheme.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "t:sections.header.settings.logo.label"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 50,
+      "max": 250,
+      "step": 2,
+      "default": 100,
+      "unit": "t:sections.header.settings.logo_width.unit",
+      "label": "t:sections.header.settings.logo_width.label"
+    },
+
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__3.content",
+      "info": "t:sections.footer.settings.header__4.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_country_selector",
+      "default": true,
+      "label": "t:sections.footer.settings.enable_country_selector.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.footer.settings.header__5.content",
+      "info": "t:sections.footer.settings.header__6.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_language_selector",
+      "default": true,
+      "label": "t:sections.footer.settings.enable_language_selector.label"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Menu"
+    },
+    {
+      "type": "select",
+      "id": "color_dropmenu",
+      "options": [
+        {
+          "value": "accent-1",
+          "label": "t:sections.header.settings.color_scheme.options__1.label"
+        },
+        {
+          "value": "accent-2",
+          "label": "t:sections.header.settings.color_scheme.options__2.label"
+        },
+        {
+          "value": "background-1",
+          "label": "t:sections.header.settings.color_scheme.options__3.label"
+        },
+        {
+          "value": "background-2",
+          "label": "t:sections.header.settings.color_scheme.options__4.label"
+        },
+        {
+          "value": "inverse",
+          "label": "t:sections.header.settings.color_scheme.options__5.label"
+        }
+      ],
+      "default": "background-1",
+      "label": "Menu Dropdown Color"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "t:sections.header.settings.menu.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "megamenu_toggle",
+      "label": "Show megamenu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_line_separator",
+      "default": true,
+      "label": "t:sections.header.settings.show_line_separator.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sticky_header",
+      "default": true,
+      "label": "t:sections.header.settings.enable_sticky_header.label",
+      "info": "t:sections.header.settings.enable_sticky_header.info"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.header.settings.margin_bottom.label",
+      "default": 0
+    }
+  ],
+  "blocks": [
+
+  // LINK
+  {
+      "type": "link-simple",
+      "name": "Simple link",
+      "settings": [
+          {
+              "type": "text",
+              "id": "title",
+              "label": "Title",
+              "default": "Item"
+          },
+          {
+              "type": "url",
+              "id": "link",
+              "label": "Link"
+          },
+          {
+              "type": "text",
+              "id": "badge_text",
+              "label": "Badge text"
+          },
+          {
+              "type": "color",
+              "id": "bg_color",
+              "label": "Background badge color",
+              "default": "#ff0000"
+          }
+      ]
+  },
+
+
+  // LINK + LINKLIST
+  {
+      "type": "link-linklist",
+      "name": "Link + linklist",
+      "settings": [
+          {
+              "type": "text",
+              "id": "title",
+              "label": "Title",
+              "default": "Item"
+          },
+          {
+              "type": "url",
+              "id": "link",
+              "label": "Link"
+          },
+          {
+              "type": "text",
+              "id": "badge_text",
+              "label": "Badge text"
+          },
+          {
+              "type": "color",
+              "id": "bg_color",
+              "label": "Background badge color",
+              "default": "#ff0000"
+          },
+          {
+              "type": "link_list",
+              "id": "links",
+              "label": "Choose linklist"
+          }
+      ]
+  },
+
+
+  // LINK + 4 LINKLISTS
+  {
+      "type": "link-4linklists",
+      "name": "4 linklists + 4 banners",
+      "settings": [
+          {
+              "type": "checkbox",
+              "id": "show_title",
+              "label": "Show title",
+              "default": false
+          },
+          {
+              "type": "text",
+              "id": "title",
+              "label": "Title",
+              "default": "Item"
+          },
+          {
+              "type": "url",
+              "id": "link",
+              "label": "Link"
+          },
+          {
+              "type": "text",
+              "id": "badge_text",
+              "label": "Badge text"
+          },
+          {
+              "type": "color",
+              "id": "bg_color",
+              "label": "Background badge color",
+              "default": "#ff0000"
+          },
+          {
+              "type": "image_picker",
+              "id": "image_1",
+              "label": "Image 1"
+          },
+          {
+              "type": "url",
+              "id": "imageblink_1",
+              "label": "Banner Link"
+          },
+          {
+              "type": "link_list",
+              "id": "links_1",
+              "label": "Linklist #1"
+          },
+          {
+              "type": "image_picker",
+              "id": "image_2",
+              "label": "Image 2"
+          },
+          {
+              "type": "url",
+              "id": "imageblink_2",
+              "label": "Banner Link"
+          },
+          {
+              "type": "link_list",
+              "id": "links_2",
+              "label": "Linklist #2"
+          },
+          {
+              "type": "image_picker",
+              "id": "image_3",
+              "label": "Image 3"
+          },
+          {
+              "type": "url",
+              "id": "imageblink_3",
+              "label": "Banner Link"
+          },
+          {
+              "type": "link_list",
+              "id": "links_3",
+              "label": "Linklist #3"
+          },
+          {
+              "type": "image_picker",
+              "id": "image_4",
+              "label": "Image 4"
+          },
+          {
+              "type": "url",
+              "id": "imageblink_4",
+              "label": "Banner Link"
+          },
+          {
+              "type": "link_list",
+              "id": "links_4",
+              "label": "Linklist #4"
+          },
+          {
+              "type": "checkbox",
+              "id": "align_text",
+              "label": "Align center",
+              "default": false
+          }
+      ]
+  },
+
+
+  // Linklist + Banner
+  {
+      "type": "link-linklistbnr",
+      "name": "Custom Link + 1 banner",
+      "settings": [
+          {
+              "type": "text",
+              "id": "title",
+              "label": "Title",
+              "default": "Item"
+          },
+          {
+              "type": "url",
+              "id": "link",
+              "label": "Link"
+          },
+          {
+              "type": "text",
+              "id": "badge_text",
+              "label": "Badge text"
+          },
+          {
+              "type": "color",
+              "id": "bg_color",
+              "label": "Background badge color",
+              "default": "#ff0000"
+          },
+
+
+          {
+              "type": "header",
+              "content": "Custom Link"
+          },
+          {
+              "type": "richtext",
+              "id": "menucusttxt1",
+              "label": "Text",
+              "default": "<p>Add Custom Link Here</p>"
+          },
+          {
+              "type": "richtext",
+              "id": "menucusttxt2",
+              "label": "Text",
+              "default": "<p>Add Custom Link Here</p>"
+          },
+          {
+              "type": "richtext",
+              "id": "menucusttxt3",
+              "label": "Text",
+              "default": "<p>Add Custom Link Here</p>"
+          },
+          {
+              "type": "richtext",
+              "id": "menucusttxt4",
+              "label": "Text",
+              "default": "<p>Add Custom Link Here</p>"
+          },
+
+          
+          {
+              "type": "image_picker",
+              "id": "prodimage",
+              "label": "Banner image"
+          },
+          {
+              "type": "url",
+              "id": "caption_link",
+              "label": "Banner link"
+          }
+      ]
+  },
+
+
+
+  // LINK + 8 BANNERS
+  {
+      "type": "link-8banners",
+      "name": "Link + 8 banners",
+      "settings": [
+          {
+              "type": "text",
+              "id": "title",
+              "label": "Title",
+              "default": "Item"
+          },
+          {
+              "type": "url",
+              "id": "link",
+              "label": "Link"
+          },
+          {
+              "type": "text",
+              "id": "badge_text",
+              "label": "Badge text"
+          },
+          {
+              "type": "color",
+              "id": "bg_color",
+              "label": "Background badge color",
+              "default": "#ff0000"
+          },
+          {
+              "type": "checkbox",
+              "id": "align_text",
+              "label": "Text align center",
+              "default": false
+          },
+          {
+              "type": "header",
+              "content": "Banner 1"
+          },
+          {
+              "type": "image_picker",
+              "id": "banner_1_image",
+              "label": "Banner 1 image"
+          },
+          {
+              "type": "url",
+              "id": "banner_1_link",
+              "label": "Banner_1_link"
+          },
+          {
+              "type": "text",
+              "id": "banner_1_text",
+              "label": "Banner 1 text"
+          },
+          {
+              "type": "header",
+              "content": "Banner 2"
+          },
+          {
+              "type": "image_picker",
+              "id": "banner_2_image",
+              "label": "Banner 2 image"
+          },
+          {
+              "type": "url",
+              "id": "banner_2_link",
+              "label": "Banner_2_link"
+          },
+          {
+              "type": "text",
+              "id": "banner_2_text",
+              "label": "Banner 2 text"
+          },
+          {
+              "type": "header",
+              "content": "Banner 3"
+          },
+          {
+              "type": "image_picker",
+              "id": "banner_3_image",
+              "label": "Banner 3 image"
+          },
+          {
+              "type": "url",
+              "id": "banner_3_link",
+              "label": "Banner_3_link"
+          },
+          {
+              "type": "text",
+              "id": "banner_3_text",
+              "label": "Banner 3 text"
+          },
+          {
+              "type": "header",
+              "content": "Banner 4"
+          },
+          {
+              "type": "image_picker",
+              "id": "banner_4_image",
+              "label": "Banner 4 image"
+          },
+          {
+              "type": "url",
+              "id": "banner_4_link",
+              "label": "Banner_4_link"
+          },
+          {
+              "type": "text",
+              "id": "banner_4_text",
+              "label": "Banner 4 text"
+          },
+          {
+              "type": "header",
+              "content": "Banner 5"
+          },
+          {
+              "type": "image_picker",
+              "id": "banner_5_image",
+              "label": "Banner 5 image"
+          },
+          {
+              "type": "url",
+              "id": "banner_5_link",
+              "label": "Banner_5_link"
+          },
+          {
+              "type": "text",
+              "id": "banner_5_text",
+              "label": "Banner 5 text"
+          },
+          {
+              "type": "header",
+              "content": "Banner 6"
+          },
+          {
+              "type": "image_picker",
+              "id": "banner_6_image",
+              "label": "Banner 6 image"
+          },
+          {
+              "type": "url",
+              "id": "banner_6_link",
+              "label": "Banner_6_link"
+          },
+          {
+              "type": "text",
+              "id": "banner_6_text",
+              "label": "Banner 6 text"
+          },
+          {
+              "type": "header",
+              "content": "Banner 7"
+          },
+          {
+              "type": "image_picker",
+              "id": "banner_7_image",
+              "label": "Banner 7 image"
+          },
+          {
+              "type": "url",
+              "id": "banner_7_link",
+              "label": "Banner_7_link"
+          },
+          {
+              "type": "text",
+              "id": "banner_7_text",
+              "label": "Banner 7 text"
+          },
+          {
+              "type": "header",
+              "content": "Banner 8"
+          },
+          {
+              "type": "image_picker",
+              "id": "banner_8_image",
+              "label": "Banner 8 image"
+          },
+          {
+              "type": "url",
+              "id": "banner_8_link",
+              "label": "Banner_8_link"
+          },
+          {
+              "type": "text",
+              "id": "banner_8_text",
+              "label": "Banner 8 text"
+          },
+          {
+              "type": "header",
+              "content": "Banner 9"
+          },
+          {
+              "type": "image_picker",
+              "id": "banner_9_image",
+              "label": "Banner 9 image"
+          },
+          {
+              "type": "url",
+              "id": "banner_9_link",
+              "label": "Banner_9_link"
+          },
+          {
+              "type": "text",
+              "id": "banner_9_text",
+              "label": "Banner 9 text"
+          },
+          {
+              "type": "header",
+              "content": "Banner 10"
+          },
+          {
+              "type": "image_picker",
+              "id": "banner_10_image",
+              "label": "Banner 10 image"
+          },
+          {
+              "type": "url",
+              "id": "banner_10_link",
+              "label": "Banner_10_link"
+          },
+          {
+              "type": "text",
+              "id": "banner_10_text",
+              "label": "Banner 10 text"
+          },
+          {
+              "type": "header",
+              "content": "Banner 11"
+          },
+          {
+              "type": "image_picker",
+              "id": "banner_11_image",
+              "label": "Banner 11 image"
+          },
+          {
+              "type": "url",
+              "id": "banner_11_link",
+              "label": "Banner_11_link"
+          },
+          {
+              "type": "text",
+              "id": "banner_11_text",
+              "label": "Banner 11 text"
+          },
+          {
+              "type": "header",
+              "content": "Banner 12"
+          },
+          {
+              "type": "image_picker",
+              "id": "banner_12_image",
+              "label": "Banner 12 image"
+          },
+          {
+              "type": "url",
+              "id": "banner_12_link",
+              "label": "Banner_12_link"
+          },
+          {
+              "type": "text",
+              "id": "banner_12_text",
+              "label": "Banner 12 text"
+          }
+      ]
+  },
+
+
+  // LINK + PRODUCTS
+  {
+      "type": "link-products",
+      "name": "Link + products listing",
+      "settings": [
+          {
+              "type": "text",
+              "id": "title",
+              "label": "Title",
+              "default": "Item"
+          },
+          {
+              "type": "url",
+              "id": "link",
+              "label": "Link"
+          },
+          {
+              "type": "text",
+              "id": "badge_text",
+              "label": "Badge text"
+          },
+          {
+              "type": "color",
+              "id": "bg_color",
+              "label": "Background badge color",
+              "default": "#ff0000"
+          },
+
+
+          {
+              "type": "checkbox",
+              "id": "show_title",
+              "label": "Show title",
+              "default": false
+          },
+          {
+              "type": "link_list",
+              "id": "links_1",
+              "label": "Linklist #1"
+          },
+          {
+              "type": "link_list",
+              "id": "links_2",
+              "label": "Linklist #2"
+          },
+          {
+              "type": "link_list",
+              "id": "links_3",
+              "label": "Linklist #3"
+          },
+          {
+              "type": "link_list",
+              "id": "links_4",
+              "label": "Linklist #4"
+          },
+          {
+              "type": "collection",
+              "id": "products",
+              "label": "Choose collection"
+          }
+      ]
+  },
+
+
+  // LINK + BLOG
+  {
+      "type": "link-blog",
+      "name": "Link + blog listing",
+      "settings": [
+          {
+              "type": "text",
+              "id": "title",
+              "label": "Title",
+              "default": "Item"
+          },
+          {
+              "type": "url", 
+              "id": "link",
+              "label": "Link"
+          },
+          {
+              "type": "text",
+              "id": "badge_text",
+              "label": "Badge text"
+          },
+          {
+              "type": "color",
+              "id": "bg_color",
+              "label": "Background badge color",
+              "default": "#ff0000"
+          }, 
+          {
+              "type": "blog",
+              "id": "blog",
+              "label": "Choose blog"
+          }
+      ]
+  }
+]
+}
+
+{% endschema %}

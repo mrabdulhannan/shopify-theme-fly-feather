@@ -1,0 +1,45 @@
+
+{% if end_date != blank %}
+<div class="timer_outer">
+<div class="timer">
+  {% if title != blank %}<h5 class="timer__title">{{ title }}</h5>{% endif %}
+  <div class="countdowntimer timer-display">      
+    <div class="end_day_sale_date_1" data-date="{{end_date}}"></div>
+  
+  <div class="wbsettimer" data-countdown="{{end_date}}"></div>
+</div>
+  </div>
+</div>
+{% endif %}
+
+
+<script>
+  // contdown timer
+  $(document).ready(function() {
+    $('[data-countdown]').each(function() {
+          var $this = $(this), finalDate = $(this).data('countdown');
+          Date.prototype.yyyymmdd = function() {
+          var yyyy = this.getFullYear().toString();
+          var mm = (this.getMonth()+1).toString(); // getMonth() is zero-based
+          var dd = this.getDate().toString();
+          return yyyy + "/" + (mm[1]?mm:"0"+mm[0]) + "/" + (dd[1]?dd:"0"+dd[0]); // padding
+          };
+
+
+
+          var date = new Date();
+          if (finalDate > date.yyyymmdd()){
+          $(this).parents('.timer_outer').css('display','block');
+          }else{
+          $(this).parents('.timer_outer').css('display','none');
+          }
+
+
+
+          $this.countdown(finalDate, function(event) {
+          $this.html(event.strftime('<li class="displayformat"><span>%D</span><p>Days</p></li><li class="displayformat"><span>%H</span><p>Hours</p></li><li class="displayformat"><span>%M</span><p>Mins</p></li><li class="displayformat"><span>%S</span><p>Secs</p></li>'));
+          });
+
+          });
+    });
+</script>

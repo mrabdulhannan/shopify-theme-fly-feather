@@ -1,0 +1,47 @@
+{% unless template == 'index' %}
+<div class="container">
+	<nav class="breadcrumb row" role="navigation" aria-label="breadcrumbs">
+		<div class="col-12">
+			<a href="/" title="{{ 'wbcustomlabel.wballtext.home' | t }}">{{ 'wbcustomlabel.wballtext.home' | t }}</a>
+			{% if template contains 'page' %}
+				<span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
+				<span>{{ page.title }}</span>
+			{% elsif template contains 'product' %}
+			{% if collection.url %}
+				<span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
+				{{ collection.title | link_to: collection.url }}
+			{% endif %}
+			<span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
+			<span>{{ product.title }}</span>
+			{% elsif template contains 'collection' and collection.handle %}
+				<span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
+			{% if current_tags %}
+			{% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+				{{ collection.title | link_to: url }}
+				<span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
+				<span>{{ current_tags | join: " + " }}</span>
+			{% else %}
+				<span>{{ collection.title }}</span>
+			{% endif %}
+			{% elsif template == 'blog' %}
+				<span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
+			{% if current_tags %}
+				{{ blog.title | link_to: blog.url }}
+				<span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
+				<span>{{ current_tags | join: " + " }}</span>
+			{% else %}
+				<span>{{ blog.title }}</span>
+			{% endif %}
+			{% elsif template == 'article' %}
+				<span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
+				{{ blog.title | link_to: blog.url }}
+				<span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
+				<span>{{ article.title }}</span>
+			{% else %}
+				<span aria-hidden="true"><i class="fa fa-angle-right"></i></span>
+				<span>{{ page_title }}</span>
+			{% endif %}
+		</div>
+	</nav>
+</div>
+{% endunless %}

@@ -1,0 +1,102 @@
+<div class="container">
+    {% if customer %}
+        <div class="wbmainwish">
+            <h1 class="heading text-center"><span>{{ section.settings.wish_title }}</span> <span class="wbhyutr">(</span><span class="wbwishcount">{{ wishlist.count }}</span><span class="wbhyutr">)</span> </h1>
+            <div class="row rless">
+            {% paginate collections.all.products by 9999 %}
+                {% for product in collections.all.products %}
+                    <form action="/cart/add" method="post" class="cart col-lg-3 col-md-4 col-sm-4 col-6 cless" data-product-handle="{{ product.handle }}" enctype="multipart/form-data" id="add-item-form-{{ product.id }}">
+                    {%- assign variant = product.selected_or_first_available_variant -%}
+                        {%- if product.available -%}
+                            {%- assign func = variant.id -%}
+                        {% else %} 
+                            {%- assign func = product.id -%}
+                        {%- endif -%}         
+                        <input name="id" id="id" value="{{ func }}" type="hidden">
+                        <input value="1" type="hidden" name="quantity" min="1">
+                        <div class="wbinnerwish" data-product-id="{{ product.id }}" data-product-handle="{{ product.handle }}">
+                            <div class="wbinnerwimg">
+                                <a href="{{ product.url }}">
+                                    <img class="lazyload img-fluid mx-auto" src="{{  product.featured_image | product_img_url: 'large' }}" data-src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" />
+                                </a>
+                                <a class="wbwishremove" onclick="reloadPage();" title="{{ 'wbcustomlabel.wballtext.removewishlist' | t }}" href="javascript:void(0)" data-product-handle="{{ product.handle }}">
+                                    <span class="wbwishirmv"><i class="fa fa-remove"></i></span>
+                                </a>
+                            </div>
+                            <div class="wbwishdesc">
+                                <h5><a href="{{ product.url }}" title="{{ product.title }}">{{ product.title | truncate: 80 }}</a></h5>
+                                <div class="product-price">
+                                    {% if product.compare_at_price > product.price %}
+                                        <span class="price-sale">{{ product.price | money }}</span>
+                                        <span class="compare-price">{{ product.compare_at_price | money }}</span>
+                                    {% else %}
+                                        <span class="pro-price">{{ product.price | money }}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                {% endfor %}
+            {% endpaginate %}
+            </div>
+            <div class="text-center">
+                <a href="/collections/all" class="btn btn-primary">{{ section.settings.wish_cart_conti }}</a>
+                <a href="javascript:void(0)" id="wbwishcall" class="btn btn-primary">{{ section.settings.wish_cart_clear }}</a>
+            </div>
+        </div>
+        <div class="wbwishempty text-center">
+            <p>{{ 'wbcustomlabel.wballtext.wishempty' | t }}</p>
+        </div>
+        <div class="wbwishloader" style="display: none;">
+            <p>Loading...</p>
+        </div>
+    {% else %}
+        <div class="wbloginwish text-center">
+            <ul class="list-unstyled">
+                <li>
+                    <p>{{ 'wbcustomlabel.wballtext.logwish' | t }}</p> 
+                    {{ 'wbcustomlabel.wballtext.log_in' | t | customer_login_link }}
+                </li>
+                <li>
+                    <p>{{ 'wbcustomlabel.wballtext.accwish' | t }}</p> 
+                    {{ 'wbcustomlabel.wballtext.create_accounthome' | t | customer_register_link }}
+                </li>
+            </ul>
+        </div>
+    {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Wishlist Page",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Title"
+    },
+    {
+      "type": "text",
+      "id": "wish_title",
+      "label": "Title",
+      "default": "My Wishlist"
+    },
+
+    {
+      "type": "header",
+      "content": "Wishlist Button Action"
+    },
+    {
+      "type": "text",
+      "id": "wish_cart_conti",
+      "label": "Title",
+      "default": "Continue Shopping"
+    },
+    {
+      "type": "text",
+      "id": "wish_cart_clear",
+      "label": "Title",
+      "default": "Clear Wishlist"
+    }
+  ]
+}
+{% endschema %}

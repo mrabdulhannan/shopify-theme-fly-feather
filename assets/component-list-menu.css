@@ -1,0 +1,480 @@
+.list-menu--right {
+  right: 0;
+}
+
+.list-menu--disclosure {
+  position: absolute;
+  min-width: 100%;
+  width: 20rem;
+  border: 1px solid rgba(var(--color-foreground), 0.2);
+  background-color: rgb(var(--color-background));
+}
+
+.list-menu--disclosure:focus {
+  outline: none;
+}
+
+.list-menu__item--active {
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+.list-menu__item--active:hover {
+  text-decoration-thickness: 0.2rem;
+}
+
+.list-menu--disclosure.localization-selector {
+  max-height: 18rem;
+  overflow: auto;
+  width: 10rem;
+  padding: 0.5rem;
+}
+
+/* Megamenu */
+/* .menugradiantclr {
+    color:#ed2939;
+    background-image:-webkit-linear-gradient(92deg,#ed2939,#feab3a);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    -webkit-animation:hue 3s infinite linear
+}
+@-webkit-keyframes hue {
+    0% {
+        -webkit-filter:hue-rotate(0deg)
+    }
+    to {
+        -webkit-filter:hue-rotate(-360deg)
+    }
+} */
+.wbmenuup .container{
+    position: relative;
+}
+/*#megamenu .product-container{
+    border: 1px solid var(--color-wbbordercolor);
+    border-radius: 0px;
+}*/
+body.overflow-hidden .menupos{
+    position: unset;
+}
+.wbslidcust{
+    flex-wrap: inherit;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    display: flex;
+    text-align: center;
+    margin-left: -8px;
+    margin-right: -8px;
+}
+.wbslidcust .wbinproduct{
+    width: calc(33.33% - 0rem / 4);
+    position: relative;
+    padding: 0 8px;
+}
+.wbslidcustinner{
+    width: calc(25% - 0rem / 4);
+    position: relative;
+    padding: 0 8px;
+}
+.wbbodyscroll{
+  overflow-y: hidden;
+}
+#megamenu ul{
+    margin-bottom: 0;
+    list-style: none;
+    padding: 0;
+}
+.menu_badge {
+    position: absolute;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 400;
+    padding: 0 5px;
+    text-transform: uppercase;
+    top: -3px;
+    left: 5px;
+    line-height: 14px;
+}
+.wbmenudropdown img{
+    border-radius: 10px;
+}
+.wbmenudropdown .align_center{
+    text-align: center
+}
+.wbmenudropdown .level_3 li a{
+    text-transform: capitalize;
+    display: block;
+    line-height: 40px;
+    font-size: calc(var(--font-size-base) * 1px);
+    font-weight: bold;
+}
+.wbmenudropdown .container{
+    width: 100%;
+    max-width: unset;
+    padding: 0;
+}
+.wbmegalink-img .wbmenudropdown .wbmegacolpart h3 {
+    font-size: calc(var(--font-size-base) * 1.15px);
+    margin: 0 0 10px 0;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+.wbmegabanner .wbmenudropdown .wbmegacolpart h4{
+    font-size: calc(var(--font-size-base) * 1.15px);
+    margin-top: 10px;
+    margin-bottom: 0;
+    text-transform: capitalize;
+}
+.wbmegabanner .wbmenudropdown .wbmegacolpart {
+    margin-bottom: 20px;
+}
+.wbmegabanner .wbmenudropdown{
+    padding-bottom: 0
+}
+.wbmegaproduct .wbmenudropdown .level_3 li a{
+    line-height: 30px;
+    font-size: rgb(var(--color-base-text));
+    font-weight: normal;
+}
+.productwithlink .wbmegacolpart h3 {
+    font-size: calc(var(--font-size-base) * 1.25px);
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    position: relative;
+    text-transform: capitalize;
+}
+.productwithlink .wbmegacolpart{
+    margin-bottom: 15px;
+}
+.wbmegaproduct .money_sale {
+    text-decoration: line-through;
+    color: #bdbdbd;
+    font-size: 12px;
+    font-weight: 400;
+}
+.wbmegaproduct .product_price{
+    font-weight: 500
+}
+.wbmegaproduct .product_name{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+    color: rgb(var(--color-base-text));
+    font-weight: 500;
+    font-size: calc(var(--font-size-base) * 1.15px);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 0;
+}
+#owl-menuproduct .owl-dots{
+    text-align: center;
+    margin-top: 15px;
+}
+.wbmegablog .wbmegacolpart .blog_date{
+    margin-bottom: 0
+}
+.wbmegablog .wbmegacolpart .blog_title{
+    line-height: unset;
+    margin: 5px 0;
+    font-size: rgb(var(--color-base-text));
+    font-weight: bold;
+    letter-spacing: 0.3px;
+    text-transform: capitalize;
+}
+.wbmegablog .wbmegacolpart .blog_title a{
+    display: block
+}
+.wb4proimg{
+    margin-top: 12px;
+}
+.wr-menu svg{
+    width: 20px;
+    height: 20px;
+    cursor: pointer
+}
+.megamenudrop{
+    position: absolute;
+    left: 100%;
+    background: rgb(var(--color-background));
+    z-index: 99;
+    width: 100%;
+    opacity: 0;
+}
+.hovermenu:hover .megamenudrop{
+    opacity: 1;
+}
+@media (min-width: 992px){
+    #megamenu .wr-menu,#megamenu .wbmenuclose {
+        display: none
+    }
+    /* Megamenu */
+    #megamenu li.wbmenul_1{
+        display: inline-block;
+        vertical-align: middle;
+    }
+    #megamenu li.wbmenul_1 a.wbmenul1_link{
+        display: block;
+        position: relative;
+        text-transform: capitalize;
+        font-weight: 400;
+        letter-spacing: 0;
+        margin: 0 15px;
+        padding: 12px 0;
+        font-size: calc(var(--font-size-base) * 1.15px);
+    }
+    #megamenu ul .wbmenudropdown {
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        z-index: 9;
+        background: rgb(var(--color-background));
+        display: none;
+        transition: all 0.35s ease-out 0s;
+        padding: 15px;
+        margin: 0 auto;
+        text-align: left;
+        border-radius: var(--popup-corner-radius);
+        border-color: rgba(var(--color-foreground), var(--popup-border-opacity));
+        border-style: solid;
+        border-width: var(--popup-border-width);
+        box-shadow: var(--popup-shadow-horizontal-offset) var(--popup-shadow-vertical-offset) var(--popup-shadow-blur-radius) rgba(var(--color-shadow), var(--popup-shadow-opacity));
+    }
+    #megamenu .wbmenulink:hover ul.wbmenudropdown {
+        display: block;
+    }
+    #megamenu.megamenu .level_2.simple-linkmn {
+        width: 200px;
+        left: auto;
+        right: auto;
+        padding: 15px 0
+    }
+    #megamenu .simple-linkmn.wbmenudropdown .level_3 li a{
+        position: relative;
+        padding: 0 15px;
+    }
+    #megamenu .level_2.simple-linkmn .wbmegamainhd::after {
+        content: '\f105';
+        font: 14px/1em 'FontAwesome';
+        position: absolute;
+        right: 15px;
+        bottom: 6px;
+    }
+    #megamenu .simple-linkmn.wbmenudropdown .level_3 .droped_linklist {
+        position: absolute;
+        left: 198px;
+        background: rgb(var(--color-background));
+        padding: 15px 0;
+        width: 200px;
+        display: none;
+        margin-top: -30px;
+        border-radius: 0px;
+        border: 1px solid var(--color-wbbordercolor);
+    }
+    #megamenu .simple-linkmn.wbmenudropdown .level_3 .level_3__item.with_ul:hover .level_3_2.droped_linklist{
+        display: block;
+    }
+    #megamenu .simple-linkmn.wbmenudropdown .level_3 .level_3_2_item.with_ul:hover .level_3_3.droped_linklist{
+        display: block;
+    }
+    /* Megamenu Over */
+}
+@media (max-width: 991px){
+    .wb4proimg {
+        margin-top: 0;
+    }
+    #megamenu .wbmenudropdown .page-width {
+      padding: 0;
+    }
+    .owl-menuproduct{
+      margin-top: 15px;
+      margin-bottom: 15px
+    }
+     .wbslidcust .wbinproduct{
+        width: calc(100% - 0rem / 1);
+    }
+    .wbslidcustinner{
+        width: calc(100% - 0rem / 1);
+    }
+    /* sidenav */
+    .w3-overlay {
+        position: fixed;
+        display: none;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 3;
+    }
+    #megamenu .menu-vertical {
+        overflow-y: scroll;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 10;
+        background: rgb(var(--color-base-background-1));
+        padding: 0;
+        width: 320px;
+        transform: translateX(-100%);
+        transition: all 0.5s ease-out 0s;
+        margin-bottom: 0;
+        text-align: left;
+    }
+    #megamenu.active .menu-vertical {
+        transform: translateX(0);
+    }
+    #megamenu.active .close-nav {
+        display: block;
+    }
+    #megamenu .closebtn {
+        z-index: 1;
+        position: relative;
+        cursor: pointer;
+        border: none;
+        background: transparent;
+    }
+    .wbmenuclose{
+        font-size: calc(var(--font-size-base) * 1.57px);
+        padding: 11px 15px;
+        margin-bottom: 0;
+        border-bottom: 1px solid var(--color-wbbordercolor);
+    }
+    .wbmegalink-img .wbmenudropdown .wbmegacolpart h3,.wbmenudropdown .level_3 li a{
+        position: relative;
+    }
+    #megamenu .level_2,#megamenu .wbmegalink-img .level_3,#megamenu .wbmegaproduct .level_3,#megamenu .wbmegaonlylink .droped_linklist{
+        display: none;
+    }
+    .simple-linkmn .with_ul a.level_3__link,.simple-linkmn .level_3_2_item.with_ul a.level_3_2_link{
+        font-weight: 500;
+        letter-spacing: 0;
+        font-size: calc(var(--font-size-base) * 1.15px);
+    }
+    #megamenu .wbmenulink .wbmenul1_link{
+        display: block;
+        position: relative;
+        padding: 15px 15px;
+        border-top: 1px solid var(--color-wbbordercolor);
+        font-size: calc(var(--font-size-base) * 1.15px);
+        letter-spacing: 0;
+        font-weight: 500;
+        text-transform: capitalize
+    }
+    #megamenu .wbmegamainhd {
+        width: 14px;
+        height: 14px;
+        display: block;
+        position: absolute;
+        right: 15px;
+        top: 22px;
+        cursor: pointer;
+    }
+    #megamenu .wbmegamainhd::before {
+        content: '';
+        width: 100%;
+        height: 2px;
+        margin: -1px 0 0 0;
+        background: rgb(var(--color-base-text));
+        position: absolute;
+        left: 0;
+        top: 50%;
+    }
+    #megamenu .wbmegamainhd::after {
+        content: '';
+        width: 2px;
+        height: 100%;
+        margin: 0 0 0 -1px;
+        background: rgb(var(--color-base-text));
+        position: absolute;
+        left: 50%;
+        top: 0;
+        backface-visibility: hidden;
+        perspective: 1000;
+        transform: translate3d(0, 0, 0);
+        transition: height 0.2s ease-in-out, top 0.2s ease-in-out;
+    }
+    #megamenu .wbmegamainhd.active::after {
+        height: 0;
+        top: 50%;
+    }
+    .wbmenudropdown .level_3 li a {
+        padding: 6px 0;
+        line-height: 25px;
+    }
+    #megamenu .wbmenudropdown{
+        padding: 0 15px 15px;
+    }
+    .wbmegalink-img .wbmenudropdown .wbmegacolpart h3 {
+        margin: 0;
+        padding: 10px 0;
+        font-size: calc(var(--font-size-base) * 1.15px);
+        font-weight: 500;
+    }
+    .wbmegalink-img .wbmenudropdown .wbmegacolpart {
+        margin-bottom: 10px;
+    }
+    #megamenu .wbmegaonlylink .wbmenudropdown .wbmegamainhd,#megamenu .wbmegaproduct .wbmenudropdown .wbmegamainhd{
+        right: 0
+    }
+    #megamenu .wbmegalink-img .wbmenudropdown .wbmegamainhd {
+        right: 0;
+        top: 12px;
+    }
+    .wbmegablog .level_2.wbmenudropdown {
+        padding: 0px 15px 15px;
+    }
+    .wbmegablog .wbmegacolpart .blog_title{
+        margin: 3px 0;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .wbmegablog .wbmegacolpart .blog_date{
+        font-size: 12px;letter-spacing: 0
+    }
+    .wbmegablog .wbmegacolpart .blog_title a {
+        display: unset;
+    }
+    .blog_info{
+        margin-bottom: 10px;
+    }
+    .wbmegabanner .wbmenudropdown .wbmegacolpart h4{
+        font-size: calc(var(--font-size-base) * 1px);
+        margin-top: 6px;
+    }
+    .wbmegabanner .wbmenudropdown .wbmegacolpart{
+        margin-bottom: 10px;
+    }
+    .productwithlink .wbmegacolpart h3 {
+        font-size: 15px;
+        margin: 0;
+        padding: 10px 0
+    }
+    .wbmegaproduct .wbmenudropdown .level_3 li a {
+        line-height: normal;
+        font-size: calc(var(--font-size-base) * 1px);
+    }
+    .productwithlink .wbmegacolpart {
+        margin-bottom: 0;
+    }
+    #owl-menuproduct{
+        margin-bottom: 15px;
+        margin-top: 10px;
+    }
+    #megamenu .wbmenudropdown .wbmegamainhd{
+        width: 16px;
+        height: 16px;
+        right: 15px;
+        top: 12px;
+    }
+    /* sidenav Over */
+}
+@media (min-width: 992px) and (max-width: 1199px){
+    #megamenu li.wbmenul_1 a.wbmenul1_link{
+        margin: 0 8px;
+    }
+}

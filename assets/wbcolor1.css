@@ -1,0 +1,81 @@
+@charset "UTF-8";
+.wbhdtop,.footer__content-bottom,.wbslideshow .slider-counter__link--active.slider-counter__link--dots .dot{
+	background: #00b8d4 !important;
+}
+.heading svg,.userdrop:hover .svgbg svg path, 
+.wbhcart:hover .svgbg svg path,.wbheadwish:hover svg{
+	fill: #00b8d4;
+}
+.card__badge span,.wbslideshow .slider-counter__link--dots .dot, .wbslideshow .slider-counter__link--dots:not(.slider-counter__link--active):hover .dot{
+    border-color: #00b8d4 !important;
+}
+.slidertext p, .wbslideshow .slideshow__text p.banner__text, .wbslideshow .slider-button {
+    color: #00b8d4!important;
+}
+.wbslideshow .slideshow__text a.btn-primary{
+	background: #00b8d4 !important;
+	border-color: #00b8d4 !important;
+}
+.card__badge span{
+    border-color: #00b8d4 !important;
+}
+.header__icons .icon-search:hover, .wbsetinner:hover svg,
+#shopify-section-header.animate .header__icons .icon-search:hover,.userdrop:hover svg, .wbhcart:hover svg{
+	fill: #00b8d4;
+	color: #00b8d4;
+}
+.wbproducttab .spr-container .spr-summary-actions-newreview,.announcement-bar.color-background-1,
+.slick-dots li button,.wbhcartitem,.footer__list-social li:hover a,.product-form .cartb:hover,.card-wrapper .wishlist:hover,
+.wbsetbntxt h2,.progallerybtn .slider-button:not([disabled]):hover,.testi .wbtestisub:before,
+.whr-menu,.field__button:hover,#shopify-section-header.animate #Cartcount,#Cartcount,.card-wrapper .wbquickv:hover,
+.newsletter-form__field-wrapper button.btn-primary:hover,.wbwishcount,.stcolr a.btn-primary:hover,.slick-slider .slick-arrow:hover,
+.slideff a.btn-primary,.tag-section .blog-tags:hover,.product-category button.toggle,.imgbnr a.btn-primary,
+.product-form .wbquickv:hover,.product-form .wishlist:hover,.homecolbnr .beffect h3 span.btn-primary,
+.ptabbr1.nav-tabs .nav-link.active::after,.wbhcart .wbcart-count,.pagination__item.pagination__item--current, .pagination__item:hover,.wbrtlmode li a:hover, .wbsitebox li:hover,.mobile-facets__label .icon-checkmark,.facet-checkbox > input[type="checkbox"]:checked ~ .icon-checkmark,.wbproducttab .nav-tabs .nav-item a.active::before,.product__info-container .badge,.card__badge span,.btn-primary, .button, .customer button, .shopify-challenge__button,.imgbnrtext .btn-primary:hover{
+	background: #00b8d4;
+}
+.ptabbr1.nav-tabs .nav-item.show .nav-link,.localization-selector.link:hover,#shopify-section-header.animate .hgallery:hover,
+.wbstbnr .stcolr2 h5,.txtimb p,.cms-menu p a:hover, .offer-icon a:hover,.wbtesti h5,
+.announcement-bar__message b,.wbsetl b,.wbproduct-container .product-form__input input+label.active,
+.heading strong,.link--text:hover,.wbtestisub h5,
+.wbmfres h2 b, .wbmfre2 h2 b,.txtimbnrset h2 b,.bestproduct .displayformat span,.blog__read_more a,
+.hgallery:hover,.product--thumbnail_slider .slider-mobile-gutter .slider-button:hover,.wbsetban h2,
+.ptabbr1.nav-tabs .nav-link.active,.pctab .nav-tabs .nav-link.active,.slidertext h4,#shopify-section-header.animate .localization-selector.link:hover,
+a:hover, .wbblogimgdesc h2:hover,#megamenu li.wbmenul_1 a.wbmenul1_link:hover,.pctab .nav-tabs .nav-link:hover,.wbexsating h3,.foot-app a:hover,#shopify-section-header.animate .wbhcart,
+.slick-dots li.slick-active button::before,.slick-dots li button::before,.slider-button:not([disabled]):hover,.wbaddpg .cless button:hover,.wbrtaddress,.carthead a.underlined-link,.wbsingleblog .tag-section .meta-sep, .wbsingleblog .tag-section a,.wbmainblog .tag-section a,.cart-notification__links .link.button-label:hover,.facet-checkbox:hover,.wbcatsort .product-count,.wbproducttab .nav-tabs .nav-item.show .nav-link, .wbproducttab .nav-tabs .nav-link.active,.product-popup-modal__button,.quickvfull, .footblink p a:hover, .footer .footer-collapse li a:hover,.product-title:hover, .product-title:hover a,a:hover{
+	color: #00b8d4;
+}
+.ptabbr1.nav-tabs .nav-link span::before,.megamenu li.wbmenul_1 a.wbmenul1_link::after,.ptabbr1 .nav-link.active{
+	border-bottom-color: #00b8d4;
+}
+
+.product-form .cartb:hover,.homecolbnr .beffect h3 span.btn-primary,
+.wbsetbors:hover,.stcolr a.btn-primary:hover,
+.product-form .wbquickv:hover,.product-form .wishlist:hover,
+.slideff a.btn-primary, .blog__read_more a.btn-primary:hover , .pctab .nav-tabs .nav-link.active, .pctab .nav-tabs .nav-link:hover, .testimonial img{
+	border-color: #00b8d4;
+}
+.wbcontform li svg,.wblistgridbtn svg:hover,.wbtestisub svg,
+.customer_account .wishlist:hover svg,.wblistgridbtn.active svg,.wbfootcont svg,.deliveryinfo ul:hover svg,.product__info-container .product-popup-modal__button svg{
+	fill: #00b8d4;
+}
+.imgbnrtext .btn-primary,.thumbnail[aria-current] img{
+	border-color: #00b8d4;
+	color: #00b8d4;
+}
+
+@media (max-width: 991px){
+	.template-index .wbhcart {
+	    color: #00b8d4;
+	}
+	.template-index .header__icons .icon-search:hover {
+	    fill: #00b8d4;
+	    color: #00b8d4;
+    }
+    .template-index #Cartcount{
+    	background: #00b8d4;
+    }
+    .template-index .hgallery:hover {
+        color: #00b8d4;
+    }
+}

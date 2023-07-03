@@ -1,0 +1,74 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+{{ 'component-rating.css' | asset_url | stylesheet_tag }}
+{% if section.settings.popup_product %}
+<section class="wbpopup-popducts">
+  {%- assign collection = collections[section.settings.collection] -%}
+    {% for product in collection.products limit: section.settings.product_limit %}
+      <div class="popinner"> 
+        {% include 'card-product-popup', product_card_product: product, show_rating: section.settings.show_rating %}
+        <div class="wbclosepopup"><i class="fa fa-close"></i></div>
+      </div>
+      {% else %} 
+      {% for i in (1..3) %}
+      <div class="popinner">
+        <div class="wbproduct-container">
+            <div class="row">
+              <div class="wbimgblock col-4">
+                {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+              <div class="wbproductdes col-8 text-left">
+                <h5><a href="#">your product's name</a></h5>
+                <div class="product_price"><span class="money" data-currency-usd="$320.00">$0.00</span> </div>
+            </div>
+          </div>
+        </div>
+        <div class="wbclosepopup"><i class="fa fa-close"></i></div>
+    </div>
+      {% endfor %}
+    {% endfor %}
+</section>
+{% endif %}
+
+  {% schema %}
+{
+  "name": "Popup Products",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "popup_product",
+      "label": "Show Popup Product",
+      "default": true
+    },
+    {
+      "id": "collection",
+      "type": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "default": false,
+      "label": "t:sections.featured-collection.settings.show_rating.label",
+      "info": "t:sections.featured-collection.settings.show_rating.info"
+    },
+    {
+      "type": "range",
+      "id": "product_limit",
+      "label": "Product Limit",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 2
+    }
+  ],
+  "presets": [
+    {
+      "name": "Popup Products",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}

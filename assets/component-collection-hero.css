@@ -1,0 +1,7 @@
+.collection-hero__image-container img{
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+.collection-hero__description{
+    color: rgba(var(--color-foreground),.5);
+}

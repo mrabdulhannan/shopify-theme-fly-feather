@@ -1,0 +1,379 @@
+<div class="wblbook page-width section-{{ section.id }}-padding">
+    {% if section.settings.displayheading %}
+        <h2 class="heading text-center"><span>{{ section.settings.heading }}</span></h2>
+    {% endif %}
+    <div class="row rless">
+        {%- if section.blocks.size > 0 -%}
+            <div class="col-lg-6 col-md-5 col-sm-6 col-12 cless">
+                {%- for block in section.blocks -%}
+                    {%- for i in (1..4) -%}
+                        {%- assign wblookpd = 'product_' | append: i -%}{%- assign wblookpd = block.settings[wblookpd] -%}
+                            {%- unless wblookpd == blank -%}
+                            {%- assign wblookpd = all_products[wblookpd] -%}
+                                <div class="wblookbleft {% if forloop.first %}active{% endif %}" id="wblook{{i}}">
+                                    <div class="wblookimg row rless">
+                                        <div class="col-6 cless">
+                                            <a href="{{ wblookpd.url }}" title="{{ wblookpd.title | escape }}">
+                                                <img loading="lazy" src="{{ wblookpd.featured_image.src | product_img_url: '285x' }}" alt="{{ wblookpd.featured_image.alt }}" class="img-fluid mx-auto">
+                                            </a>
+                                        </div>
+                                        <div class="col-6 cless">
+                                            <a href="{{ wblookpd.url }}" title="{{ wblookpd.title | escape }}">
+                                                <img loading="lazy" src="{{ wblookpd.images[1] | product_img_url: '285x' }}" alt="{{ wblookpd.featured_image.alt }}" class="img-fluid mx-auto">
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="wblookdesc">
+                                        <h2>{{ wblookpd.title }}</h2>
+                                        <p>{{ wblookpd.description | strip_html | truncatewords: 15 }}</p>
+                                        <a href="{{ wblookpd.url }}" class="btn-primary">{{ section.settings.btntxt }}</a>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="wblookbleft {% if forloop.first %}active{% endif %}">
+                                    <div class="wblookimg row rless">
+                                        <div class="col-6 cless">
+                                            <a href="#" title="product">
+                                                <img loading="lazy" src="https://dummyimage.com/285x285/aaa/jpg" class="img-fluid mx-auto" width="285" height="285" alt="lookbook"/>
+                                            </a>
+                                        </div>
+                                        <div class="col-6 cless">
+                                            <a href="#" title="product">
+                                                <img loading="lazy" src="https://dummyimage.com/285x285/aaa/jpg" class="img-fluid mx-auto" width="285" height="285" alt="lookbook"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="wblookdesc">
+                                        <h2>Example product title</h2>
+                                        <p>Add Product Description here</p>
+                                        <a href="#" class="btn-primary">Shop now</a>
+                                    </div>
+                                </div>
+                            {%- endunless -%}
+                    {%- endfor -%}
+                {%- endfor -%}
+            </div>
+            <div class="col-lg-6 col-md-7 col-sm-6 col-12 cless">
+                {%- for block in section.blocks -%}
+                    <div class="wblbookmain" id="wblbookmain">
+                        {%- if block.settings.image == blank -%} 
+                            <img loading="lazy" src="https://dummyimage.com/655x760/aaa/jpg" class="img-fluid mx-auto" width="655" height="760" alt="lookbook"/>
+                        {%- else -%}
+                            <img loading="lazy" src="{{ block.settings.image | img_url: '635x800' }}" alt="{{ block.settings.image.alt }}" class="img-fluid mx-auto" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}">
+                        {%- endif -%}
+
+                        {%- for i in (1..4) -%}
+                        {%- assign wblooktop = 'wblooktop_' | append: i -%}{%- assign wblooktop = block.settings[wblooktop] -%}
+                        {%- assign wblookleft = 'wblookleft_' | append: i -%}{%- assign wblookleft = block.settings[wblookleft] -%}
+                        {%- assign wblookpd = 'product_' | append: i -%}{%- assign wblookpd = block.settings[wblookpd] -%}
+                            {%- unless wblookpd == blank -%}
+                            {%- assign wblookpd = all_products[wblookpd] -%}
+                            {%- assign sale_on = false -%}
+                            {%- if wblookpd.selected_or_first_available_variant.compare_at_price > wblookpd.selected_or_first_available_variant.price -%}
+                                {%- assign sale_on = true -%}
+                            {%- endif -%}
+                                <div class="wblookbook" style="top: {{ wblooktop }}%; left: {{ wblookleft }}%;">
+                                    <div class="wblookbtn {% if forloop.first %}active{% endif %}" target="{{i}}"></div>
+                                    <div class="wblbookcnt">
+                                        <div class="wblookimg">
+                                            <a href="{{ wblookpd.url }}">
+                                                <img loading="lazy" src="{{ wblookpd.featured_image.src | product_img_url: '100x' }}" alt="{{ wblookpd.featured_image.alt }}" class="img-fluid mx-auto">
+                                            </a>
+                                        </div>
+                                        <div class="wblookdesc">
+                                            <h3><a href="{{ wblookpd.url }}">{{ wblookpd.title }}</a></h3>
+                                            {%- if sale_on and wblookpd.variants.size == 1 -%}
+                                                <div class="wblookprice">
+                                                    <span class="new-price">{{ wblookpd.selected_or_first_available_variant.price | money }}</span>
+                                                    <span class="old-price">{{ wblookpd.selected_or_first_available_variant.compare_at_price | money }}</span>
+                                                </div>
+                                            {%- else -%}
+                                                <div class="wblookprice">
+                                                    <span class="new-price">
+                                                        {% if wblookpd.price_min != wblookpd.price_max %}
+                                                            {{ wblookpd.price_min | money_without_trailing_zeros }} - {{ wblookpd.price_max | money_without_trailing_zeros }}
+                                                        {% else %}
+                                                            {{ wblookpd.selected_or_first_available_variant.price | money }}
+                                                        {% endif %}
+                                                    </span>
+                                                    <span class="old-price hide"></span>
+                                                </div>
+                                            {%- endif -%}
+
+                                            {%- if wblookpd.available -%}
+                                                    <form action="/cart/add" method="post" enctype="multipart/form-data">
+                                                        <input type="hidden" name="id" value="{{ wblookpd.selected_or_first_available_variant.id }}">
+                                                        <button class="btn wblkbtn btn-primary" title='{{ 'products.product.add_to_cart' | t }}'>{{ 'products.product.add_to_cart' | t }}</button>
+                                                    </form>
+                                                {%- else -%} 
+                                                    <a href="{{ wblookpd.url }}" class="btn disable wblkbtn btn-primary">{{ 'products.product.sold_out' | t }}</a>
+                                            {%- endif -%}
+                                        </div>
+
+                                    </div>
+                                </div>
+                            {%- endunless -%}
+                        {%- endfor -%}
+                    </div>
+                {%- endfor -%}
+            </div>
+        {%- endif -%}
+    </div>
+</div>
+{%- style -%}
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+}
+@media screen and (max-width: 991px) {
+    .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
+        padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
+    }
+}
+.wblookbleft a.btn-primary{
+    background: {{ section.settings.collbg1 }};
+    color: {{ section.settings.collbgtxt }};
+    border: 1px solid {{ section.settings.collbgborder }};
+}
+.wblookbleft a.btn-primary:hover{
+    background: {{ section.settings.collbg1hv }};
+    border-color: {{ section.settings.collbgborderhv }};
+    color: {{ section.settings.collbgtxthv }};
+}
+{%- endstyle -%}
+{% schema %}
+{
+    "name": "Lookbook",
+    "class": "spaced-section",
+    "settings": [
+    {
+        "type": "checkbox",
+        "id": "displayheading",
+        "label": "Display Title",
+        "default": false
+    },
+    {
+        "type": "text",
+        "id": "heading",
+        "label": "Title",
+        "default": "LookBook"
+    },
+    {
+        "type": "text",
+        "id": "btntxt",
+        "label": "Button Label",
+        "default": "Shop the Look"
+    },
+    {
+        "type": "header",
+        "content": "Button Color"
+    },
+    {
+        "type": "color",
+        "id": "collbg1",
+        "label": "Button color",
+        "default": "transparent"
+    },
+    {
+        "type": "color",
+        "id": "collbgborder",
+        "label": "Border color",
+        "default": "#000"
+    },
+    {
+        "type": "color",
+        "id": "collbgtxt",
+        "label": "Text color",
+        "default": "#000"
+    },
+
+    {
+        "type": "color",
+        "id": "collbg1hv",
+        "label": "Button hover color",
+        "default": "#000"
+    },
+    {
+        "type": "color",
+        "id": "collbgborderhv",
+        "label": "Border hover color",
+        "default": "#000"
+    },
+    {
+        "type": "color",
+        "id": "collbgtxthv",
+        "label": "Text hover color",
+        "default": "#fff"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Size: 655x760"
+        },
+        {
+          "type": "header",
+          "content": "Product 1"
+        },
+        {
+          "type": "range",
+          "id": "wblooktop_1",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Position top",
+          "default": 30
+        },
+        {
+          "type": "range",
+          "id": "wblookleft_1",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Position left",
+          "default": 50
+        },
+        {
+          "type": "product",
+          "id": "product_1",
+          "label": "Select product"
+        },
+
+        {
+          "type": "header",
+          "content": "Product 2"
+        },
+        {
+          "type": "range",
+          "id": "wblooktop_2",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Position top",
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "wblookleft_2",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Position left",
+          "default": 60
+        },
+        {
+          "type": "product",
+          "id": "product_2",
+          "label": "Select product"
+        },
+
+        {
+          "type": "header",
+          "content": "Product 3"
+        },
+        {
+          "type": "range",
+          "id": "wblooktop_3",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Position top",
+          "default": 61
+        },
+        {
+          "type": "range",
+          "id": "wblookleft_3",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Position left",
+          "default": 48
+        },
+        {
+          "type": "product",
+          "id": "product_3",
+          "label": "Select product"
+        },
+
+        {
+          "type": "header",
+          "content": "Product 4"
+        },
+        {
+          "type": "range",
+          "id": "wblooktop_4",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Position top",
+          "default": 30
+        },
+        {
+          "type": "range",
+          "id": "wblookleft_4",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Position left",
+          "default": 50
+        },
+        {
+          "type": "product",
+          "id": "product_4",
+          "label": "Select product"
+        }
+      ] 
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lookbook",
+      "category": "Lookbook",
+      "blocks": [
+        {
+          "type": "item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

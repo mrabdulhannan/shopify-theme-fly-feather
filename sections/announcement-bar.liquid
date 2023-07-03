@@ -1,0 +1,165 @@
+{%- for block in section.blocks -%}
+  {%- case block.type -%}
+    {%- when 'announcement' -%}
+      <div class="announcement-bar color-{{ block.settings.color_scheme }} gradient" role="region" aria-label="{{ 'sections.header.announcement' | t }}" {{ block.shopify_attributes }}>
+        <div class="announsment-top">
+        <div class="row mgap">
+          <div class="col-4 announc-offer-text wbmagall">
+               <p class="announcement-bar__contacts" style="color: {{ section.settings.toptext }};">
+                  {% render 'icon-fcontact' %}
+                  {{ block.settings.text2 | escape }}
+                  {%- if block.settings.link2 != blank -%}
+                  {% render 'icon-arrow' %}
+                  {%- endif -%}
+               </p>
+                <p class="announcement-bar__mail" style="color: {{ section.settings.toptext }};">
+                  {% render 'icon-fmail' %}
+                  {{ block.settings.text3 | escape }}
+                  {%- if block.settings.link3 != blank -%}
+                  {% render 'icon-arrow' %}
+                  {%- endif -%}
+               </p>
+          </div>
+
+        <div class="col-4 announc-offer-text">
+            {%- if block.settings.text != blank -%}
+              {%- if block.settings.link != blank -%}
+                <a href="{{ block.settings.link }}" class="announcement-bar__link link link--text focus-inset animate-arrow">
+              {%- endif -%}
+                  <p class="announcement-bar__message" style="color: {{ section.settings.toptext }};">
+                    {{ block.settings.text  }}
+                    {%- if block.settings.link != blank -%}
+                      {% render 'icon-arrow' %}
+                    {%- endif -%}
+                  </p>
+              {%- if block.settings.link != blank -%}
+                </a>
+              {%- endif -%}
+            {%- endif -%}
+        </div>
+        <div class="col-4 text-right headtleft">
+                  
+                  <localization-form>
+                    {%- form 'localization', id: 'FooterCountryForm', class: 'localization-form' -%}
+                      <div class="no-js-hidden">
+                        <div class="disclosure">
+                          <button type="button" class="disclosure__button localization-form__select localization-selector link link--text caption-large" aria-expanded="false" aria-controls="FooterCountryList" aria-describedby="FooterCountryLabel">
+                            {{ localization.country.name }} ({{ localization.country.currency.iso_code }} {{ localization.country.currency.symbol }})
+                            {% render 'icon-caret' %}
+                          </button>
+                          <ul id="FooterCountryList" role="list" class="disclosure__list list-unstyled" hidden>
+                            {%- for country in localization.available_countries -%}
+                              <li class="disclosure__item" tabindex="-1">
+                                <a class="link link--text disclosure__link caption-large{% if country.iso_code == localization.country.iso_code %} disclosure__link--active{% endif %} focus-inset" href="#"{% if country.iso_code == localization.country.iso_code %} aria-current="true"{% endif %} data-value="{{ country.iso_code }}">
+                                  {{ country.name }} <span class="localization-form__currency">({{ country.currency.iso_code }} {{ country.currency.symbol }})</span>
+                                </a>
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        </div>
+                        <input type="hidden" name="country_code" value="{{ localization.country.iso_code }}">
+                      </div>
+                    {%- endform -%}
+                  </localization-form>
+                
+                  <localization-form class="anouncebar-lang">
+                    {%- form 'localization', id: 'FooterLanguageForm', class: 'localization-form' -%}
+                      <div class="no-js-hidden">
+                        <div class="disclosure">
+                          <button type="button" class="disclosure__button localization-form__select localization-selector link link--text caption-large" aria-expanded="false" aria-controls="FooterLanguageList" aria-describedby="FooterLanguageLabel">
+                            {{ localization.language.endonym_name | capitalize }}
+                            {% render 'icon-caret' %}
+                          </button>
+                          <ul id="FooterLanguageList" role="list" class="disclosure__list list-unstyled" hidden>
+                            {%- for language in localization.available_languages -%}
+                              <li class="disclosure__item" tabindex="-1">
+                                <a class="link link--text disclosure__link caption-large{% if language.iso_code == localization.language.iso_code %} disclosure__link--active{% endif %} focus-inset" href="#" hreflang="{{ language.iso_code }}" lang="{{ language.iso_code }}"{% if language.iso_code == localization.language.iso_code %} aria-current="true"{% endif %} data-value="{{ language.iso_code }}">
+                                  {{ language.endonym_name | capitalize }}
+                                </a>
+                              </li>
+                            {%- endfor -%}
+                          </ul>
+                        </div>
+                        <input type="hidden" name="locale_code" value="{{ localization.language.iso_code }}">
+                      </div>
+                    {%- endform -%}
+                  </localization-form>
+        </div>
+      </div>
+      </div>
+      </div>
+  {%- endcase -%}
+{%- endfor -%}
+
+{% schema %}
+{
+  "name": "t:sections.announcement-bar.name",
+  "max_blocks": 12,
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "t:sections.announcement-bar.blocks.announcement.name",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "default": "Welcome to our store",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
+        },
+        {
+          "type": "text",
+          "id": "text2",
+          "default": "Welcome to our store",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
+        },
+         {
+          "type": "text",
+          "id": "text3",
+          "default": "Welcome to our store",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.text.label"
+        },
+        {
+          "type": "select",
+          "id": "color_scheme",
+          "options": [
+            {
+              "value": "background-1",
+              "label": "t:sections.announcement-bar.blocks.announcement.settings.color_scheme.options__1.label"
+            },
+            {
+              "value": "background-2",
+              "label": "t:sections.announcement-bar.blocks.announcement.settings.color_scheme.options__2.label"
+            },
+            {
+              "value": "inverse",
+              "label": "t:sections.announcement-bar.blocks.announcement.settings.color_scheme.options__3.label"
+            },
+            {
+              "value": "accent-1",
+              "label": "t:sections.announcement-bar.blocks.announcement.settings.color_scheme.options__4.label"
+            },
+            {
+              "value": "accent-2",
+              "label": "t:sections.announcement-bar.blocks.announcement.settings.color_scheme.options__5.label"
+            }
+          ],
+          "default": "accent-1",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.color_scheme.label"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "t:sections.announcement-bar.blocks.announcement.settings.link.label"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "announcement"
+      }
+    ]
+  }
+}
+{% endschema %}

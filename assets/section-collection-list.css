@@ -1,0 +1,93 @@
+.collection-list {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.collection-list-title {
+  margin: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .collection-list:not(.slider) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .section-collection-list .page-width {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .section-collection-list .collection-list:not(.slider) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+.collection-list__item:only-child {
+  max-width: 100%;
+  width: 100%;
+}
+
+.collection-list-view-all {
+    margin-top: 2rem;
+}
+.collection-list{
+    margin-left: -10px;
+    margin-right: -10px;
+}
+.collection-list .grid__item{
+    margin-bottom: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.card__heading {
+    margin-top: 0;
+    font-size: calc(var(--font-size-base) * 1.28px);
+}
+@media screen and (max-width: 767px) {
+  .slider.collection-list--1-items {
+    padding-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .slider.collection-list--1-items,
+  .slider.collection-list--2-items,
+  .slider.collection-list--3-items,
+  .slider.collection-list--4-items {
+    padding-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .collection-list__item a:hover {
+    box-shadow: none;
+  }
+
+  .collection-list.grid--3-col-tablet .grid__item {
+    max-width: calc(33.33% - var(--grid-desktop-horizontal-spacing) * 2 / 3);
+  }
+
+  .collection-list--4-items .grid__item,
+  .collection-list--7-items .grid__item:nth-child(n + 4),
+  .collection-list--10-items .grid__item:nth-child(n + 7) {
+    width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2);
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .collection-list.slider .collection-list__item {
+    max-width: 100%;
+  }
+}
+@media (max-width: 575px){
+    .collection-list .collection-list__item {
+        width: calc(100% - 3rem)
+    }
+}
+@media (min-width: 576px) and (max-width: 767px){
+    .collection-list .collection-list__item {
+        width: calc(50% - 3rem)
+    }
+}

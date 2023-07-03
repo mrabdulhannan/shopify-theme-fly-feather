@@ -1,0 +1,173 @@
+<div class="salebnr page-width section-{{ section.id }}-padding">
+    <div class="row">  
+        {% if section.blocks.size > 0 %}      
+            {% for block in section.blocks %}
+                <div class="col-md-4 col-sm-6 text-center salebtxt">
+                    {% if block.settings.storytitle != blank %}
+                        <h2>{{ block.settings.storytitle }}</h2>
+                    {% endif %}
+                    {% if block.settings.storysubtitle != blank %}
+                        <p>{{ block.settings.storysubtitle }}</p>
+                    {% endif %}
+                    {% if block.settings.link != blank %}
+                        <a href="{{ block.settings.link }}" class="btn btn-primary">{{ block.settings.btntxt }}</a>
+                    {% endif %}
+                </div>
+                <div class="col-md-8 col-sm-6 salecol">
+                    <div class="salebnrimg">
+                        {% if block.settings.link != blank %}<a href="{{ block.settings.link }}" title="{{ 'wbcustomlabel.wballtext.banner' | t }}">{% endif%}
+                        {% if block.settings.image != blank %}
+                            <img loading="lazy" src="{{ block.settings.image | img_url: 'master' }}" alt="{{ block.settings.image.alt }}" class="img-fluid mx-auto" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}"/>
+                        {% else %}
+                            <img loading="lazy" src="https://dummyimage.com/1060x600/aaa" class="img-fluid mx-auto" alt="banner" width="1060" height="600"/>
+                        {% endif %}
+                        {% if block.settings.link != blank %}</a>{% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{%- style -%}
+.salebtxt a.btn-primary{
+    background: {{ section.settings.collbg1 }};
+    color: {{ section.settings.collbgtxt }};
+    border: 1px solid {{ section.settings.collbgborder }};
+}
+.salebtxt a.btn-primary:hover{
+    background: {{ section.settings.collbg1hv }};
+    border-color: {{ section.settings.collbgborderhv }};
+    color: {{ section.settings.collbgtxthv }};
+}
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+}
+@media screen and (max-width: 991px) {
+    .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
+        padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
+    }
+}
+{%- endstyle -%}
+{% schema %}
+{
+"name": "Sale Banner",
+"class": "spaced-section",
+"settings": [
+    {
+        "type": "header",
+        "content": "Button Color"
+    },
+    {
+        "type": "color",
+        "id": "collbg1",
+        "label": "Button color",
+        "default": "transparent"
+    },
+    {
+        "type": "color",
+        "id": "collbgborder",
+        "label": "Border color",
+        "default": "#000"
+    },
+    {
+        "type": "color",
+        "id": "collbgtxt",
+        "label": "Text color",
+        "default": "#000"
+    },
+
+    {
+        "type": "color",
+        "id": "collbg1hv",
+        "label": "Button hover color",
+        "default": "#000"
+    },
+    {
+        "type": "color",
+        "id": "collbgborderhv",
+        "label": "Border hover color",
+        "default": "#000"
+    },
+    {
+        "type": "color",
+        "id": "collbgtxthv",
+        "label": "Text hover color",
+        "default": "#fff"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 0
+    }
+],
+ "blocks": [
+    {
+      "type": "Image",
+      "name": "Sale Banner",
+      "settings": [ 
+        {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image",
+            "info": "Size: 1060x600"
+        },
+        {
+            "type": "url",
+            "id": "link",
+            "label": "Link URL"
+        },
+        {
+            "type": "text",
+            "id": "storytitle",
+            "label": "Heading",
+            "default": "Slick Cafe Table"
+        },
+        {
+            "type": "textarea",
+            "id": "storysubtitle",
+            "label": "Sub Heading",
+            "default": "<p>The ‘Slick cafe table’ is a product of simplicity in form and versatility in function. It is a perfect specimen of a minimal design language.</p>"
+        },
+        {
+            "type": "text",
+            "id": "btntxt",
+            "label": "Button Label",
+            "default": "Shop the collection"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sale Banner",
+      "category": "Image",
+      "blocks": [
+        {
+            "type": "Image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

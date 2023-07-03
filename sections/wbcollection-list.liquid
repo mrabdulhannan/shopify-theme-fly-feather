@@ -1,0 +1,114 @@
+<div class="wbcolltop section-{{ section.id }}-padding">
+  <div class="wbsetmybg">
+    <div class="container-fluid">
+           <div class="rless">
+               <div class="owl-catt">
+               {% for block in section.blocks limit: section.blocks.size %}
+                   <div class="item-row col-12 cless{{ grid_item_width }}" {{ block.shopify_attributes }}>
+                       {%- assign collection = collections[block.settings.collection] -%}
+                       {% if collection.image %}
+                       {%- assign collection_image = collection.image -%}
+                       {% elsif collection.products.first and collection.products.first.images != empty %}
+                       {%- assign collection_image = collection.products.first.featured_image -%}
+                       {% else %}
+                       {% assign collection_image = blank %}
+                       {% endif %}
+                       <div class="homecatb">    
+                           <a href="{% if collection.products == empty %}#{% else %}{{ collection.url }}{% endif %}">
+                               {% if collection_image != blank %}
+                                   <img class="img-fluid mx-auto" src="{{ collection_image | img_url: '320x500' }}" alt="{{ collection.title }}">
+                               {% else %}
+                                   <img class="img-fluid mx-auto" src="https://dummyimage.com/320x500/f8e0e0">
+                               {% endif %}
+                               <div class="catcontent ">
+                                   <div class="catcntinner">
+                                       <h2>{{ block.settings.title }}</h2>
+                                   </div>
+                               </div>
+                           </a>
+                       </div>
+                   </div>
+              {% endfor %}
+             </div>
+            </div>
+    </div>
+  </div>
+</div>
+
+{%- style -%}
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+}
+@media screen and (max-width: 991px) {
+    .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
+        padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
+    }
+}
+{%- endstyle -%}
+
+
+{% schema %}
+{
+    "name": "Webi Collection list",
+    "class": "index-section",
+    "max_blocks": 12,
+    "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 0
+    }
+],
+    "blocks": [
+    {
+        "type": "webi_collection",
+        "name": "Collection",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Heading",
+                "default": "Add Text"
+            },
+            {
+                "label": "Collection",
+                "id": "collection",
+                "type": "collection"
+            }
+        ]
+    }
+    ],
+    "presets": [
+    {
+        "name": "Webi Collection list",
+        "category": "Collection",
+        "blocks": [
+            {   
+              "type": "webi_collection"
+            }
+        ]
+    }
+    ]
+}
+{% endschema %}

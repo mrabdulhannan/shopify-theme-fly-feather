@@ -1,0 +1,253 @@
+
+{%- style -%}
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+}
+@media screen and (max-width: 991px) {
+    .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
+        padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
+    }
+}
+{%- endstyle -%}
+<div class="wbsetrui">
+    <div class="page-width">
+        <div class="bgcolordelivery section-{{ section.id }}-padding">
+            <div class="row deliveryinfo rless">
+                {% if section.settings.s_title %}
+                    <div class="col-12  col-sm-4 cless">
+                        <ul>
+                            <li>
+                                <span>
+                                    {% render 'icon-allservice', icon: section.settings.icon1 %}
+                                    {% if section.settings.checkiconimage1 %}
+                                        {% if section.settings.iconimage1 != blank %}
+                                            <img src="{{ section.settings.iconimage1 | img_url: 'master' }}" alt="{{ section.settings.iconimage1.alt }}" class="img-fluid mx-auto" width="{{ section.settings.iconimage1.width }}" height="{{ section.settings.iconimage1.height }}"/>
+                                        {% else %}
+                                            <img src="https://dummyimage.com/50x50/aaa" class="img-fluid mx-auto" alt="banner" width="50" height="50"/>
+                                        {% endif %}
+                                    {% endif %}
+                                </span>
+                            </li>
+                            <li>
+                                <h4>{{ section.settings.header_gift }}</h4>
+                                <p>{{ section.settings.header_gift1 }}</p>
+                            </li>
+                        </ul>
+                    </div>
+                {% endif %}
+                {% if section.settings.sa_title %}
+                    <div class="col-12  col-sm-4 cless">
+                        <ul>
+                            <li>
+                                <span>
+                                    {% render 'icon-allservice', icon: section.settings.icon2 %}
+                                    {% if section.settings.checkiconimage2 %}
+                                        {% if section.settings.iconimage2 != blank %}
+                                            <img src="{{ section.settings.iconimage2 | img_url: 'master' }}" alt="{{ section.settings.iconimage2.alt }}" class="img-fluid mx-auto" width="{{ section.settings.iconimage2.width }}" height="{{ section.settings.iconimage2.height }}"/>
+                                        {% else %}
+                                            <img src="https://dummyimage.com/50x50/aaa" class="img-fluid mx-auto" alt="banner" width="50" height="50"/>
+                                        {% endif %}
+                                    {% endif %}
+                                </span>
+                            </li>
+                            <li>
+                                <h4>{{ section.settings.header_pay }}</h4>
+                                <p>{{ section.settings.header_pay1 }}</p>
+                            </li>
+                        </ul>
+                    </div>
+                {% endif %}
+                {% if section.settings.sb_title %}
+                    <div class="col-12 col-sm-4 cless">
+                        <ul>
+                            <li>
+                                <span>
+                                    {% render 'icon-allservice', icon: section.settings.icon3 %}
+                                    {% if section.settings.checkiconimage3 %}
+                                        {% if section.settings.iconimage3 != blank %}
+                                            <img src="{{ section.settings.iconimage3 | img_url: 'master' }}" alt="{{ section.settings.iconimage3.alt }}" class="img-fluid mx-auto" width="{{ section.settings.iconimage3.width }}" height="{{ section.settings.iconimage3.height }}"/>
+                                        {% else %}
+                                            <img src="https://dummyimage.com/50x50/aaa" class="img-fluid mx-auto" alt="banner" width="50" height="50"/>
+                                        {% endif %}
+                                    {% endif %}
+                                </span>
+                            </li>
+                            <li>
+                                <h4>{{ section.settings.header_support }}</h4>
+                                <p>{{ section.settings.header_support1 }}</p>
+                            </li>
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .bgcolordelivery { 
+        background-color: {{ section.settings.color_service_bg }};
+    }
+
+    .wbsetrui::before{ 
+        content: '';
+        background-image: url('{{ section.settings.backimage1 | img_url: '394x394' }}'); 
+    }
+</style>
+
+{% schema %}
+{
+  "name": "Information",
+  "class": "spaced-section",
+  "settings": [
+    {
+        "type": "image_picker",
+        "id": "backimage1",
+        "label": "Image"
+    },
+    {
+        "type": "color",
+        "id": "color_service_bg",
+        "label": "Background",
+        "default": "#e7e7e7"
+    },
+    {
+        "type": "header",
+        "content": "Service 1"
+    },
+    {
+        "type": "checkbox",
+        "id": "s_title",
+        "label": "Show Service 1",
+        "default": true
+    },
+    {
+        "type": "checkbox",
+        "id": "checkiconimage1",
+        "label": "Show Service Image",
+        "default": true
+    },
+    {
+        "type": "image_picker",
+        "id": "iconimage1",
+        "label": "Image",
+        "info": "Size: 50x50"
+    },
+    {
+        "type": "text",
+        "id": "header_gift",
+        "label": "Heading",
+        "default": "Free Shipping"
+    },
+    {
+        "type": "text",
+        "id": "header_gift1",
+        "label": "Sub Heading",
+        "default": "Free Shipping world wide"
+    },
+
+    {
+        "type": "header",
+        "content": "Service 2"
+    },
+    {
+        "type": "checkbox",
+        "id": "sa_title",
+        "label": "Show Service 2",
+        "default": true
+    },
+    {
+        "type": "checkbox",
+        "id": "checkiconimage2",
+        "label": "Show Service Image",
+        "default": true
+    },
+    {
+        "type": "image_picker",
+        "id": "iconimage2",
+        "label": "Image",
+        "info": "Size: 50x50"
+    },
+    {
+        "type": "text",
+        "id": "header_pay",
+        "label": "Heading",
+        "default": "24x7 Service"
+    },
+    {
+        "type": "text",
+        "id": "header_pay1",
+        "label": "Sub Heading",
+        "default": "Online service for new customer"
+    },
+
+    {
+        "type": "header",
+        "content": "Service 3"
+    },
+    {
+        "type": "checkbox",
+        "id": "sb_title",
+        "label": "Service 3",
+        "default": true
+    },
+    {
+        "type": "checkbox",
+        "id": "checkiconimage3",
+        "label": "Show Service Image",
+        "default": true
+    },
+    {
+        "type": "image_picker",
+        "id": "iconimage3",
+        "label": "Image",
+        "info": "Size: 50x50"
+    },
+    {
+        "type": "text",
+        "id": "header_support",
+        "label": "Heading",
+        "default": "Festival offer"
+    },
+    {
+        "type": "text",
+        "id": "header_support1",
+        "label": "Sub Heading",
+        "default": "New online special festival offer"
+    },
+
+    {
+        "type": "header",
+        "content": "t:sections.all.padding.section_padding_heading"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_top",
+        "default": 0
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 4,
+        "unit": "px",
+        "label": "t:sections.all.padding.padding_bottom",
+        "default": 0
+      }
+  ],
+  "presets": [
+    {
+     "name": "Information",
+      "category": "text"
+    }
+  ]
+}
+{% endschema %}

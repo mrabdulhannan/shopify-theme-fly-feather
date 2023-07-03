@@ -1,0 +1,84 @@
+@charset "UTF-8";
+.wbhdtop,.footer__content-bottom,.wbslideshow .slider-counter__link--active.slider-counter__link--dots .dot{
+	background: #8bc34a !important;
+}
+.heading svg.userdrop:hover .svgbg svg path, 
+.wbhcart:hover .svgbg svg path,.wbheadwish:hover svg{
+	fill: #8bc34a;
+}
+.slidertext p,.wbslideshow .slideshow__text p.banner__text,.wbslideshow .slider-button{
+	color: #8bc34a !important;
+}
+.card__badge span,.wbslideshow .slider-counter__link--dots .dot, .wbslideshow .slider-counter__link--dots:not(.slider-counter__link--active):hover .dot{
+    border-color: #8bc34a !important;
+}
+.wbslideshow .slideshow__text a.btn-primary{
+	background: #8bc34a !important;
+	border-color: #8bc34a !important;
+}
+.card__badge span{
+    border-color: #8bc34a !important;
+}
+.header__icons .icon-search:hover, .wbsetinner:hover svg,
+#shopify-section-header.animate .header__icons .icon-search:hover, #shopify-section-header.animate .userdrop:hover svg, #shopify-section-header.animate .wbhcart:hover svg{
+	fill: #8bc34a;
+	color: #8bc34a;
+}
+.wbproducttab .spr-container .spr-summary-actions-newreview,.announcement-bar.color-background-1,
+.slick-dots li button,.wbhcartitem,.footer__list-social li:hover a,.slick-slider .slick-arrow:hover,.card-wrapper .wishlist:hover,.card-wrapper .wbquickv:hover,
+.wbsetbntxt h2,.testi .wbtestisub:before,.product-form .cartb:hover,
+.whr-menu,.field__button:hover,#shopify-section-header.animate #Cartcount,#Cartcount,.product-category button.toggle,
+.newsletter-form__field-wrapper button.btn-primary:hover,.wbwishcount,.stcolr a.btn-primary:hover,
+.slideff a.btn-primary,.tag-section .blog-tags:hover,.homecolbnr .beffect h3 span.btn-primary,
+.product-form .wbquickv:hover,.product-form .wishlist:hover,.imgbnr a.btn-primary,.progallerybtn .slider-button:not([disabled]):hover,
+.ptabbr1.nav-tabs .nav-link.active::after,.wbhcart .wbcart-count,.pagination__item.pagination__item--current, .pagination__item:hover,.wbrtlmode li a:hover, .wbsitebox li:hover,.mobile-facets__label .icon-checkmark,.facet-checkbox > input[type="checkbox"]:checked ~ .icon-checkmark,.wbproducttab .nav-tabs .nav-item a.active::before,.product__info-container .badge,.card__badge span,.btn-primary, .button, .customer button, .shopify-challenge__button,.imgbnrtext .btn-primary:hover{
+	background: #8bc34a;
+}
+.ptabbr1.nav-tabs .nav-item.show .nav-link, .localization-selector.link:hover,#shopify-section-header.animate .hgallery:hover,.hgallery:hover,
+.wbstbnr .stcolr2 h5,.txtimb p,.wbsetban h2,.wbmfres h2 b, .wbmfre2 h2 b,.txtimbnrset h2 b,.wbtesti h5,
+.announcement-bar__message b,.wbsetl b,.wbproduct-container .product-form__input input+label.active,
+.heading strong,.link--text:hover,.blog__read_more a,.wbtestisub h5,
+.cms-menu p a:hover, .offer-icon a:hover,.product--thumbnail_slider .slider-mobile-gutter .slider-button:hover,.bestproduct .displayformat span,
+.ptabbr1.nav-tabs .nav-link.active,.slidertext h4,.foot-app a:hover,#shopify-section-header.animate .wbhcart,
+a:hover, .wbblogimgdesc h2:hover,#megamenu li.wbmenul_1 a.wbmenul1_link:hover,.pctab .nav-tabs .nav-link:hover,.wbexsating h3,#shopify-section-header.animate .localization-selector.link:hover,.product__info-container .product-popup-modal__button svg,
+.pctab .nav-tabs .nav-link.active,.slick-dots li.slick-active button::before,.slick-dots li button::before,.slider-button:not([disabled]):hover,.wbaddpg .cless button:hover,.wbrtaddress,.carthead a.underlined-link,.wbsingleblog .tag-section .meta-sep, .wbsingleblog .tag-section a,.wbmainblog .tag-section a,.cart-notification__links .link.button-label:hover,.facet-checkbox:hover,.wbcatsort .product-count,.wbproducttab .nav-tabs .nav-item.show .nav-link, .wbproducttab .nav-tabs .nav-link.active,.product-popup-modal__button,.quickvfull, .footblink p a:hover, .footer .footer-collapse li a:hover,.product-title:hover, .product-title:hover a,a:hover{
+	color: #8bc34a;
+}
+.ptabbr1.nav-tabs .nav-link span::before,.megamenu li.wbmenul_1 a.wbmenul1_link::after{
+	border-bottom-color: #8bc34a;
+}
+.thumbnail[aria-current] img,
+.slideff a.btn-primary,.stcolr a.btn-primary:hover,
+.wbsetbors:hover,.product-form .wbquickv:hover,.product-form .wishlist:hover,.homecolbnr .beffect h3 span.btn-primary,
+.blog__read_more a.btn-primary:hover,.product-form .cartb:hover,
+ .product-form .wbquickv:hover,.pctab .nav-tabs .nav-link.active, .pctab .nav-tabs .nav-link:hover,.testimonial img{
+	border-color: #8bc34a;
+}
+.wbcontform li svg,.wblistgridbtn svg:hover,.wbtestisub svg,
+.customer_account .wishlist:hover svg, .wblistgridbtn.active svg,.wbfootcont svg,.deliveryinfo ul:hover svg,.product__info-container .product-popup-modal__button svg{
+	fill: #8bc34a;
+}
+.imgbnrtext .btn-primary{
+	border-color: #8bc34a;
+	color: #8bc34a;
+}
+
+@media (max-width: 991px){
+	.template-index .wbhcart {
+	    color: #e36414;
+	}
+	.template-index .header__icons .icon-search:hover{
+	    fill: #8bc34a;
+	    color: #8bc34a;
+    }
+    .template-index #Cartcount{
+    	background: #8bc34a;
+    }
+     .template-index .hgallery:hover {
+        color: #8bc34a;
+    }
+    .product-form .cartb:hover {
+	    background: #8bc34a;
+	    border-color: #8bc34a;
+	}
+}

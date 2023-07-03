@@ -1,0 +1,26 @@
+.pagination__item {
+    background: rgba(var(--color-foreground),.03);
+    border-radius: 0px;
+    min-width: 40px;
+    min-height: 40px;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: calc(var(--font-size-base) * 1.15px);
+    padding-top: 8px;
+}
+.pagination__item.pagination__item--current,.pagination__item:hover{
+    background: var(--color-wbmaincolors-text);
+    color: rgb(var(--color-background))
+}
+.pagination-wrapper .pagination{
+    display: block;
+    text-align: center;
+}
+.pagination__list > li{
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 5px;
+}
+.pagination-wrapper{
+    margin-top: 30px;
+}

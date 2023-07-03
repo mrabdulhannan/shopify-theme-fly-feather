@@ -1,0 +1,17 @@
+.discounts__discount {
+  display: flex;
+  align-items: center;
+  font-size: calc(var(--font-size-base) * 0.86px);
+  margin-bottom: 4px;
+}
+
+
+.discounts__discount--end {
+  justify-content: flex-end;
+}
+
+.discounts__discount > .icon {
+  width: 12px;
+  height: 12px;
+  margin-right: 3px;
+}

@@ -1,0 +1,74 @@
+{% comment %}
+    Renders an article card for a given blog with settings to either show the image or not.
+
+    Accepts:
+    - blog: {Object} Blog object
+    - article: {Object} Article object
+    - image_height: {String} The setting changes the height of the article image, if shown
+    - show_image: {String} The setting either show the article image or not. If it's not included it will show the image by default
+    - show_date: {String} The setting either show the article date or not. If it's not included it will not show the image by default
+    - show_author: {String} The setting either show the article author or not. If it's not included it will not show the author by default
+
+    Usage:
+    {% render 'article-card' blog: blog, article: article, show_image: section.settings.show_image %}
+{% endcomment %}
+<div class="blogbdr">
+    <article class="article-card row rless">
+        {%- if show_image == true and article.image -%}
+            <div class="wbblogimg col-md-5 col-12 cless">
+                <a href="{{ article.url }}" class="article-content motion-reduce media media media--transparent media--{{ image_height }} media--hover-effect" {% if image_height == 'adapt' %} style="padding-bottom: {{ 1 | divided_by: article.image.aspect_ratio | times: 100 }}%;"{% endif %}>
+                    <img
+                    srcset="{{ article.image.src | img_url: 'master' }} {{ article.image.src.width }}w"
+                    src="{{ article.image.src | img_url: '533x' }}"
+                    alt="{{ article.image.src.alt | escape }}"
+                    width="{{ article.image.width }}"
+                    height="{{ article.image.height }}"
+                    loading="lazy"
+                    class="motion-reduce img-fluid mx-auto">
+                </a>
+            </div>
+        {%- endif -%}
+        
+        <div class="wbblogimgdesc col-md-7 col-12 cless">
+            {%- if show_date -%}
+              <div class="wbblogdate"> <i class="fa fa-calendar wbins"></i><span class="wbstd">{{- article.published_at | date: "%b %d, %Y" -}}</span></div>
+            {%- endif -%}
+            {%- if show_cmment -%}
+                <div class="article-card__footer"> 
+                    {%- if blog.comments_enabled? -%}
+                         <i class="fa fa-comments wbins1"></i>
+                        <span>{{ 'blogs.article.comments' | t: count: article.comments_count }}</span>
+                    {%- endif -%}
+                </div>
+            {%- endif -%}
+            {%- if show_author -%}
+            <div class="wbblogauth"><i class="fa fa-user"></i>&nbsp;{{ article.author -}}</div> 
+            {%- endif -%}
+            <h2><a href="{{ article.url }}">{{ article.title | escape }}</a></h2>
+            {%- if show_desc -%}
+                {%- if article.excerpt.size > 0 or article.content.size > 0 -%}
+                    <p class="wbblogtxt">
+                        {%- if article.excerpt.size > 0 -%}
+                            {{ article.excerpt | strip_html | truncatewords: 10 }}
+                        {%- else -%}
+                            {{ article.content | strip_html | truncatewords: 10 }}
+                        {%- endif -%}
+                    </p>
+                {%- endif -%}
+            {%- endif -%}
+            <div class="wbuserdate">
+                {%- if show_view_all -%}
+                <div class="blog__read_more">
+                    <a href="{{ blog.url }}" class="btn btn-primary">
+                        {{ 'sections.featured_blog.view_all' | t }} 
+                          <svg viewBox="0 0 14 10" fill="none" aria-hidden="true" focusable="false" role="presentation" class="icon icon-arrow"> 
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z" fill="currentColor">
+                          </path>
+                        </svg>
+                    </a>
+                </div>
+               {%- endif -%}
+            </div>
+        </div>
+    </article>
+</div>

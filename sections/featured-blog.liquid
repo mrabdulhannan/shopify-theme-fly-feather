@@ -1,0 +1,168 @@
+<link rel="stylesheet" href="{{ 'component-slider.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-card.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'section-featured-blog.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'component-slider.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-card.css' | asset_url | stylesheet_tag }}</noscript>
+
+{{ 'section-featured-blog.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign posts_displayed = section.settings.blog.articles_count
+-%}
+{%- style -%}
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+}
+@media screen and (max-width: 991px) {
+    .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px;
+        padding-bottom: {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px;
+    }
+}
+{%- endstyle -%}
+<div class="whins">
+  <div class="blog section-{{ section.id }}-padding">
+      <div class="page-width">
+        <h2 class="heading text-center">
+          <span>{{ section.settings.title }}</span>
+        </h2>
+          <div class="rless">
+              <div class="wbblog">
+                  {%- if section.settings.blog != blank and section.settings.blog.articles_count > 0 -%}
+                      {%- for article in section.settings.blog.articles -%}
+                          <div class="col-12 cless">
+                              {% render 'article-card', blog: section.settings.blog, image_height: section.settings.image_height, article: article, show_image: section.settings.show_image, show_date: section.settings.show_date, show_author: section.settings.show_author, show_cmment: section.settings.show_cmment,show_desc: section.settings.show_desc,show_view_all: section.settings.show_view_all %}
+                          </div>
+                      {%- endfor -%}
+
+                  {%- else -%}
+                      {% for i in (1..5) %}
+                          <div class="col-12 cless">
+                            <div class="blogbdr">
+                              <article class="article-card row rless">
+                                  <div class="wbblogimg col-md-5 col-12 cless">
+                                      <img src="https://dummyimage.com/1000x650/f5f5f5" class="img-fluid mx-auto" loading="lazy"/>
+                                  </div>
+                                  <div class="wbblogimgdesc col-md-7 col-12 cless">
+                                      <h2><a href="#">Curabitur iaculis sem non lacus dapibus aliquam Maecenas {{ i }}</a></h2>
+                                      <div class="wbblogdate">Oct 22, 2022</div>
+                                  </div>
+                              </article>
+                            </div>
+                          </div>
+                      {% endfor %}
+                  {%- endif -%}
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "t:sections.featured-blog.name",
+  "tag": "section",
+  "class": "spaced-section spaced-section--full-width",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "latest blog"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "t:sections.featured-blog.settings.blog.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "default": true,
+      "label": "t:sections.featured-blog.settings.show_image.label"
+    },
+    {
+      "type": "select",
+      "id": "image_height",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.featured-collection.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.featured-collection.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.featured-collection.settings.image_ratio.options__3.label"
+        }
+      ],
+      "default": "adapt",
+      "label": "t:sections.featured-collection.settings.image_ratio.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_date",
+      "default": true,
+      "label": "t:sections.featured-blog.settings.show_date.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_author",
+      "default": false,
+      "label": "t:sections.featured-blog.settings.show_author.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_desc",
+      "default": false,
+      "label": "Show Description"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cmment",
+      "default": false,
+      "label": "Show Comments"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "default": true,
+      "label": "Show View All Button"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.featured-blog.presets.name",
+      "settings": {
+        "blog": "News"
+      }
+    }
+  ]
+}
+{% endschema %}

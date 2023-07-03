@@ -1,0 +1,8 @@
+.footer__blocks-wrapper h6.newsletter-form__message {
+  justify-content: center;
+  margin-bottom: 0;
+  position: absolute;
+  font-size: calc(var(--font-size-base) * 0.93px);
+  font-weight: normal;
+  text-transform: capitalize;
+}

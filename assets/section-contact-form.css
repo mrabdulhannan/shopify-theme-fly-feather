@@ -1,0 +1,56 @@
+.contact img {
+    max-width: 100%;
+}
+.contact .form__message {
+    align-items: flex-start;
+}
+.contact .icon-success {
+    margin-top: 0.2rem;
+}
+.contact .field {
+    margin-bottom: 1.5rem;
+}
+.grecaptcha-badge {
+    visibility: hidden;
+}
+#map iframe {
+    max-width: 100%;
+}
+.wbcontform li svg{
+    width: 40px;
+    height: 40px;
+    fill: var(--color-wbmaincolors-text);
+    margin-bottom: 15px;
+}
+.wbcontform li h4{
+    font-size: calc(var(--font-size-base) * 1.29px);
+    margin-bottom: 10px;
+}
+.wbcontform li p{
+    font-size: rgb(var(--color-foreground));
+    margin-bottom: 0;
+}
+.wbcontforminner{
+    margin-bottom: 30px;
+}
+@media (max-width: 991px){
+    #ContactForm{
+        margin-bottom: 15px;
+    }
+    .wbcontform li svg {
+        width: 26px;
+        height: 26px;
+        margin-bottom: 6px;
+    }
+    .wbcontform li h4{
+        margin-bottom: 4px
+    }
+}
+@media (max-width: 575px){
+    .wbcontforminner [class*='col-']{
+        margin-bottom: 15px;
+    }
+    .wbcontforminner{
+        margin-bottom: 0;
+    }
+}
