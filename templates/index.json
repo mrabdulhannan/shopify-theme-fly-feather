@@ -79,14 +79,14 @@
         "template--16056664424638__ff9e96f6-7a78-4dfb-bd2e-d6a8442c6cef-16738486368b7c5b5b-0": {
           "type": "webi_collection",
           "settings": {
-            "title": "Electric Toys",
+            "title": "Accessories",
             "collection": "accessories"
           }
         },
         "edc71982-3538-4e58-bfbb-c518a0566d80": {
           "type": "webi_collection",
           "settings": {
-            "title": "RC Toys",
+            "title": "Clothes",
             "collection": "clothes"
           }
         },
