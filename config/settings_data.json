@@ -319,10 +319,10 @@
           "newssub": "Lorem Ipsum is simply dummy text..",
           "show_social": true,
           "payment_enable": true,
-          "foottext": "<p><a href=\"\/collections\/bestseller\" title=\"bestseller\">Bicycle<\/a><\/p><p><a href=\"\/collections\/featured\" title=\"featured\">Bubble Solution<\/a><\/p><p><a href=\"\/collections\/hot-toys\" title=\"hot toys\">Train<\/a><\/p><p><a href=\"\/collections\/special-toys\" title=\"special toys\">White House<\/a><\/p><p><a href=\"\/collections\" title=\"All collections\">Star Wars<\/a><\/p><p><a href=\"\/collections\" title=\"All collections\">Ball<\/a><\/p><p><a href=\"\/collections\/latest\" title=\"latest\">Doll<\/a><\/p><p><a href=\"\/collections\/featured\" title=\"featured\">Surprise Dolls<\/a><\/p><p><a href=\"\/collections\/special-toys\" title=\"special toys\">Rocking Horsh<\/a><\/p><p><a href=\"\/collections\/hot-toys\" title=\"hot toys\">Care Bear<\/a><\/p><p><a href=\"\/collections\/special-toys\" title=\"special toys\">Van<\/a><\/p><p><a href=\"\/collections\" title=\"All collections\">Car<\/a><\/p><p><a href=\"\/collections\/special-toys\" title=\"special toys\">Balloon Dog<\/a><\/p><p><a href=\"\/collections\" title=\"All collections\">Rubber Duncky<\/a><\/p><p><a href=\"\/collections\/special-toys\" title=\"special toys\">Sock Monkey<\/a><\/p><p><a href=\"\/collections\" title=\"All collections\">Airoplane<\/a><\/p><p><a href=\"\/collections\/latest\" title=\"latest\">Teddy Bear<\/a><\/p>",
-          "margin_top": 60,
-          "padding_top": 60,
-          "padding_bottom": 60
+          "foottext": "",
+          "margin_top": 0,
+          "padding_top": 0,
+          "padding_bottom": 0
         }
       },
       "main-password-header": {
