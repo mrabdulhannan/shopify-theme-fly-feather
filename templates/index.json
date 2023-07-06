@@ -6,11 +6,11 @@
         "1644650669edab8c4b-1": {
           "type": "slide",
           "settings": {
-            "slidesub": "#f54676",
+            "slidesub": "#ffa791",
             "slideheadclr": "#4ab9f0",
             "slidesubtxt": "#707070",
-            "collbg1": "#f54676",
-            "collbgborder": "#f54676",
+            "collbg1": "#ffa791",
+            "collbgborder": "#ffa791",
             "collbgtxt": "#ffffff",
             "collbg1hv": "#4ab9f0",
             "collbgborderhv": "#4ab9f0",
@@ -32,11 +32,11 @@
         "1644650669edab8c4b-0": {
           "type": "slide",
           "settings": {
-            "slidesub": "#f54676",
+            "slidesub": "#ffa791",
             "slideheadclr": "#4ab9f0",
             "slidesubtxt": "#707070",
-            "collbg1": "#f54676",
-            "collbgborder": "#f54676",
+            "collbg1": "#ffa791",
+            "collbgborder": "#ffa791",
             "collbgtxt": "#ffffff",
             "collbg1hv": "#4ab9f0",
             "collbgborderhv": "#4ab9f0",
@@ -64,7 +64,7 @@
         "layout": "full_bleed",
         "slide_height": "adapt_image",
         "slider_visual": "dots",
-        "pagicolor": "#f54676",
+        "pagicolor": "#ffa791",
         "auto_rotate": false,
         "change_slides_speed": 5,
         "show_text_below": false,
@@ -143,8 +143,8 @@
     "1646221143250dbb4c": {
       "type": "collection-banner",
       "settings": {
-        "collbg1": "#f54676",
-        "collbgborder": "#f54676",
+        "collbg1": "#ffa791",
+        "collbgborder": "#ffa791",
         "collbgtxt": "#ffffff",
         "collbg1hv": "#4ab9f0",
         "collbgborderhv": "#4ab9f0",
@@ -245,8 +245,8 @@
     "9e5273b0-b015-4c3b-99a5-8285d018e260": {
       "type": "image-gallery",
       "settings": {
-        "collbg1": "#f54676",
-        "collbgborder": "#f54676",
+        "collbg1": "#ffa791",
+        "collbgborder": "#ffa791",
         "collbgtxt": "#ffffff",
         "collbg1hv": "#4ab9f0",
         "collbgborderhv": "#4ab9f0",
