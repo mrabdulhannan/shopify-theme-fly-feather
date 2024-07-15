@@ -1,3 +1,12 @@
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
 {
   "current": {
     "colors_accent_1": "#ffa791",
@@ -84,7 +93,7 @@
           "announcement-bar-0": {
             "type": "announcement",
             "settings": {
-              "text": "",
+              "text": "two weeks free returns",
               "text2": "0326 3 55 55 33",
               "text3": "flyfeather2023@gmail.com",
               "color_scheme": "background-1",
