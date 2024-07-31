@@ -1,1 +1,134 @@
-{"sections":{"main":{"type":"main-product","blocks":{"vendor":{"type":"text","settings":{"text":"{{ product.vendor }}"}},"title":{"type":"title","settings":{}},"price":{"type":"price","settings":{}},"description":{"type":"description","settings":{}},"2872582f-fe98-437f-8b1f-b6cb2dfc1891":{"type":"countdown_timer","settings":{"show_timer":true,"timer_text":"offer ends in"}},"variant_picker":{"type":"variant_picker","settings":{"picker_type":"button"}},"quantity_selector":{"type":"quantity_selector","settings":{}},"buy_buttons":{"type":"buy_buttons","settings":{"show_dynamic_checkout":true}},"share":{"type":"share","settings":{"share_label":"Share"}},"collapsible-row-1":{"type":"collapsible_tab","settings":{"heading":"Shipping & Returns","content":"","page":"shipping","icon":"truck"}},"53d1b536-e8c6-416b-81ae-5537d48a8356":{"type":"share_button","settings":{"share_facebook":true,"share_twitter":true,"share_pinterest":true}}},"block_order":["vendor","title","price","description","2872582f-fe98-437f-8b1f-b6cb2dfc1891","variant_picker","quantity_selector","buy_buttons","share","collapsible-row-1","53d1b536-e8c6-416b-81ae-5537d48a8356"],"settings":{"enable_sticky_info":true,"gallery_layout":"thumbnail_slider","media_size":"small","mobile_thumbnails":"show","hide_variants":false,"enable_video_looping":false,"enable_desctab":true,"padding_top":0,"padding_bottom":60}},"product-recommendations":{"type":"product-recommendations","settings":{"heading":"You may also like","image_ratio":"adapt","show_secondary_image":false,"show_vendor":false,"show_rating":true,"display_product_type":false,"show_variants":false,"padding_top":60,"padding_bottom":0}}},"order":["main","product-recommendations"]}
+/*
+* ------------------------------------------------------------
+* IMPORTANT: The contents of this file are auto-generated.
+*
+* This file may be updated by the Shopify admin theme editor
+* or related systems. Please exercise caution as any changes
+* made to this file may be overwritten.
+* ------------------------------------------------------------
+*/
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+          }
+        },
+        "2872582f-fe98-437f-8b1f-b6cb2dfc1891": {
+          "type": "countdown_timer",
+          "settings": {
+            "show_timer": true,
+            "timer_text": "offer ends in"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        },
+        "collapsible-row-1": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shipping & Returns",
+            "content": "",
+            "page": "shipping",
+            "icon": "truck"
+          }
+        },
+        "53d1b536-e8c6-416b-81ae-5537d48a8356": {
+          "type": "share_button",
+          "settings": {
+            "share_facebook": true,
+            "share_twitter": true,
+            "share_pinterest": true
+          }
+        },
+        "judge_me_reviews_preview_badge_kbyyJJ": {
+          "type": "shopify:\/\/apps\/judge-me-reviews\/blocks\/preview_badge\/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "price",
+        "description",
+        "2872582f-fe98-437f-8b1f-b6cb2dfc1891",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "share",
+        "collapsible-row-1",
+        "53d1b536-e8c6-416b-81ae-5537d48a8356",
+        "judge_me_reviews_preview_badge_kbyyJJ"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "gallery_layout": "thumbnail_slider",
+        "media_size": "small",
+        "mobile_thumbnails": "show",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "enable_desctab": true,
+        "padding_top": 0,
+        "padding_bottom": 64
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "You may also like",
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": true,
+        "display_product_type": false,
+        "show_variants": false,
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "product-recommendations"
+  ]
+}
